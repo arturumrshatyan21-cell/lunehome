@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Halden</title>
-<meta name="description" content="Halden makes furniture for considered living.">
+<meta name="description" content="Halden makes furniture for considered living — oak, ash and walnut pieces built to belong in your everyday and stay with you for years. See the 2026 collection.">
 <meta name="theme-color" content="#de0419">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,7 @@
   }
 }
 </script>
+<noscript><style>#preloader{display:none}</style></noscript>
 <style>
 @font-face { font-family: "Instrument Serif"; font-weight: 400; font-style: normal; font-display: swap; src: url("https://storage.getlayers.ai/assets/halden-5875ef9537/fonts/InstrumentSerif-Regular.ttf") format("truetype"); }
 @font-face { font-family: "Instrument Serif"; font-weight: 400; font-style: italic; font-display: swap; src: url("https://storage.getlayers.ai/assets/halden-5875ef9537/fonts/InstrumentSerif-Italic.ttf") format("truetype"); }
@@ -75,6 +76,9 @@ img { display: block; max-width: none; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.trim { text-box: trim-both cap alphabetic; }
+.abs { position: absolute; }
 
 /* Header */
 header {
@@ -163,6 +167,121 @@ header.on .ni:hover .lb {
   color: var(--foreground-accent);
 }
 
+/* Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+#preloader .veil {
+  position: absolute;
+  inset: 0;
+  background: var(--background);
+}
+
+#frame {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+}
+
+#frame .box {
+  position: absolute;
+  inset: 0.3125rem;
+  overflow: hidden;
+}
+
+#frame .box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+#frame .c {
+  position: absolute;
+  border: 0 solid var(--surface-accent);
+}
+
+.tl { left: 0; top: 0; border-left-width: 1.4px; border-top-width: 1.4px; }
+.tr { right: 0; top: 0; border-right-width: 1.4px; border-top-width: 1.4px; }
+.bl { left: 0; bottom: 0; border-left-width: 1.4px; border-bottom-width: 1.4px; }
+.br { right: 0; bottom: 0; border-right-width: 1.4px; border-bottom-width: 1.4px; }
+
+#frame .cp {
+  position: absolute;
+  left: 0;
+  bottom: -2.125rem;
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  color: var(--foreground-accent);
+}
+
+.cp b {
+  font: 700 1.125rem/1 "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.cp span {
+  font: 1rem/1 "Instrument Serif", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+#err {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  background: #000;
+  color: #fff;
+  font: 12px/1.5 monospace;
+  padding: 8px 12px;
+  display: none;
+}
+
+/* Framing Cursor */
+#cursor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  display: none;
+}
+
+@media (pointer: fine) {
+  #cursor-layer { display: block; }
+}
+
+.cursor-mark {
+  position: absolute;
+  height: 0.6875rem;
+  width: 0.6875rem;
+  border-color: var(--foreground-accent);
+  transition: border-color 0.15s;
+}
+
+[data-frame-cursor="light"] ~ #cursor-layer .cursor-mark,
+#cursor-layer.light .cursor-mark {
+  border-color: var(--foreground-on-band);
+}
+
+.cm-tl { border-top-width: 1.4px; border-left-width: 1.4px; }
+.cm-tr { border-top-width: 1.4px; border-right-width: 1.4px; }
+.cm-bl { border-bottom-width: 1.4px; border-left-width: 1.4px; }
+.cm-br { border-bottom-width: 1.4px; border-right-width: 1.4px; }
+
 /* Hero */
 #hero {
   height: 100lvh;
@@ -176,7 +295,10 @@ header.on .ni:hover .lb {
   position: relative;
   width: 100%;
   height: 50rem;
+  opacity: 0;
 }
+
+#stage.go { opacity: 1; }
 
 h1 {
   position: absolute;
@@ -199,6 +321,9 @@ h1 .w {
   font: 1rem/1.1 "Instrument Serif", serif;
   text-transform: uppercase;
 }
+
+.ln { display: block; overflow: hidden; }
+.un { display: inline-block; }
 
 .plate {
   position: absolute;
@@ -230,11 +355,6 @@ h1 .w {
   pointer-events: none;
   background: var(--surface-accent);
   mix-blend-mode: color-burn;
-  clip-path: inset(100% 0 0 0);
-}
-
-.plate:hover .tint {
-  clip-path: inset(0% 0 0 0);
 }
 
 .cta {
@@ -247,8 +367,15 @@ h1 .w {
   letter-spacing: 0.08em;
 }
 
+.cta b {
+  display: inline-block;
+  font-weight: 700;
+}
+
 .welcome {
   position: absolute;
+  margin-top: -0.24375rem;
+  width: 10.6875rem;
   font: 700 var(--text-title)/1 "Bebas Neue", sans-serif;
   text-transform: uppercase;
 }
@@ -362,6 +489,7 @@ h1 .w {
 .cat-row .count {
   font: 700 var(--text-caption)/normal "Bebas Neue", sans-serif;
   letter-spacing: 0.04em;
+  transition: color 0.15s;
 }
 
 .cat-plates {
@@ -448,10 +576,6 @@ h1 .w {
   background: var(--surface-subtle);
   transform-origin: left;
   transform: scaleX(0);
-}
-
-.pill:hover .fill {
-  transform: scaleX(1);
 }
 
 .product-list {
@@ -650,7 +774,7 @@ footer {
   height: 3.25rem;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: between;
   overflow: hidden;
   border-radius: var(--radius-pill);
   border: 0.0375rem solid color-mix(in oklab, var(--foreground-on-accent) 35%, transparent);
@@ -794,7 +918,7 @@ footer {
   .product-list { width: 60rem; }
   .card { width: 13.875rem; }
   .room-plate { width: 60rem; height: 30rem; }
-  .footer-nav { left: 42.5rem; width: 19.5rem; justify-content: space-between; gap: 0; }
+  .footer-nav { left: 42.5rem; width: 19.5rem; justify-content: between; gap: 0; }
 }
 
 @media (max-width: 768px) {
@@ -804,6 +928,7 @@ footer {
   .n2 { left: calc(50% + 16.625rem); gap: 1.25rem; }
   #stage { height: 64rem; }
   h1 { font-size: 9.4375rem; }
+  .cap, .plate:not(.keep), .cta { display: none; }
   #manifesto, #catalogue, #products, #room { height: 36.875rem; }
   .manifesto-text { left: 1.6875rem; top: 3.125rem; translate: 0 0; text-align: left; font-size: 2.5rem; }
   .cat-band { top: 13.875rem; width: 48rem; height: 3.0625rem; }
@@ -843,78 +968,59 @@ footer {
 
 <header id="hdr">
   <a class="mark" href="#" aria-label="Halden — home">HALDEN<i>®</i></a>
-  <nav class="n1" aria-label="Primary">
-    <ul id="nav1"></ul>
-  </nav>
-  <nav class="n2" aria-label="Account and basket">
-    <ul id="nav2"></ul>
-  </nav>
+  <nav class="n1" aria-label="Primary"><ul id="nav1"></ul></nav>
+  <nav class="n2" aria-label="Account and basket"><ul id="nav2"></ul></nav>
 </header>
 
 <main>
   <section id="hero" aria-label="Halden — timeless furniture">
     <div id="stage">
       <h1>
-        <span class="w" id="w1" style="left:1.5625rem;top:7.5rem">timeless</span>
-        <span class="w" id="w2" style="left:16rem;top:19.625rem;gap:0.5rem">furniture/<span aria-hidden="true">/</span></span>
+        <span class="w trim" id="w1" style="left:1.5625rem;top:7.5rem">timeless</span>
+        <span class="w trim" id="w2" style="left:16rem;top:19.625rem;gap:0.5rem">furniture/<span aria-hidden="true">/</span></span>
       </h1>
 
-      <span class="cap" style="left:74.3125rem;top:7.375rem;width:4.5625rem">collection 2026</span>
-      <span class="cap" style="left:74.3125rem;top:13.125rem">01-11</span>
-      <span class="cap" style="left:2rem;top:23.875rem;width:5rem">dining chair 32"W x 38"H</span>
-      <span class="cap" style="left:2rem;top:29.25rem;width:5rem;line-height:normal">$499.99</span>
-      <span class="cap" style="left:46.0625rem;top:34.6875rem;width:5.8125rem;translate:-100% 0;text-align:right">modular sofa 98"W x 38"H</span>
-      <span class="cap" style="left:46.0625rem;top:46.9375rem;translate:-100% 0;text-align:right;line-height:normal">$2999.99</span>
-      <span class="cap" style="left:69.875rem;top:37.5625rem">new arrivals</span>
-      <span class="cap" aria-hidden="true" style="left:88rem;top:37.6875rem;translate:-100% 0;text-align:right;line-height:normal">//</span>
+      <span class="abs" style="left:74.3125rem;top:7.375rem;width:4.5625rem"><span class="cap trim sr-l" data-d="320" style="position:static;display:block">collection 2026</span></span>
+      <span class="abs" style="left:74.3125rem;top:13.125rem"><span class="cap trim sr-l" data-d="380" style="position:static;display:block">01-11</span></span>
+      <span class="abs" style="left:2rem;top:23.875rem;width:5rem"><span class="cap trim sr-l" data-d="420" style="position:static;display:block">dining chair 32"W x 38"H</span></span>
+      <span class="abs" style="left:2rem;top:29.25rem;width:5rem"><span class="cap trim sr-l" data-d="480" style="position:static;display:block;line-height:normal">$499.99</span></span>
+      <span class="abs" style="left:46.0625rem;top:34.6875rem;width:5.8125rem;translate:-100% 0;text-align:right"><span class="cap trim sr-l" data-d="500" style="position:static;display:block">modular sofa 98"W x 38"H</span></span>
+      <span class="abs" style="left:46.0625rem;top:46.9375rem;translate:-100% 0;text-align:right"><span class="cap trim sr-l" data-d="560" style="position:static;display:block;line-height:normal">$2999.99</span></span>
+      <span class="abs" style="left:69.875rem;top:37.5625rem"><span class="cap trim sr-l" data-d="600" style="position:static;display:block">new arrivals</span></span>
+      <span class="cap trim" aria-hidden="true" style="left:88rem;top:37.6875rem;translate:-100% 0;text-align:right;line-height:normal">//</span>
 
       <a href="#" class="cta" id="cta" style="left:73.5625rem;top:28.625rem">
-        <b id="br1" aria-hidden="true">[</b><span style="padding:0 0.22em">explore collection</span><b id="br2" aria-hidden="true">]</b>
+        <b id="br1" aria-hidden="true">[</b><span class="trim sr-l" data-d="560" data-gap="0.24" style="padding:0 0.22em" data-full="1">explore collection</span><b id="br2" aria-hidden="true">]</b>
       </a>
 
-      <p class="welcome" style="left:2rem;top:43.8125rem">WELCOME TO HALDEN – tIMELESS DESIGN, MADE TO LAST.</p>
+      <p class="welcome trim sr-l" data-d="700" data-nc="1" style="left:2rem;top:43.8125rem">WELCOME TO HALDEN – tIMELESS DESIGN, MADE TO LAST.</p>
 
-      <div class="plate" style="left:79.3125rem;top:7.5rem;width:8.6875rem;height:6.5rem">
-        <img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/collection-chair.png" alt="Red sculptural lounge chair">
-        <span class="tint"></span>
-      </div>
-      <div class="plate" style="left:9.25rem;top:24rem;width:6.4375rem;height:6.25rem">
-        <img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/dining-chair.png" alt="Black wooden dining chair">
-        <span class="tint"></span>
-      </div>
-      <div class="plate fl" style="left:46.5625rem;top:34.8125rem;width:22.8125rem;height:13.1875rem">
-        <img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/modular-sofa.png" alt="Modular sofa">
-        <span class="tint"></span>
-      </div>
-      <div class="plate fl" style="left:69.875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem">
-        <img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-1.png" alt="Sideboard">
-        <span class="tint"></span>
-      </div>
-      <div class="plate fl" style="left:79.1875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem">
-        <img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-2.png" alt="Dining table">
-        <span class="tint"></span>
-      </div>
+      <div class="plate" data-d="340" style="left:79.3125rem;top:7.5rem;width:8.6875rem;height:6.5rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/collection-chair.png" alt="Red sculptural lounge chair"></div>
+      <div class="plate" data-d="440" style="left:9.25rem;top:24rem;width:6.4375rem;height:6.25rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/dining-chair.png" alt="Black wooden dining chair"></div>
+      <div class="plate fl keep" data-d="520" style="left:46.5625rem;top:34.8125rem;width:22.8125rem;height:13.1875rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/modular-sofa.png" alt="Modular sofa"></div>
+      <div class="plate fl keep" data-d="620" style="left:69.875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-1.png" alt="Sideboard"></div>
+      <div class="plate fl keep" data-d="660" style="left:79.1875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-2.png" alt="Dining table"></div>
     </div>
   </section>
 
   <section id="manifesto" data-header-accent>
     <h2 class="manifesto-text" id="manifesto-text">
-      <span>(Halden) is made for </span>
-      <em>considered living,<span class="underline"></span></em>
-      <span>for beautiful </span>
+      <span class="frag" data-text="(Halden) is made for " data-at="0"></span>
+      <em class="frag" data-text="considered living," data-at="21"></em>
+      <span class="frag" data-text="for beautiful " data-at="39"></span>
       <span class="chair-gap"><span class="inner"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/manifesto/armchair-blue.png" alt="Tufted blue armchair"></span></span>
-      <span>spaces, made to last — </span>
-      <span>furniture that belongs </span>
+      <span class="frag" data-text="spaces, made to last — " data-at="52"></span>
+      <span class="frag" data-text="furniture that belongs " data-at="74"></span>
       <span class="chair-gap"><span class="inner"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/manifesto/armchair-orange.png" alt="Orange swivel lounge chair"></span></span>
-      <span>in your everyday, </span>
-      <span>and stays with you for years to come.</span>
+      <span class="frag" data-text="in your everyday, " data-at="96"></span>
+      <span class="frag" data-text="and stays with you for years to come." data-at="113"></span>
     </h2>
   </section>
 
   <section id="catalogue">
-    <h2 style="position:absolute;left:2rem;top:2rem;font:400 var(--text-body)/1.1 'Instrument Serif',serif;text-transform:uppercase">(02) — Catalogue</h2>
-    <p style="position:absolute;left:59.8125rem;top:2rem;width:27.1875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif;color:var(--foreground-strong)">Nine categories, and that's the whole company. No outlet line, no seasonal drop, no second brand for the cheap version. If it isn't on this list, we don't make it.</p>
-    <div style="position:absolute;left:2rem;top:6.625rem;height:1px;width:86rem;background:var(--rule);transform-origin:left"></div>
+    <h2 class="abs trim" style="left:2rem;top:2rem;font:400 var(--text-body)/1.1 'Instrument Serif',serif;text-transform:uppercase">(02) — Catalogue</h2>
+    <p class="abs trim" style="left:59.8125rem;top:2rem;width:27.1875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif;color:var(--foreground-strong)">Nine categories, and that's the whole company. No outlet line, no seasonal drop, no second brand for the cheap version. If it isn't on this list, we don't make it.</p>
+    <div class="abs" style="left:2rem;top:6.625rem;height:1px;width:86rem;background:var(--rule);transform-origin:left" id="cat-rule"></div>
     <div class="cat-band" id="cat-band"></div>
     <div class="cat-plates">
       <div class="cat-plate left" id="plate-l"><img src="" alt=""></div>
@@ -924,9 +1030,9 @@ footer {
   </section>
 
   <section id="products">
-    <h2 style="position:absolute;left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif">Finished, boxed, waiting by the door</h2>
-    <p style="position:absolute;left:59.8125rem;top:3.125rem;width:12.8125rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our current collection - ready to ship. Pieces in stock ship within days.</p>
-    <div style="position:absolute;left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left"></div>
+    <h2 class="abs trim" style="left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif" id="prod-title">Finished, boxed, waiting by the door</h2>
+    <p class="abs trim" style="left:59.8125rem;top:3.125rem;width:12.8125rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our current collection - ready to ship. Pieces in stock ship within days.</p>
+    <div class="abs" style="left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left" id="prod-rule"></div>
     <ul class="filters" id="filters">
       <li class="pill active" data-filter="all"><span class="fill"></span>All (14)</li>
       <li class="pill" data-filter="chairs"><span class="fill"></span>Chairs (5)</li>
@@ -934,71 +1040,116 @@ footer {
       <li class="pill" data-filter="seating"><span class="fill"></span>Seating (4)</li>
       <li class="pill" data-filter="storage"><span class="fill"></span>Storage (2)</li>
     </ul>
-    <div style="position:absolute;left:80.8125rem;top:11.6875rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">Sorted by lead time  <svg viewBox="0 0 8 10" style="height:0.62em;width:0.5em;vertical-align:baseline;fill:none;stroke:currentColor;stroke-width:1"><path d="M4 0v9M0.6 5.6L4 9.2 7.4 5.6"/></svg></div>
+    <div class="abs trim" style="left:80.8125rem;top:11.6875rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">Sorted by lead time  <svg viewBox="0 0 8 10" style="height:0.62em;width:0.5em;vertical-align:baseline;fill:none;stroke:currentColor;stroke-width:1"><path d="M4 0v9M0.6 5.6L4 9.2 7.4 5.6"/></svg></div>
     <ul class="product-list" id="product-list"></ul>
   </section>
 
   <section id="room">
-    <h2 style="position:absolute;left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif">See it where it actually lives</h2>
-    <p style="position:absolute;left:59.8125rem;top:3.125rem;width:18.6875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our furniture in real homes. Explore the pieces in their natural surroundings and get inspired.</p>
-    <div style="position:absolute;left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left"></div>
-    <div class="room-plate" id="room-plate">
+    <h2 class="abs trim" style="left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif">See it where it actually lives</h2>
+    <p class="abs trim" style="left:59.8125rem;top:3.125rem;width:18.6875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our furniture in real homes. Explore the pieces in their natural surroundings and get inspired.</p>
+    <div class="abs" style="left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left" id="room-rule"></div>
+    <div class="room-plate" id="room-plate" data-frame-cursor="light">
       <img src="https://storage.getlayers.ai/assets/halden-5875ef9537/room/christianshavn.png" alt="Apartment interior in Christianshavn">
       <div class="room-scrim" id="room-scrim"></div>
       <ul class="room-tags" id="room-tags"></ul>
     </div>
-    <div style="position:absolute;left:4rem;top:44.875rem;white-space:nowrap;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em;color:var(--foreground-on-band)">Apartment, Christianshavn — photographed May 2026</div>
-    <div style="position:absolute;left:81.3125rem;top:44.9375rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">01/ 06  ← →</div>
+    <div class="abs trim" style="left:4rem;top:44.875rem;white-space:nowrap;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em;color:var(--foreground-on-band)">Apartment, Christianshavn — photographed May 2026</div>
+    <div class="abs trim" style="left:81.3125rem;top:44.9375rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">01/ 06  ← →</div>
   </section>
 </main>
 
 <footer data-header-accent>
-  <div style="position:absolute;left:2rem;top:2rem;display:flex;width:26.875rem;flex-direction:column;align-items:start;gap:2rem">
+  <div class="abs" style="left:2rem;top:2rem;display:flex;width:26.875rem;flex-direction:column;align-items:start;gap:2rem">
     <h2 style="width:100%;font:400 var(--text-headline)/1.0435 'Instrument Serif',serif">
-      <span style="display:block">Four emails a year,</span>
-      <span style="display:block">and none of them are sales</span>
+      <span class="trim sr-l" style="display:block">Four emails a year,</span>
+      <span class="trim sr-l" style="display:block" data-d="110">and none of them are sales</span>
     </h2>
     <div class="newsletter-row" id="nl-row">
       <span class="nl-label">EMAIL</span>
       <input type="email" class="nl-input" placeholder="you@somewhere.dk" aria-label="Email address">
       <button class="nl-btn" id="nl-btn">
-        <span>Sign me up</span>
+        <span class="trim">Sign me up</span>
         <span style="position:absolute;inset-y:0;right:0.5rem;display:flex;align-items:center" id="nl-arrow">→</span>
       </button>
     </div>
   </div>
   <nav class="footer-nav" aria-label="Footer" id="footer-nav"></nav>
-  <div style="position:absolute;left:2rem;top:17.25rem;height:1px;width:86rem;background:color-mix(in oklab, var(--foreground-on-accent) 35%, transparent);transform-origin:left"></div>
-  <div style="position:absolute;left:2rem;top:18.5625rem;display:flex;flex-direction:column;align-items:start;gap:0.5rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif">
+  <div class="abs" style="left:2rem;top:17.25rem;height:1px;width:86rem;background:color-mix(in oklab, var(--foreground-on-accent) 35%, transparent);transform-origin:left" id="foot-rule"></div>
+  <div class="abs" style="left:2rem;top:18.5625rem;display:flex;flex-direction:column;align-items:start;gap:0.5rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif" id="foot-legal">
     <span>Halden Møbler ApS  ·  Refshalevej 88, 1432 København K  · +45 32 96 11 04</span>
     <span>© 2026  ·  Made in Denmark, mostly by hand</span>
   </div>
-  <div style="position:absolute;left:75.8125rem;top:18.5625rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif">Instagram  ·  Pinterest  ·  hello@halden.dk</div>
+  <div class="abs trim" style="left:75.8125rem;top:18.5625rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif" id="foot-social">Instagram  ·  Pinterest  ·  hello@halden.dk</div>
   <div class="wordmark" aria-hidden="true" id="wordmark">HALDEN</div>
 </footer>
+
+<div id="preloader" role="status" aria-live="polite" aria-label="Loading Halden">
+  <div class="veil" id="veil"></div>
+  <div id="frame">
+    <div class="box" id="pbox"></div>
+    <span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+    <div class="cp"><b>HALDEN</b><span id="pct">0%</span></div>
+  </div>
+</div>
+<div id="err"></div>
+
+<div id="cursor-layer">
+  <div class="cursor-mark cm-tl"></div>
+  <div class="cursor-mark cm-tr"></div>
+  <div class="cursor-mark cm-bl"></div>
+  <div class="cursor-mark cm-br"></div>
+</div>
 
 <script type="module">
 import Lenis from "lenis";
 
 const ASSET = (p) => `https://storage.getlayers.ai/assets/halden-5875ef9537/${p}`;
+const WEIGHT = { m: 2.4, t: 120, f: 34 };
+const SOFT = { m: 1.4, t: 170, f: 30 };
+const INK = { m: 1, t: 420, f: 34 };
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const noHover = () => innerWidth <= 768;
+const $ = (s, r = document) => r.querySelector(s);
+
+const err = $("#err");
+const fail = (u) => { err.style.display = "block"; err.textContent += "Failed to load: " + u + "\n"; };
+addEventListener("error", (e) => { const t = e.target; if (t && (t.src || t.href)) fail(t.src || t.href); }, true);
+
+const jobs = new Set();
+const mk = (render, init) => { const o = { s: { ...init }, v: {}, t: {}, c: {}, d: {}, render }; render(o.s); return o; };
+function go(o, to, cfg = WEIGHT, delay = 0) {
+  for (const k in to) {
+    if (reduced) { o.s[k] = to[k]; continue; }
+    if (o.t[k] === to[k]) continue;
+    o.t[k] = to[k]; o.c[k] = cfg; o.v[k] ??= 0; o.d[k] = performance.now() + delay;
+  }
+  if (reduced) o.render(o.s); else jobs.add(o);
+}
+function step(now, dt) {
+  dt = Math.min(dt, 64);
+  for (const o of jobs) {
+    let rest = true;
+    for (const k in o.t) {
+      if (now < o.d[k]) { rest = false; continue; }
+      const { m, t, f } = o.c[k]; let p = o.s[k], v = o.v[k]; const to = o.t[k];
+      for (let i = 0; i < dt; i++) { v += (-t * 1e-6 * (p - to) + -f * 1e-3 * v) / m; p += v; }
+      if (Math.abs(v) < 0.001 && Math.abs(p - to) <= 0.01) { p = to; v = 0; } else rest = false;
+      o.s[k] = p; o.v[k] = v;
+    }
+    o.render(o.s);
+    if (rest) jobs.delete(o);
+  }
+}
 
 window.scrollTo(0, 0);
-const lenis = new Lenis({ smoothWheel: true });
-window.lenis = lenis;
-
-const subs = [];
-let last = 0;
+const lenis = new Lenis({ smoothWheel: true }); window.lenis = lenis;
+const subs = []; let last = 0;
 const sub = (fn, gap = 0) => subs.push({ fn, gap, last: 0 });
-
 function frame(time) {
   lenis.raf(time);
-  const dt = last ? time - last : 16;
-  last = time;
-  for (const s of subs) {
-    if (time - s.last <= s.gap) continue;
-    s.last = time;
-    try { s.fn(time); } catch (e) { console.error(e); }
-  }
+  const dt = last ? time - last : 16; last = time;
+  for (const s of subs) { if (time - s.last <= s.gap) continue; s.last = time; try { s.fn(time); } catch (e) { console.error(e); } }
+  step(performance.now(), dt);
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
@@ -1009,33 +1160,192 @@ sub(() => {
   else r.style.removeProperty("font-size");
 });
 
-const mkNav = (ul, items, base) => items.forEach((t, i) => {
-  const li = document.createElement("li");
-  li.className = "ni";
-  const a = document.createElement(t.btn ? "button" : "a");
-  if (!t.btn) a.href = "#";
-  li.innerHTML = `<span class="bar"></span>`;
-  const lb = document.createElement("span");
-  lb.className = "lb";
-  lb.textContent = t.l;
-  li.appendChild(a);
-  a.appendChild(lb);
-  ul.appendChild(li);
-});
+const clipR = (s) => `inset(${s.c}% 0 0 0)`;
+function line(el, { from = "up", delay = 0, soft = false, clip = true } = {}) {
+  const txt = el.textContent;
+  el.innerHTML = `<span class="sr">${txt}</span><span aria-hidden="true" class="ln ${clip ? "" : "nc"}"><span class="un">${txt}</span></span>`;
+  const u = $(".un", el), pct = clip && from === "up";
+  const OUT = pct ? { y: 110, x: 0, o: 1 } : from === "left" ? { y: 0, x: -48, o: 0 } : from === "right" ? { y: 0, x: 48, o: 0 } : { y: 18, x: 0, o: 0 };
+  const o = mk(s => { u.style.transform = `translate3d(${s.x}px,${s.y}${pct ? "%" : "px"},0)`; u.style.opacity = s.o; }, OUT);
+  return { o, play: () => go(o, { y: 0, x: 0, o: 1 }, soft ? SOFT : WEIGHT, delay) };
+}
+function hover(trigger, o, from, to, cfg) {
+  trigger.addEventListener("mouseenter", () => { if (!noHover()) go(o, to, cfg); });
+  trigger.addEventListener("mouseleave", () => go(o, from, cfg));
+}
+function plate(el) {
+  const img = el.firstElementChild;
+  const rv = document.createElement("span"); rv.className = "rv"; el.insertBefore(rv, img); rv.appendChild(img);
+  const tint = document.createElement("span"); tint.className = "tint"; el.appendChild(tint);
+  const r = mk(s => rv.style.clipPath = clipR(s), { c: 100 }), t = mk(s => tint.style.clipPath = clipR(s), { c: 100 });
+  hover(el, t, { c: 100 }, { c: 0 }, { m: 1, t: 240, f: 30 });
+  return () => go(r, { c: 0 }, WEIGHT, +el.dataset.d);
+}
 
-mkNav($("#nav1"), [{ l: "CATALOGUE" }, { l: "ROOMS" }, { l: "ABOUT" }, { l: "MATERIALS" }], 120);
-mkNav($("#nav2"), [{ l: "SEARCH", btn: 1 }, { l: "SAVED (3)" }, { l: "BAG (0)" }], 400);
+const mkNav = (ul, items, base) => items.forEach((t, i) => {
+  const li = document.createElement("li"); li.className = "ni";
+  const a = document.createElement(t.btn ? "button" : "a"); if (!t.btn) a.href = "#";
+  li.innerHTML = `<span class="bar"></span>`; const lb = document.createElement("span"); lb.className = "lb trim"; lb.textContent = t.l;
+  li.appendChild(a); a.appendChild(lb); ul.appendChild(li);
+  const bar = $(".bar", li), b = mk(s => bar.style.transform = `scaleX(${s.x})`, { x: 0 });
+  hover(li, b, { x: 0 }, { x: 1 }, { m: 1, t: 280, f: 28 });
+  const e = mk(s => { li.style.opacity = s.o; li.style.transform = `translate3d(0,${s.y}px,0)`; }, { o: 0, y: 12 });
+  go(e, { o: 1, y: 0 }, SOFT, base + i * 70);
+});
+mkNav($("#nav1"), [{ l: "Catalogue" }, { l: "Rooms" }, { l: "ABOUT" }, { l: "MATERIALS" }], 120);
+mkNav($("#nav2"), [{ l: "Search", btn: 1 }, { l: "Saved (3)" }, { l: "Bag (0)" }], 400);
 
 const hdr = $("#hdr");
 sub(() => {
-  const lineY = hdr.offsetHeight / 2;
-  let on = false;
+  const lineY = hdr.offsetHeight / 2; let on = false;
   document.querySelectorAll("[data-header-accent]").forEach(p => {
-    const r = p.getBoundingClientRect();
-    if (r.top <= lineY && r.bottom > lineY) on = true;
+    const r = p.getBoundingClientRect(); if (r.top <= lineY && r.bottom > lineY) on = true;
   });
   hdr.classList.toggle("on", on);
 });
+
+function startHero() {
+  const stage = $("#stage"); stage.classList.add("go");
+  const w1 = $("#w1"), w2 = $("#w2");
+  const a = mk(s => { w1.style.opacity = s.o; w1.style.transform = `translate3d(${s.x}px,0,0)`; }, { o: 0, x: -170 });
+  const b = mk(s => { w2.style.opacity = s.o; w2.style.transform = `translate3d(${s.x}px,0,0)`; }, { o: 0, x: 170 });
+  go(a, { o: 1, x: 0 }); go(b, { o: 1, x: 0 }, WEIGHT, 140);
+  stage.querySelectorAll(".sr-l").forEach(el => {
+    const L = line(el, { from: "up", delay: +el.dataset.d, soft: !el.dataset.full, clip: !el.dataset.nc });
+    L.play();
+  });
+  stage.querySelectorAll(".plate").forEach(el => plate(el)());
+  const cta = $("#cta");
+  [["#br1", -7], ["#br2", 7]].forEach(([id, dx]) => {
+    const el = $(id), o = mk(s => el.style.transform = `translate3d(${s.x}px,0,0)`, { x: 0 });
+    hover(cta, o, { x: 0 }, { x: dx }, { m: 1, t: 240, f: 24 });
+  });
+}
+window.__haldenOpening = false;
+addEventListener("halden:opening", startHero, { once: true });
+
+const SHOTS = [
+  "hero/modular-sofa.png", "hero/collection-chair.png", "hero/new-arrival-1.png", "hero/dining-chair.png", "hero/new-arrival-2.png"
+];
+const FRAME_W = 460, FRAME_RATIO = 288 / 460, FRAME_MIN = 240, FRAME_SHARE = 0.32, TICK = 15;
+const frameFor = w => { const x = Math.round(Math.max(FRAME_MIN, Math.min(w * FRAME_SHARE, FRAME_W))); return { w: x, h: Math.round(x * FRAME_RATIO) }; };
+
+(function preload() {
+  const pre = $("#preloader");
+  const finishNow = () => { window.__haldenOpening = window.__haldenReady = true; dispatchEvent(new Event("halden:opening")); dispatchEvent(new Event("halden:ready")); pre.remove(); };
+  if (reduced) { finishNow(); return; }
+  document.body.style.overflow = "hidden";
+  const fr = $("#frame"), box = $("#pbox"), veil = $("#veil"), pctEl = $("#pct");
+  const cs = [".tl", ".tr", ".bl", ".br"].map(c => $(c, fr));
+  const imgs = SHOTS.map(s => { const i = document.createElement("img"); i.src = ASSET(s); i.alt = ""; box.appendChild(i); return i; });
+  const P = mk(s => {
+    fr.style.width = s.w + "px"; fr.style.height = s.h + "px"; fr.style.opacity = s.frame;
+    box.style.opacity = s.content; veil.style.opacity = s.veil;
+    cs.forEach(c => { c.style.width = s.ax + "px"; c.style.height = s.ay + "px"; });
+    pctEl.textContent = Math.min(100, Math.max(0, Math.round(s.pct))) + "%";
+    $(".cp", fr).style.opacity = s.content;
+  }, { pct: 0, w: 460, h: 288, ax: 15, ay: 15, content: 0, veil: 1, frame: 1 });
+  const base = { m: 1.6, t: 150, f: 26 };
+  go(P, { content: 1 }, base);
+  let f = frameFor(innerWidth); P.s.w = f.w; P.s.h = f.h; P.render(P.s);
+  let finished = false;
+  addEventListener("resize", () => { f = frameFor(innerWidth); if (!finished) go(P, { w: f.w, h: f.h }, base); });
+  const UNITS = SHOTS.length + 1; let fontsReady = false; document.fonts.ready.then(() => fontsReady = true);
+  let arrived = 0, released = 0, lastR = 0;
+  SHOTS.forEach(src => {
+    const im = new Image(); im.src = ASSET(src); const mark = () => arrived++;
+    im.decode().then(mark, () => { fail(src); mark(); });
+  });
+  const started = performance.now();
+  const tick = setInterval(() => {
+    const now = performance.now();
+    if (!finished && released < arrived && now - lastR >= 150) { released++; lastR = now; imgs.forEach((im, i) => im.style.opacity = i === released - 1 ? 1 : 0); }
+    const p = (released + (fontsReady ? 1 : 0)) / UNITS;
+    go(P, { pct: p * 100 }, { m: 1.6, t: 260, f: 34 });
+    go(P, { ax: TICK + (f.w / 2 - TICK) * p, ay: TICK + (f.h / 2 - TICK) * p }, base);
+    const el = now - started;
+    if (!finished && ((released === SHOTS.length && fontsReady && el >= 900) || el >= 7000)) { clearInterval(tick); finish(); }
+  }, 40);
+  function finish() {
+    finished = true;
+    go(P, { pct: 100 }, { m: 1.6, t: 320, f: 34 });
+    const sw = f.w - Math.round(f.w * 0.048), sh = f.h - Math.round(f.h * 0.049);
+    go(P, { w: sw, h: sh, ax: sw / 2, ay: sh / 2 }, { m: 1, t: 320, f: 15 });
+    setTimeout(() => { go(P, { content: 0 }, { m: 1.6, t: 200, f: 30 }); go(P, { ax: TICK, ay: TICK }, { m: 1, t: 220, f: 30 }); }, 300);
+    setTimeout(() => {
+      go(P, { w: innerWidth * 1.6, h: innerHeight * 1.6 }, { m: 1.4, t: 130, f: 30 });
+      go(P, { veil: 0 }, { m: 1.6, t: 120, f: 28 });
+      go(P, { frame: 0 }, { m: 1.6, t: 170, f: 30 }, 420);
+    }, 520);
+    setTimeout(() => { window.__haldenOpening = true; dispatchEvent(new Event("halden:opening")); }, 620);
+    setTimeout(() => { window.__haldenReady = true; dispatchEvent(new Event("halden:ready")); pre.remove(); document.body.style.overflow = ""; }, 1420);
+  }
+})();
+
+const PACE = 9;
+const F = [
+  { text: "(Halden) is made for ", at: 0 },
+  { text: "considered living,", at: 21, italic: true },
+  { text: "for beautiful ", at: 39 },
+  { text: "spaces, made to last — ", at: 52 },
+  { text: "furniture that belongs ", at: 74 },
+  { text: "in your everyday, ", at: 96 },
+  { text: "and stays with you for years to come.", at: 113 }
+];
+const mText = $("#manifesto-text");
+let mHtml = "";
+F.forEach((frag, idx) => {
+  const tag = frag.italic ? "em" : "span";
+  mHtml += `<${tag} class="frag-wrap" style="position:relative;display:inline-block;">`;
+  mHtml += `<span class="sr">${frag.text}</span><span aria-hidden="true" class="written-chars" data-at="${frag.at}"></span>`;
+  if (frag.text.includes("considered living")) mHtml += `<span class="underline" id="m-underline"></span>`;
+  mHtml += `</${tag}>`;
+});
+mText.innerHTML = mHtml;
+
+const chairs = mText.querySelectorAll(".chair-gap");
+chairs.forEach((ch, i) => {
+  const delay = i === 0 ? 74 * PACE : 113 * PACE;
+  const o = mk(s => { ch.style.opacity = s.o; ch.style.transform = `translate3d(0,${s.y}px,0)`; }, { o: 0, y: -18 });
+  go(o, { o: 1, y: 0 }, WEIGHT, delay);
+  hover(ch, mk(s => ch.querySelector("img").style.transform = `rotate(${s.r}deg)`, { r: 0 }), { r: 0 }, { r: -5 }, { m: 1, t: 260, f: 11 });
+});
+
+const ulEl = $("#m-underline");
+if (ulEl) {
+  const uo = mk(s => ulEl.style.transform = `scaleX(${s.x})`, { x: 0 });
+  go(uo, { x: 1 }, WEIGHT, 39 * PACE);
+}
+
+let charIdx = 0;
+const allChars = [];
+F.forEach(frag => {
+  const el = mText.querySelector(`.written-chars[data-at="${frag.at}"]`);
+  if (el) {
+    for (const char of frag.text) {
+      allChars.push({ el, char, delay: (frag.at + allChars.filter(c => c.el === el).length) * PACE });
+    }
+  }
+});
+
+function runWritten() {
+  if (reduced) {
+    allChars.forEach(c => c.el.textContent += c.char);
+    return;
+  }
+  let i = 0;
+  function next() {
+    if (i >= allChars.length) return;
+    const c = allChars[i];
+    setTimeout(() => {
+      c.el.textContent += c.char;
+      i++;
+      next();
+    }, c.delay - (i > 0 ? allChars[i - 1].delay : 0));
+  }
+  next();
+}
+setTimeout(runWritten, 1000);
 
 const CATS = [
   { label: "All products", count: "152", l: ASSET("catalogue/beds-1.png"), r: ASSET("catalogue/mirrors-2.png") },
@@ -1048,18 +1358,16 @@ const CATS = [
   { label: "Lighting", count: "14", l: ASSET("catalogue/lighting-1.png"), r: ASSET("catalogue/lighting-2.png") },
   { label: "Mirrors", count: "11", l: ASSET("catalogue/mirrors-1.png"), r: ASSET("catalogue/mirrors-2.png") }
 ];
-
 const catList = $("#cat-list");
 let activeRow = 2;
-
 CATS.forEach((cat, i) => {
-  const li = document.createElement("li");
-  li.className = `cat-row ${cat.active ? "active" : ""}`;
-  li.dataset.idx = i;
-  li.innerHTML = `<span style="font:400 var(--text-category)/1.0741 'Instrument Serif',serif">${cat.label}</span><span class="count">${cat.count}</span>`;
+  const li = document.createElement("li"); li.className = `cat-row ${cat.active ? "active" : ""}`; li.dataset.idx = i;
+  li.innerHTML = `<span class="trim" style="font:400 var(--text-category)/1.0741 'Instrument Serif',serif">${cat.label}</span><span class="count trim">${cat.count}</span>`;
   catList.appendChild(li);
+  const o = mk(s => { li.style.opacity = s.o; li.style.transform = `translate3d(0,${s.y}px,0)`; }, { o: 0, y: i === 2 ? 0 : i < 2 ? 26 : -26 });
+  go(o, { o: 1, y: 0 }, WEIGHT, 260 + Math.abs(i - 2) * 70);
   
-  li.addEventListener("mouseenter", () => setActive(i));
+  li.addEventListener("mouseenter", () => { if (!noHover()) setActive(i); });
   li.addEventListener("pointerdown", () => setActive(i));
 });
 
@@ -1067,18 +1375,29 @@ function setActive(idx) {
   activeRow = idx;
   document.querySelectorAll(".cat-row").forEach((r, i) => {
     r.classList.toggle("active", i === idx);
+    r.style.color = i === idx ? "var(--foreground-on-band)" : "var(--foreground-strong)";
+    r.querySelector(".count").style.color = i === idx ? "var(--foreground-on-band)" : "var(--foreground-muted)";
   });
   const band = $("#cat-band");
   const rows = document.querySelectorAll(".cat-row");
   const targetY = rows[idx].offsetTop - rows[2].offsetTop;
-  band.style.transform = `translateY(${targetY}px)`;
+  go(mk(s => band.style.transform = `translateY(${s.y}px)`, { y: 0 }), { y: targetY }, { m: 1, t: 210, f: 30 });
   
   const pl = $("#plate-l"), pr = $("#plate-r");
   pl.querySelector("img").src = CATS[idx].l;
   pr.querySelector("img").src = CATS[idx].r;
 }
-
 setActive(2);
+
+if (innerWidth <= 1024) {
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !noHover()) {
+      setInterval(() => { setActive((activeRow + 1) % CATS.length); }, 2400);
+      obs.disconnect();
+    }
+  }, { threshold: 0.4 });
+  obs.observe($("#catalogue"));
+}
 
 const PRODS = [
   { idx: "(01)", name: "Elara Lounge Chair", spec: "Oiled oak, bouclé 12", price: "€1,840", img: "products/elara-lounge-chair.png", crop: { w: "118.31%", h: "100%", l: "-18.36%", t: "0%" } },
@@ -1086,58 +1405,57 @@ const PRODS = [
   { idx: "(03)", name: "Marlow Two-Seater", spec: "Walnut, wool 04", price: "€4,460", img: "products/marlow-two-seater.png", crop: { w: "167.95%", h: "144.47%", l: "-30.48%", t: "-44.47%" } },
   { idx: "(04)", name: "Vega Sideboard", spec: "Smoked oak, brass", price: "€2,290", img: "products/vega-sideboard.png", crop: { w: "108.3%", h: "107.31%", l: "-5.24%", t: "-3.2%" } }
 ];
-
 const pList = $("#product-list");
 PRODS.forEach((p, i) => {
-  const li = document.createElement("li");
-  li.className = "card";
+  const li = document.createElement("li"); li.className = "card";
   li.innerHTML = `
-    <div class="card-plate">
+    <div class="card-plate" data-frame-cursor>
       <img src="${ASSET(p.img)}" alt="${p.name}" style="width:${p.crop.w};height:${p.crop.h};left:${p.crop.l};top:${p.crop.t}">
       <span class="idx">${p.idx}</span>
       <button class="save-chip" aria-label="Save ${p.name}"><span class="bar h"></span><span class="bar v"></span></button>
     </div>
     <div style="display:flex;flex-direction:column;gap:0.5rem;white-space:nowrap;font:400 var(--text-title)/1.1538 'Instrument Serif',serif">
-      <h3>${p.name}</h3>
-      <span style="font-size:var(--text-label);color:color-mix(in oklab, var(--foreground) 35%, transparent)">${p.spec}</span>
+      <h3 class="trim">${p.name}</h3>
+      <span class="trim" style="font-size:var(--text-label);color:color-mix(in oklab, var(--foreground) 35%, transparent)">${p.spec}</span>
     </div>
-    <div style="display:flex;align-items:center;justify-content:space-between">
-      <span style="border:0.0375rem solid var(--foreground);border-radius:var(--radius-pill);padding:0.5rem 0.75rem;font:400 var(--text-caption)/normal 'Instrument Serif',serif;letter-spacing:0.04em">Ships in 3 days</span>
-      <span style="font:400 var(--text-body)/normal 'Instrument Serif',serif;letter-spacing:0.02em">${p.price}</span>
+    <div style="display:flex;align-items:center;justify-content:between">
+      <span class="trim" style="border:0.0375rem solid var(--foreground);border-radius:var(--radius-pill);padding:0.5rem 0.75rem;font:400 var(--text-caption)/normal 'Instrument Serif',serif;letter-spacing:0.04em">Ships in 3 days</span>
+      <span class="trim" style="font:400 var(--text-body)/normal 'Instrument Serif',serif;letter-spacing:0.02em">${p.price}</span>
     </div>
   `;
   pList.appendChild(li);
+  
+  const o = mk(s => li.querySelector(".card-plate").style.clipPath = `inset(${s.c}% 0 0 0)`, { c: 100 });
+  go(o, { c: 0 }, WEIGHT, i * 110);
   
   const chip = li.querySelector(".save-chip");
   chip.addEventListener("click", () => chip.classList.toggle("saved"));
 });
 
 const HOTSPOTS = [
-  { name: "Pendant Lamp", spec: "Enamel & steel — €410", left: "21.125rem", top: "4.3125rem" },
-  { name: "Table Lamp", spec: "Glossy ceramic — €185", left: "38rem", top: "9.5625rem" },
-  { name: "Ansel Dining Table", spec: "Solid ash, 220 cm — €3,120", left: "20.75rem", top: "18.5625rem" },
-  { name: "Sofa", spec: "Upholstered in fabric — €2.950", left: "60.75rem", top: "15.5rem" },
-  { name: "Ansel Dining Chair", spec: "Solid oak, woven seat — €640", left: "35.1875rem", top: "30.5rem" }
+  { name: "Pendant Lamp", spec: "Enamel & steel — €410", left: "21.125rem", top: "4.3125rem", focus: { x: 0.205, y: 0.275 } },
+  { name: "Table Lamp", spec: "Glossy ceramic — €185", left: "38rem", top: "9.5625rem", focus: { x: 0.413, y: 0.39 } },
+  { name: "Ansel Dining Table", spec: "Solid ash, 220 cm — €3,120", left: "20.75rem", top: "18.5625rem", focus: { x: 0.22, y: 0.58 } },
+  { name: "Sofa", spec: "Upholstered in fabric — €2.950", left: "60.75rem", top: "15.5rem", focus: { x: 0.8, y: 0.62 } },
+  { name: "Ansel Dining Chair", spec: "Solid oak, woven seat — €640", left: "35.1875rem", top: "30.5rem", focus: { x: 0.33, y: 0.67 } }
 ];
-
 const rTags = $("#room-tags");
 let activeSpot = null;
-
 HOTSPOTS.forEach((h, i) => {
-  const li = document.createElement("li");
-  li.className = "tag";
-  li.style.left = h.left;
-  li.style.top = h.top;
+  const li = document.createElement("li"); li.className = "tag"; li.style.left = h.left; li.style.top = h.top;
   li.innerHTML = `
     <span class="mark"><span class="bar h" style="position:absolute;left:50%;top:50%;translate:-50% -50%;width:0.43em;height:0.045em;background:currentColor;border-radius:0.5px"></span><span class="bar v" style="position:absolute;left:50%;top:50%;translate:-50% -50%;width:0.045em;height:0.43em;background:currentColor;border-radius:0.5px"></span></span>
-    <span class="text"><span>${h.name}</span><span class="spec">${h.spec}</span></span>
+    <span class="text"><span class="trim">${h.name}</span><span class="spec trim">${h.spec}</span></span>
   `;
   rTags.appendChild(li);
+  const o = mk(s => { li.style.opacity = s.o; li.style.transform = `scale(${s.s})`; }, { o: 0, s: 0.82 });
+  go(o, { o: 1, s: 1 }, WEIGHT, 520 + i * 90);
   
   const enter = () => {
     activeSpot = h;
     document.querySelectorAll(".tag").forEach((t, idx) => t.classList.toggle("dimmed", idx !== i));
     $("#room-scrim").style.opacity = 1;
+    updateScrim();
   };
   const leave = () => {
     activeSpot = null;
@@ -1150,6 +1468,24 @@ HOTSPOTS.forEach((h, i) => {
   li.addEventListener("click", () => activeSpot === h ? leave() : enter());
 });
 
+function updateScrim() {
+  if (!activeSpot) return;
+  const plate = $("#room-plate");
+  const photo = plate.querySelector("img");
+  const p = plate.getBoundingClientRect(), b = photo.getBoundingClientRect();
+  const nw = photo.naturalWidth || 1, nh = photo.naturalHeight || 1;
+  const scale = Math.max(b.width / nw, b.height / nh);
+  const painted = { w: nw * scale, h: nh * scale };
+  const origin = { x: b.left - p.left + (b.width - painted.w) / 2, y: b.top - p.top + (b.height - painted.h) / 2 };
+  const isMobile = innerWidth <= 548;
+  const clear = isMobile ? "2.5rem" : "5.5rem";
+  const fade = isMobile ? "6rem" : "14rem";
+  const sx = origin.x + activeSpot.focus.x * painted.w;
+  const sy = origin.y + activeSpot.focus.y * painted.h;
+  $("#room-scrim").style.background = `radial-gradient(circle at ${sx}px ${sy}px, transparent ${clear}, color-mix(in srgb, var(--scrim) 66%, transparent) ${fade})`;
+}
+addEventListener("resize", updateScrim);
+
 const nlRow = $("#nl-row");
 nlRow.addEventListener("pointerenter", () => nlRow.classList.add("awake"));
 nlRow.addEventListener("pointerleave", () => { if (!nlRow.querySelector(".nl-input").matches(":focus")) nlRow.classList.remove("awake"); });
@@ -1157,9 +1493,9 @@ nlRow.querySelector(".nl-input").addEventListener("focus", () => nlRow.classList
 nlRow.querySelector(".nl-input").addEventListener("blur", () => nlRow.classList.remove("awake"));
 
 const hoverBar = (el) => {
-  const bar = document.createElement("span");
-  bar.className = "bar";
-  el.appendChild(bar);
+  const bar = document.createElement("span"); bar.className = "bar"; el.appendChild(bar);
+  const o = mk(s => bar.style.transform = `scaleX(${s.x})`, { x: 0 });
+  hover(el, o, { x: 0 }, { x: 1 }, { m: 1, t: 280, f: 28 });
 };
 
 const FCOLS = [
@@ -1167,37 +1503,66 @@ const FCOLS = [
   { heading: "Workshop", links: ["Our story", "Materials", "Repairs", "Journal"] },
   { heading: "Help", links: ["Delivery", "Returns", "Care guide", "Contact"] }
 ];
-
 const fNav = $("#footer-nav");
 FCOLS.forEach((col, ci) => {
-  const div = document.createElement("div");
-  div.className = "footer-col";
-  div.innerHTML = `<h3>${col.heading}</h3>`;
-  const ul = document.createElement("ul");
-  ul.style.display = "flex";
-  ul.style.flexDirection = "column";
-  ul.style.gap = "0.875rem";
-  col.links.forEach((link) => {
-    const a = document.createElement("a");
-    a.href = "#";
-    a.textContent = link;
+  const div = document.createElement("div"); div.className = "footer-col";
+  div.innerHTML = `<h3 class="trim">${col.heading}</h3>`;
+  const ul = document.createElement("ul"); ul.style.display = "flex"; ul.style.flexDirection = "column"; ul.style.gap = "0.875rem";
+  col.links.forEach((link, li) => {
+    const a = document.createElement("a"); a.href = "#"; a.textContent = link; a.className = "trim";
     hoverBar(a);
     ul.appendChild(a);
   });
   div.appendChild(ul);
   fNav.appendChild(div);
+  const o = mk(s => { div.style.opacity = s.o; div.style.transform = `translate3d(0,${s.y}px,0)`; }, { o: 0, y: 20 });
+  go(o, { o: 1, y: 0 }, SOFT, ci * 110);
 });
 
 const wm = $("#wordmark");
 wm.innerHTML = "";
 for (const char of "HALDEN") {
-  const span = document.createElement("span");
-  span.className = "letter";
-  span.innerHTML = `<span class="inner">${char}</span>`;
+  const span = document.createElement("span"); span.className = "letter";
+  span.innerHTML = `<span class="inner trim">${char}</span>`;
   wm.appendChild(span);
 }
+const letters = wm.querySelectorAll(".inner");
+letters.forEach((l, i) => {
+  const o = mk(s => l.style.transform = `translate3d(0,${s.y}%,0)`, { y: 110 });
+  go(o, { y: 0 }, WEIGHT, i * 90);
+});
 
-function $(s, r = document) { return r.querySelector(s); }
+const cursorLayer = $("#cursor-layer");
+const marks = cursorLayer.querySelectorAll(".cursor-mark");
+let cx = 0, cy = 0, spread = 0;
+const co = mk(s => {
+  const gap = 5 + s.spread * 17;
+  marks.forEach((m, i) => {
+    const dx = i % 2 === 0 ? -gap : gap - 11;
+    const dy = i < 2 ? -gap : gap - 11;
+    m.style.left = s.x + "px"; m.style.top = s.y + "px";
+    m.style.opacity = s.spread;
+    m.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+  });
+}, { x: 0, y: 0, spread: 0 });
+
+addEventListener("mousemove", e => {
+  if (e.pointerType === "mouse" || e.movementX !== undefined) {
+    cx = e.clientX; cy = e.clientY;
+    spread = e.target.closest("[data-frame-cursor]") ? 1 : 0;
+    cursorLayer.classList.toggle("light", !!e.target.closest("[data-frame-cursor='light']"));
+    go(co, { x: cx, y: cy, spread }, { m: 0.8, t: 380, f: 30 });
+  }
+});
+addEventListener("pointerleave", () => { spread = 0; go(co, { spread: 0 }); });
+
+["cat-rule", "prod-rule", "room-rule", "foot-rule"].forEach(id => {
+  const el = $(`#${id}`);
+  if (el) {
+    const o = mk(s => el.style.transform = `scaleX(${s.x})`, { x: 0 });
+    go(o, { x: 1 }, WEIGHT, 200);
+  }
+});
 </script>
 </body>
 </html>
