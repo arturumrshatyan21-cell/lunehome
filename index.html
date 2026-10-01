@@ -1005,15 +1005,38 @@ footer {
 
   <section id="manifesto" data-header-accent>
     <h2 class="manifesto-text" id="manifesto-text">
-      <span class="frag" data-text="(Halden) is made for " data-at="0"></span>
-      <em class="frag" data-text="considered living," data-at="21"></em>
-      <span class="frag" data-text="for beautiful " data-at="39"></span>
-      <span class="chair-gap"><span class="inner"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/manifesto/armchair-blue.png" alt="Tufted blue armchair"></span></span>
-      <span class="frag" data-text="spaces, made to last — " data-at="52"></span>
-      <span class="frag" data-text="furniture that belongs " data-at="74"></span>
-      <span class="chair-gap"><span class="inner"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/manifesto/armchair-orange.png" alt="Orange swivel lounge chair"></span></span>
-      <span class="frag" data-text="in your everyday, " data-at="96"></span>
-      <span class="frag" data-text="and stays with you for years to come." data-at="113"></span>
+      <!-- Row 1 -->
+      <div style="display:flex; gap:0.17em; white-space:nowrap;">
+        <span class="sr">(Halden) is made for considered living, </span>
+        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="0"></span></span>
+        <em class="written-wrap" style="position:relative; display:inline-block; font-style:italic;">
+          <span aria-hidden="true" class="written-chars" data-frag="1"></span>
+          <span class="underline" id="m-underline"></span>
+        </em>
+      </div>
+      <!-- Row 2 -->
+      <div style="position:relative; display:flex; align-items:center; gap:1.125rem;">
+        <span class="sr">for beautiful spaces, made to last — </span>
+        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="2"></span></span>
+        <span class="chair-gap">
+          <span class="inner"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/manifesto/armchair-blue.png" alt="Tufted blue armchair"></span>
+        </span>
+        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="3"></span></span>
+      </div>
+      <!-- Row 3 -->
+      <div style="position:relative; display:flex; align-items:center; gap:1.125rem;">
+        <span class="sr">furniture that belongs in your everyday, </span>
+        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="4"></span></span>
+        <span class="chair-gap">
+          <span class="inner"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/manifesto/armchair-orange.png" alt="Orange swivel lounge chair"></span>
+        </span>
+        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="5"></span></span>
+      </div>
+      <!-- Row 4 -->
+      <div style="white-space:nowrap;">
+        <span class="sr">and stays with you for years to come.</span>
+        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="6"></span></span>
+      </div>
     </h2>
   </section>
 
@@ -1282,6 +1305,7 @@ const frameFor = w => { const x = Math.round(Math.max(FRAME_MIN, Math.min(w * FR
   }
 })();
 
+// === ИСПРАВЛЕННЫЙ МАНИФЕСТ ===
 const PACE = 9;
 const F = [
   { text: "(Halden) is made for ", at: 0 },
@@ -1292,60 +1316,82 @@ const F = [
   { text: "in your everyday, ", at: 96 },
   { text: "and stays with you for years to come.", at: 113 }
 ];
+
 const mText = $("#manifesto-text");
-let mHtml = "";
-F.forEach((frag, idx) => {
-  const tag = frag.italic ? "em" : "span";
-  mHtml += `<${tag} class="frag-wrap" style="position:relative;display:inline-block;">`;
-  mHtml += `<span class="sr">${frag.text}</span><span aria-hidden="true" class="written-chars" data-at="${frag.at}"></span>`;
-  if (frag.text.includes("considered living")) mHtml += `<span class="underline" id="m-underline"></span>`;
-  mHtml += `</${tag}>`;
-});
-mText.innerHTML = mHtml;
 
-const chairs = mText.querySelectorAll(".chair-gap");
-chairs.forEach((ch, i) => {
-  const delay = i === 0 ? 74 * PACE : 113 * PACE;
-  const o = mk(s => { ch.style.opacity = s.o; ch.style.transform = `translate3d(0,${s.y}px,0)`; }, { o: 0, y: -18 });
-  go(o, { o: 1, y: 0 }, WEIGHT, delay);
-  hover(ch, mk(s => ch.querySelector("img").style.transform = `rotate(${s.r}deg)`, { r: 0 }), { r: 0 }, { r: -5 }, { m: 1, t: 260, f: 11 });
-});
-
-const ulEl = $("#m-underline");
-if (ulEl) {
-  const uo = mk(s => ulEl.style.transform = `scaleX(${s.x})`, { x: 0 });
-  go(uo, { x: 1 }, WEIGHT, 39 * PACE);
-}
-
-let charIdx = 0;
-const allChars = [];
-F.forEach(frag => {
-  const el = mText.querySelector(`.written-chars[data-at="${frag.at}"]`);
-  if (el) {
-    for (const char of frag.text) {
-      allChars.push({ el, char, delay: (frag.at + allChars.filter(c => c.el === el).length) * PACE });
-    }
-  }
-});
-
-function runWritten() {
+function runManifestoWritten() {
   if (reduced) {
-    allChars.forEach(c => c.el.textContent += c.char);
+    F.forEach((frag, idx) => {
+      const el = mText.querySelector(`.written-chars[data-frag="${idx}"]`);
+      if (el) el.textContent = frag.text;
+    });
+    const ul = mText.querySelector(".underline");
+    if (ul) ul.style.transform = "scaleX(1)";
+    mText.querySelectorAll(".chair-gap").forEach(ch => {
+      ch.style.opacity = 1;
+      ch.style.transform = "translate3d(0,0,0)";
+    });
     return;
   }
+
+  const allChars = [];
+  F.forEach((frag, idx) => {
+    const el = mText.querySelector(`.written-chars[data-frag="${idx}"]`);
+    if (el) {
+      for (let i = 0; i < frag.text.length; i++) {
+        allChars.push({
+          el: el,
+          char: frag.text[i],
+          delay: (frag.at + i) * PACE
+        });
+      }
+    }
+  });
+
+  allChars.sort((a, b) => a.delay - b.delay);
+
   let i = 0;
   function next() {
-    if (i >= allChars.length) return;
+    if (i >= allChars.length) {
+      const ul = mText.querySelector(".underline");
+      if (ul) {
+        const uo = mk(s => ul.style.transform = `scaleX(${s.x})`, { x: 0 });
+        go(uo, { x: 1 }, WEIGHT, 39 * PACE);
+      }
+      
+      const chairs = mText.querySelectorAll(".chair-gap");
+      chairs.forEach((ch, idx) => {
+        const delay = idx === 0 ? 74 * PACE : 113 * PACE;
+        const o = mk(s => { 
+          ch.style.opacity = s.o; 
+          ch.style.transform = `translate3d(0,${s.y}px,0)`; 
+        }, { o: 0, y: -18 });
+        go(o, { o: 1, y: 0 }, WEIGHT, delay);
+        
+        const img = ch.querySelector("img");
+        const rock = mk(s => img.style.transform = `rotate(${s.r}deg)`, { r: 0 });
+        ch.addEventListener("mouseenter", () => { 
+          if (!noHover()) go(rock, { r: -5 }, { m: 1, t: 260, f: 11 }); 
+        });
+        ch.addEventListener("mouseleave", () => go(rock, { r: 0 }, { m: 1, t: 260, f: 11 }));
+      });
+      return;
+    }
+    
     const c = allChars[i];
+    const prevDelay = i > 0 ? allChars[i - 1].delay : 0;
     setTimeout(() => {
       c.el.textContent += c.char;
       i++;
       next();
-    }, c.delay - (i > 0 ? allChars[i - 1].delay : 0));
+    }, Math.max(0, c.delay - prevDelay));
   }
-  next();
+  
+  setTimeout(next, 500);
 }
-setTimeout(runWritten, 1000);
+
+runManifestoWritten();
+// ==============================
 
 const CATS = [
   { label: "All products", count: "152", l: ASSET("catalogue/beds-1.png"), r: ASSET("catalogue/mirrors-2.png") },
