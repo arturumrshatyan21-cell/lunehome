@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUNE Home</title>
+<meta name="description" content="LUNE Home makes soft, rounded furniture for gentle living. See the 2026 collection.">
+<meta name="theme-color" content="#6b1f2e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script type="importmap">{ "imports": { "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs" } }</script>
+<noscript><style>#preloader{display:none}</style></noscript>
+<style>
+:root{
+  --background:#f1e4dc; --foreground:#000; --accent:#6b1f2e; --on-accent:#fff;
+  --band:#f8f0ea; --strong:#2a1418; --muted:#8a6f66; --rule:#dcc5b8; --subtle:#dcc5b8;
+  --serif:"Instrument Serif",serif; --display:"Bebas Neue",sans-serif; --sans:"Inter",sans-serif;
+  --ease:cubic-bezier(.2,0,0,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px}
+@media(max-width:1440px){html{font-size:1.111111vw}}
+@media(max-width:1024px){html{font-size:1.5625vw}}
+@media(max-width:768px){html{font-size:2.083333vw}}
+@media(max-width:548px){html{font-size:4.102564vw}}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+body{background:var(--background);color:var(--foreground);min-height:100vh;-webkit-font-smoothing:antialiased;font-family:var(--serif)}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.trim{text-box:trim-both cap alphabetic}
+.abs{position:absolute}
+
+/* header */
+header{position:fixed;left:0;top:0;z-index:50;width:100%;height:4.5rem;border-bottom:.08125rem solid var(--accent);background:var(--background);color:var(--accent);transition:background-color .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
+header.on{background:var(--accent);border-color:var(--on-accent);color:var(--on-accent)}
+.mark{position:absolute;left:2rem;top:1.5rem;font:500 .875rem/1 var(--sans);letter-spacing:.14em}
+.mark i{font-style:normal;position:absolute;left:3.2rem;top:-.125rem;font-size:.5rem}
+header nav{position:absolute;top:calc(50% + .07rem);translate:-50% -50%}
+header nav ul{display:flex;align-items:center;gap:2.5rem;font:700 1rem/1 var(--display);letter-spacing:.08em}
+.n1{left:50%}.n2{left:calc(50% + 35.875rem)}
+.ni{position:relative;isolation:isolate;flex-shrink:0}
+.ni .bar{position:absolute;inset:-.2em -.42em;z-index:-1;display:block;transform-origin:left;transform:scaleX(0);background:var(--accent)}
+header.on .ni .bar{background:var(--on-accent)}
+.ni .lb{display:block;white-space:nowrap;transition:color .15s var(--ease)}
+.ni:hover .lb{color:var(--band)}
+header.on .ni:hover .lb{color:var(--accent)}
+
+/* hero */
+#hero{height:100lvh;width:100%;overflow:hidden;background:var(--background);color:var(--accent)}
+#stage{position:relative;width:100%;height:50rem;opacity:0}
+#stage.go{opacity:1}
+h1{position:absolute;inset:0;pointer-events:none;font:700 15rem/normal var(--display);color:var(--accent)}
+h1 .w{position:absolute;white-space:nowrap;pointer-events:auto;display:flex;align-items:center}
+.cap{position:absolute;font:1rem/1.1 var(--serif);text-transform:uppercase}
+.cap.r{text-align:right;translate:-100% 0}
+.ln{display:block;overflow:hidden}
+.ln.nc{overflow:visible}
+.un{display:inline-block}
+.plate{position:absolute;isolation:isolate;overflow:hidden;cursor:none;border-radius:.125rem}
+.plate .rv{display:block;width:100%;height:100%}
+.plate img{width:100%;height:100%;object-fit:cover}
+.plate.fl img{transform:scaleX(-1)}
+.tint{position:absolute;inset:0;pointer-events:none;background:var(--accent);mix-blend-mode:color-burn}
+.cta{position:absolute;display:flex;width:max-content;align-items:center;white-space:nowrap;font:700 1.625rem/normal var(--display);letter-spacing:.08em}
+.cta b{display:inline-block;font-weight:700}
+.welcome{position:absolute;margin-top:-.24375rem;width:10.6875rem;font:700 1.625rem/1 var(--display);text-transform:uppercase}
+
+/* preloader */
+#preloader{position:fixed;inset:0;z-index:100;pointer-events:none}
+#preloader .veil{position:absolute;inset:0;background:var(--background)}
+#frame{position:absolute;left:50%;top:50%;translate:-50% -50%}
+#frame .box{position:absolute;inset:.3125rem;overflow:hidden}
+#frame .box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s}
+#frame .c{position:absolute;border:0 solid var(--accent)}
+.tl{left:0;top:0;border-left-width:1.4px;border-top-width:1.4px}
+.tr{right:0;top:0;border-right-width:1.4px;border-top-width:1.4px}
+.bl{left:0;bottom:0;border-left-width:1.4px;border-bottom-width:1.4px}
+.br{right:0;bottom:0;border-right-width:1.4px;border-bottom-width:1.4px}
+#frame .cp{position:absolute;left:0;bottom:-2.125rem;width:100%;display:flex;align-items:baseline;justify-content:space-between;color:var(--accent)}
+.cp b{font:700 1.125rem/1 var(--display);text-transform:uppercase;letter-spacing:.16em}
+.cp span{font:1rem/1 var(--serif);text-transform:uppercase;letter-spacing:.08em;font-variant-numeric:tabular-nums}
+#err{position:fixed;left:0;right:0;bottom:0;z-index:200;background:#000;color:#fff;font:12px/1.5 monospace;padding:8px 12px;display:none}
+
+@media(max-width:768px){
+  header nav.n1{display:none}
+  .cap,.plate:not(.keep),.cta{display:none}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <a class="mark" href="#" aria-label="LUNE Home — home">LUNE<i>®</i></a>
+  <nav class="n1" aria-label="Primary"><ul id="nav1"></ul></nav>
+  <nav class="n2" aria-label="Account and basket"><ul id="nav2"></ul></nav>
+</header>
+
+<main>
+<section id="hero" aria-label="LUNE Home — soft living">
+ <div id="stage">
+  <h1>
+   <span class="w trim" id="w1" style="left:1.5625rem;top:7.5rem">soft</span>
+   <span class="w trim" id="w2" style="left:16rem;top:19.625rem;gap:.5rem">living <span aria-hidden="true">/</span></span>
+  </h1>
+
+  <span class="abs" style="left:74.3125rem;top:7.375rem;width:4.5625rem"><span class="cap trim sr-l" data-d="320" style="position:static;display:block">collection 2026</span></span>
+  <span class="abs" style="left:74.3125rem;top:13.125rem"><span class="cap trim sr-l" data-d="380" style="position:static;display:block">01-11</span></span>
+  <span class="abs" style="left:2rem;top:23.875rem;width:5rem"><span class="cap trim sr-l" data-d="420" style="position:static;display:block">lounge chair 32"W x 38"H</span></span>
+  <span class="abs" style="left:2rem;top:29.25rem;width:5rem"><span class="cap trim sr-l" data-d="480" style="position:static;display:block;line-height:normal">$499.99</span></span>
+  <span class="abs" style="left:46.0625rem;top:34.6875rem;width:5.8125rem;translate:-100% 0;text-align:right"><span class="cap trim sr-l" data-d="500" style="position:static;display:block">modular sofa 98"W x 38"H</span></span>
+  <span class="abs" style="left:46.0625rem;top:46.9375rem;translate:-100% 0;text-align:right"><span class="cap trim sr-l" data-d="560" style="position:static;display:block;line-height:normal">$2999.99</span></span>
+  <span class="abs" style="left:69.875rem;top:37.5625rem"><span class="cap trim sr-l" data-d="600" style="position:static;display:block">new arrivals</span></span>
+  <span class="cap trim" aria-hidden="true" style="left:88rem;top:37.6875rem;translate:-100% 0;text-align:right;line-height:normal">//</span>
+
+  <a href="#" class="cta" id="cta" style="left:73.5625rem;top:28.625rem">
+    <b id="br1" aria-hidden="true">[</b><span class="trim sr-l" data-d="560" data-gap=".24" style="padding:0 .22em" data-full="1">explore collection</span><b id="br2" aria-hidden="true">]</b>
+  </a>
+
+  <p class="welcome trim sr-l" data-d="700" data-nc="1" style="left:2rem;top:43.8125rem">WELCOME TO LUNE – sOFT DESIGN, MADE TO COMFORT.</p>
+
+  <div class="plate" data-d="340" style="left:79.3125rem;top:7.5rem;width:8.6875rem;height:6.5rem"><img src="images/hero-collection-chair.jpg" alt="Burgundy sculptural lounge chair from the 2026 collection"></div>
+  <div class="plate" data-d="440" style="left:9.25rem;top:24rem;width:6.4375rem;height:6.25rem"><img src="images/hero-dining-chair.jpg" alt="Black wooden dining chair"></div>
+  <div class="plate fl keep" data-d="520" style="left:46.5625rem;top:34.8125rem;width:22.8125rem;height:13.1875rem"><img src="images/hero-modular-sofa.jpg" alt="Modular sofa with a low coffee table in a bright living room"></div>
+  <div class="plate fl keep" data-d="620" style="left:69.875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem"><img src="images/hero-new-arrival-1.jpg" alt="Sideboard with a table lamp and framed print"></div>
+  <div class="plate fl keep" data-d="660" style="left:79.1875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem"><img src="images/hero-new-arrival-2.jpg" alt="Round dining table with four chairs"></div>
+ </div>
+</section>
+</main>
+
+<div id="preloader" role="status" aria-live="polite" aria-label="Loading LUNE Home">
+  <div class="veil" id="veil"></div>
+  <div id="frame">
+    <div class="box" id="pbox"></div>
+    <span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+    <div class="cp"><b>LUNE</b><span id="pct">0%</span></div>
+  </div>
+</div>
+<div id="err"></div>
+
+<script type="module">
+import Lenis from "lenis";
+
+/* ---------- constants ---------- */
+const WEIGHT={m:2.4,t:120,f:34}, SOFT={m:1.4,t:170,f:30};
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const noHover=()=>innerWidth<=768;
+const $=(s,r=document)=>r.querySelector(s);
+
+/* ---------- failed loads are visible ---------- */
+const err=$("#err");
+const fail=u=>{err.style.display="block";err.textContent+="Failed to load: "+u+"\n";};
+addEventListener("error",e=>{const t=e.target;if(t&&(t.src||t.href))fail(t.src||t.href)},true);
+
+/* ---------- spring solver (react-spring integrator, mass aware) ---------- */
+const jobs=new Set();
+const mk=(render,init)=>{const o={s:{...init},v:{},t:{},c:{},d:{},render};render(o.s);return o};
+function go(o,to,cfg=WEIGHT,delay=0){
+  for(const k in to){
+    if(reduced){o.s[k]=to[k];continue}
+    if(o.t[k]===to[k])continue;
+    o.t[k]=to[k];o.c[k]=cfg;o.v[k]??=0;o.d[k]=performance.now()+delay;
+  }
+  if(reduced)o.render(o.s); else jobs.add(o);
+}
+function step(now,dt){
+  dt=Math.min(dt,64);
+  for(const o of jobs){
+    let rest=true;
+    for(const k in o.t){
+      if(now<o.d[k]){rest=false;continue}
+      const {m,t,f}=o.c[k];let p=o.s[k],v=o.v[k];const to=o.t[k];
+      for(let i=0;i<dt;i++){v+=(-t*1e-6*(p-to)+-f*1e-3*v)/m;p+=v}
+      if(Math.abs(v)<.001&&Math.abs(p-to)<=.01){p=to;v=0}else rest=false;
+      o.s[k]=p;o.v[k]=v;
+    }
+    o.render(o.s);
+    if(rest)jobs.delete(o);
+  }
+}
+
+/* ---------- shared ticker, Lenis first ---------- */
+window.scrollTo(0,0);
+const lenis=new Lenis({smoothWheel:true});window.lenis=lenis;
+const subs=[];let last=0;
+const sub=(fn,gap=0)=>subs.push({fn,gap,last:0});
+function frame(time){
+  lenis.raf(time);
+  const dt=last?time-last:16;last=time;
+  for(const s of subs){if(time-s.last<=s.gap)continue;s.last=time;try{s.fn(time)}catch(e){console.error(e)}}
+  step(performance.now(),dt);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* root font-size above 1440, coef 1 */
+sub(()=>{const w=innerWidth,r=document.documentElement;
+  if(w>1440)r.style.fontSize=(16-(16*((1440-w)/1440*100))/100)+"px";else r.style.removeProperty("font-size")});
+
+/* ---------- element behaviours ---------- */
+const clipR=s=>`inset(${s.c}% 0 0 0)`;
+function inview(el,fn,once=true){const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){fn();if(once)io.disconnect()}});io.observe(el)}
+function hover(trigger,o,from,to,cfg){
+  trigger.addEventListener("mouseenter",()=>{if(!noHover())go(o,to,cfg)});
+  trigger.addEventListener("mouseleave",()=>go(o,from,cfg));
+}
+/* line reveal: one unit per block (captions are single lines) */
+function line(el,{from="up",delay=0,soft=false,clip=true}={}){
+  const txt=el.textContent;
+  el.innerHTML=`<span class="sr">${txt}</span><span aria-hidden="true" class="ln ${clip?"":"nc"}"><span class="un">${txt}</span></span>`;
+  const u=$(".un",el),pct=clip&&from==="up";
+  const OUT=pct?{y:110,x:0,o:1}:from==="left"?{y:0,x:-48,o:0}:from==="right"?{y:0,x:48,o:0}:{y:18,x:0,o:0};
+  const o=mk(s=>{u.style.transform=`translate3d(${s.x}px,${s.y}${pct?"%":"px"},0)`;u.style.opacity=s.o},OUT);
+  return {o,play:()=>go(o,{y:0,x:0,o:1},soft?SOFT:WEIGHT,delay)};
+}
+function plate(el){
+  const img=el.firstElementChild;
+  const rv=document.createElement("span");rv.className="rv";el.insertBefore(rv,img);rv.appendChild(img);
+  const tint=document.createElement("span");tint.className="tint";el.appendChild(tint);
+  const r=mk(s=>rv.style.clipPath=clipR(s),{c:100}),t=mk(s=>tint.style.clipPath=clipR(s),{c:100});
+  hover(el,t,{c:100},{c:0},{m:1,t:240,f:30});
+  return ()=>go(r,{c:0},WEIGHT,+el.dataset.d);
+}
+
+/* ---------- header ---------- */
+const mkNav=(ul,items,base)=>items.forEach((t,i)=>{
+  const li=document.createElement("li");li.className="ni";
+  const a=document.createElement(t.btn?"button":"a");if(!t.btn)a.href="#";
+  li.innerHTML=`<span class="bar"></span>`;const lb=document.createElement("span");lb.className="lb trim";lb.textContent=t.l;
+  (t.btn?li:li).appendChild(t.btn?Object.assign(a,{id:"searchBtn"}):a);a.appendChild(lb);
+  ul.appendChild(li);
+  const bar=$(".bar",li),b=mk(s=>bar.style.transform=`scaleX(${s.x})`,{x:0});
+  hover(li,b,{x:0},{x:1},{m:1,t:280,f:28});
+  const e=mk(s=>{li.style.opacity=s.o;li.style.transform=`translate3d(0,${s.y}px,0)`},{o:0,y:12});
+  go(e,{o:1,y:0},SOFT,base+i*70);
+});
+mkNav($("#nav1"),[{l:"Catalogue"},{l:"Rooms"},{l:"ABOUT"},{l:"MATERIALS"}].map(x=>x),120);
+mkNav($("#nav2"),[{l:"Search",btn:1},{l:"Saved (3)"},{l:"Bag (0)"}],400);
+const hdr=$("#hdr");
+sub(()=>{const line=hdr.offsetHeight/2;let on=false;
+  document.querySelectorAll("[data-header-accent]").forEach(p=>{const r=p.getBoundingClientRect();if(r.top<=line&&r.bottom>line)on=true});
+  hdr.classList.toggle("on",on)});
+
+/* ---------- hero (remounted when the shutter opens) ---------- */
+function startHero(){
+  const stage=$("#stage");stage.classList.add("go");
+  const w1=$("#w1"),w2=$("#w2");
+  const a=mk(s=>{w1.style.opacity=s.o;w1.style.transform=`translate3d(${s.x}px,0,0)`},{o:0,x:-170});
+  const b=mk(s=>{w2.style.opacity=s.o;w2.style.transform=`translate3d(${s.x}px,0,0)`},{o:0,x:170});
+  go(a,{o:1,x:0});go(b,{o:1,x:0},WEIGHT,140);
+  stage.querySelectorAll(".sr-l").forEach(el=>{
+    const L=line(el,{from:"up",delay:+el.dataset.d,soft:!el.dataset.full,clip:!el.dataset.nc});
+    L.play();
+  });
+  stage.querySelectorAll(".plate").forEach(el=>plate(el)());
+  /* brackets push apart on hover */
+  const cta=$("#cta");
+  [["#br1",-7],["#br2",7]].forEach(([id,dx])=>{const el=$(id),o=mk(s=>el.style.transform=`translate3d(${s.x}px,0,0)`,{x:0});
+    hover(cta,o,{x:0},{x:dx},{m:1,t:240,f:24})});
+}
+window.__haldenOpening=false;
+addEventListener("halden:opening",startHero,{once:true});
+
+/* ---------- preloader: the viewfinder, P4 ---------- */
+const SHOTS=["images/hero-modular-sofa.jpg","images/hero-collection-chair.jpg","images/hero-new-arrival-1.jpg","images/hero-dining-chair.jpg","images/hero-new-arrival-2.jpg"];
+const frameFor=w=>{const x=Math.round(Math.max(240,Math.min(w*.32,460)));return{w:x,h:Math.round(x*288/460)}};
+(function preload(){
+  const pre=$("#preloader");
+  const finishNow=()=>{window.__haldenOpening=window.__haldenReady=true;dispatchEvent(new Event("halden:opening"));dispatchEvent(new Event("halden:ready"));pre.remove()};
+  if(reduced){finishNow();return}
+  document.body.style.overflow="hidden";
+  const fr=$("#frame"),box=$("#pbox"),veil=$("#veil"),pctEl=$("#pct");
+  const cs=[".tl",".tr",".bl",".br"].map(c=>$(c,fr));
+  const imgs=SHOTS.map(s=>{const i=document.createElement("img");i.src=s;i.alt="";box.appendChild(i);return i});
+  const P=mk(s=>{
+    fr.style.width=s.w+"px";fr.style.height=s.h+"px";fr.style.opacity=s.frame;
+    box.style.opacity=s.content;veil.style.opacity=s.veil;
+    cs.forEach(c=>{c.style.width=s.ax+"px";c.style.height=s.ay+"px"});
+    pctEl.textContent=Math.min(100,Math.max(0,Math.round(s.pct)))+"%";
+    $(".cp",fr).style.opacity=s.content;
+  },{pct:0,w:460,h:288,ax:15,ay:15,content:0,veil:1,frame:1});
+  const base={m:1.6,t:150,f:26},TICK=15;
+  go(P,{content:1},base);
+  let f=frameFor(innerWidth);P.s.w=f.w;P.s.h=f.h;P.render(P.s);
+  let finished=false;
+  addEventListener("resize",()=>{f=frameFor(innerWidth);if(!finished)go(P,{w:f.w,h:f.h},base)});
+  const UNITS=SHOTS.length+1;let fontsReady=false;document.fonts.ready.then(()=>fontsReady=true);
+  let arrived=0,released=0,lastR=0;
+  SHOTS.forEach(src=>{const im=new Image();im.src=src;const mark=()=>arrived++;im.decode().then(mark,()=>{fail(src);mark()})});
+  const started=performance.now();
+  const tick=setInterval(()=>{
+    const now=performance.now();
+    if(!finished&&released<arrived&&now-lastR>=150){released++;lastR=now;imgs.forEach((im,i)=>im.style.opacity=i===released-1?1:0)}
+    const p=(released+(fontsReady?1:0))/UNITS;
+    go(P,{pct:p*100},{m:1.6,t:260,f:34});
+    go(P,{ax:TICK+(f.w/2-TICK)*p,ay:TICK+(f.h/2-TICK)*p},base);
+    const el=now-started;
+    if(!finished&&((released===SHOTS.length&&fontsReady&&el>=900)||el>=7000)){clearInterval(tick);finish()}
+  },40);
+  function finish(){
+    finished=true;
+    go(P,{pct:100},{m:1.6,t:320,f:34});
+    const sw=f.w-Math.round(f.w*.048),sh=f.h-Math.round(f.h*.049);
+    go(P,{w:sw,h:sh,ax:sw/2,ay:sh/2},{m:1,t:320,f:15});
+    setTimeout(()=>{go(P,{content:0},{m:1.6,t:200,f:30});go(P,{ax:TICK,ay:TICK},{m:1,t:220,f:30})},300);
+    setTimeout(()=>{
+      go(P,{w:innerWidth*1.6,h:innerHeight*1.6},{m:1.4,t:130,f:30});
+      go(P,{veil:0},{m:1.6,t:120,f:28});
+      go(P,{frame:0},{m:1.6,t:170,f:30},420);
+    },520);
+    setTimeout(()=>{window.__haldenOpening=true;dispatchEvent(new Event("halden:opening"))},620);
+    setTimeout(()=>{window.__haldenReady=true;dispatchEvent(new Event("halden:ready"));pre.remove();document.body.style.overflow=""},1420);
+  }
+})();
+</script>
+</body>
+</html>
