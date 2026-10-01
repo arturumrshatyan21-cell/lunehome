@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Halden</title>
-<meta name="description" content="Halden makes furniture for considered living — oak, ash and walnut pieces built to belong in your everyday and stay with you for years. See the 2026 collection.">
+<meta name="description" content="Halden makes furniture for considered living.">
 <meta name="theme-color" content="#de0419">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -143,7 +143,6 @@ header nav ul {
   transform-origin: left;
   transform: scaleX(0);
   background: var(--foreground-accent);
-  transition: transform 0.25s var(--ease-entrance);
 }
 
 header.on .ni .bar {
@@ -232,7 +231,6 @@ h1 .w {
   background: var(--surface-accent);
   mix-blend-mode: color-burn;
   clip-path: inset(100% 0 0 0);
-  transition: clip-path 0.3s var(--ease-entrance);
 }
 
 .plate:hover .tint {
@@ -450,7 +448,6 @@ h1 .w {
   background: var(--surface-subtle);
   transform-origin: left;
   transform: scaleX(0);
-  transition: transform 0.25s var(--ease-entrance);
 }
 
 .pill:hover .fill {
@@ -653,7 +650,7 @@ footer {
   height: 3.25rem;
   width: 100%;
   align-items: center;
-  justify-content: between;
+  justify-content: space-between;
   overflow: hidden;
   border-radius: var(--radius-pill);
   border: 0.0375rem solid color-mix(in oklab, var(--foreground-on-accent) 35%, transparent);
@@ -797,7 +794,7 @@ footer {
   .product-list { width: 60rem; }
   .card { width: 13.875rem; }
   .room-plate { width: 60rem; height: 30rem; }
-  .footer-nav { left: 42.5rem; width: 19.5rem; justify-content: between; gap: 0; }
+  .footer-nav { left: 42.5rem; width: 19.5rem; justify-content: space-between; gap: 0; }
 }
 
 @media (max-width: 768px) {
@@ -915,9 +912,9 @@ footer {
   </section>
 
   <section id="catalogue">
-    <h2 class="abs" style="position:absolute;left:2rem;top:2rem;font:400 var(--text-body)/1.1 'Instrument Serif',serif;text-transform:uppercase">(02) — Catalogue</h2>
-    <p class="abs" style="position:absolute;left:59.8125rem;top:2rem;width:27.1875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif;color:var(--foreground-strong)">Nine categories, and that's the whole company. No outlet line, no seasonal drop, no second brand for the cheap version. If it isn't on this list, we don't make it.</p>
-    <div class="abs" style="position:absolute;left:2rem;top:6.625rem;height:1px;width:86rem;background:var(--rule);transform-origin:left"></div>
+    <h2 style="position:absolute;left:2rem;top:2rem;font:400 var(--text-body)/1.1 'Instrument Serif',serif;text-transform:uppercase">(02) — Catalogue</h2>
+    <p style="position:absolute;left:59.8125rem;top:2rem;width:27.1875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif;color:var(--foreground-strong)">Nine categories, and that's the whole company. No outlet line, no seasonal drop, no second brand for the cheap version. If it isn't on this list, we don't make it.</p>
+    <div style="position:absolute;left:2rem;top:6.625rem;height:1px;width:86rem;background:var(--rule);transform-origin:left"></div>
     <div class="cat-band" id="cat-band"></div>
     <div class="cat-plates">
       <div class="cat-plate left" id="plate-l"><img src="" alt=""></div>
@@ -927,9 +924,9 @@ footer {
   </section>
 
   <section id="products">
-    <h2 class="abs" style="position:absolute;left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif">Finished, boxed, waiting by the door</h2>
-    <p class="abs" style="position:absolute;left:59.8125rem;top:3.125rem;width:12.8125rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our current collection - ready to ship. Pieces in stock ship within days.</p>
-    <div class="abs" style="position:absolute;left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left"></div>
+    <h2 style="position:absolute;left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif">Finished, boxed, waiting by the door</h2>
+    <p style="position:absolute;left:59.8125rem;top:3.125rem;width:12.8125rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our current collection - ready to ship. Pieces in stock ship within days.</p>
+    <div style="position:absolute;left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left"></div>
     <ul class="filters" id="filters">
       <li class="pill active" data-filter="all"><span class="fill"></span>All (14)</li>
       <li class="pill" data-filter="chairs"><span class="fill"></span>Chairs (5)</li>
@@ -937,26 +934,26 @@ footer {
       <li class="pill" data-filter="seating"><span class="fill"></span>Seating (4)</li>
       <li class="pill" data-filter="storage"><span class="fill"></span>Storage (2)</li>
     </ul>
-    <div class="abs" style="position:absolute;left:80.8125rem;top:11.6875rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">Sorted by lead time  <svg viewBox="0 0 8 10" style="height:0.62em;width:0.5em;vertical-align:baseline;fill:none;stroke:currentColor;stroke-width:1"><path d="M4 0v9M0.6 5.6L4 9.2 7.4 5.6"/></svg></div>
+    <div style="position:absolute;left:80.8125rem;top:11.6875rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">Sorted by lead time  <svg viewBox="0 0 8 10" style="height:0.62em;width:0.5em;vertical-align:baseline;fill:none;stroke:currentColor;stroke-width:1"><path d="M4 0v9M0.6 5.6L4 9.2 7.4 5.6"/></svg></div>
     <ul class="product-list" id="product-list"></ul>
   </section>
 
   <section id="room">
-    <h2 class="abs" style="position:absolute;left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif">See it where it actually lives</h2>
-    <p class="abs" style="position:absolute;left:59.8125rem;top:3.125rem;width:18.6875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our furniture in real homes. Explore the pieces in their natural surroundings and get inspired.</p>
-    <div class="abs" style="position:absolute;left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left"></div>
+    <h2 style="position:absolute;left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif">See it where it actually lives</h2>
+    <p style="position:absolute;left:59.8125rem;top:3.125rem;width:18.6875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our furniture in real homes. Explore the pieces in their natural surroundings and get inspired.</p>
+    <div style="position:absolute;left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left"></div>
     <div class="room-plate" id="room-plate">
       <img src="https://storage.getlayers.ai/assets/halden-5875ef9537/room/christianshavn.png" alt="Apartment interior in Christianshavn">
       <div class="room-scrim" id="room-scrim"></div>
       <ul class="room-tags" id="room-tags"></ul>
     </div>
-    <div class="abs" style="position:absolute;left:4rem;top:44.875rem;white-space:nowrap;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em;color:var(--foreground-on-band)">Apartment, Christianshavn — photographed May 2026</div>
-    <div class="abs" style="position:absolute;left:81.3125rem;top:44.9375rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">01/ 06  ← →</div>
+    <div style="position:absolute;left:4rem;top:44.875rem;white-space:nowrap;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em;color:var(--foreground-on-band)">Apartment, Christianshavn — photographed May 2026</div>
+    <div style="position:absolute;left:81.3125rem;top:44.9375rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">01/ 06  ← →</div>
   </section>
 </main>
 
 <footer data-header-accent>
-  <div class="abs" style="position:absolute;left:2rem;top:2rem;display:flex;width:26.875rem;flex-direction:column;align-items:start;gap:2rem">
+  <div style="position:absolute;left:2rem;top:2rem;display:flex;width:26.875rem;flex-direction:column;align-items:start;gap:2rem">
     <h2 style="width:100%;font:400 var(--text-headline)/1.0435 'Instrument Serif',serif">
       <span style="display:block">Four emails a year,</span>
       <span style="display:block">and none of them are sales</span>
@@ -971,12 +968,12 @@ footer {
     </div>
   </div>
   <nav class="footer-nav" aria-label="Footer" id="footer-nav"></nav>
-  <div class="abs" style="position:absolute;left:2rem;top:17.25rem;height:1px;width:86rem;background:color-mix(in oklab, var(--foreground-on-accent) 35%, transparent);transform-origin:left"></div>
-  <div class="abs" style="position:absolute;left:2rem;top:18.5625rem;display:flex;flex-direction:column;align-items:start;gap:0.5rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif">
+  <div style="position:absolute;left:2rem;top:17.25rem;height:1px;width:86rem;background:color-mix(in oklab, var(--foreground-on-accent) 35%, transparent);transform-origin:left"></div>
+  <div style="position:absolute;left:2rem;top:18.5625rem;display:flex;flex-direction:column;align-items:start;gap:0.5rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif">
     <span>Halden Møbler ApS  ·  Refshalevej 88, 1432 København K  · +45 32 96 11 04</span>
     <span>© 2026  ·  Made in Denmark, mostly by hand</span>
   </div>
-  <div class="abs" style="position:absolute;left:75.8125rem;top:18.5625rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif">Instagram  ·  Pinterest  ·  hello@halden.dk</div>
+  <div style="position:absolute;left:75.8125rem;top:18.5625rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif">Instagram  ·  Pinterest  ·  hello@halden.dk</div>
   <div class="wordmark" aria-hidden="true" id="wordmark">HALDEN</div>
 </footer>
 
@@ -1104,7 +1101,7 @@ PRODS.forEach((p, i) => {
       <h3>${p.name}</h3>
       <span style="font-size:var(--text-label);color:color-mix(in oklab, var(--foreground) 35%, transparent)">${p.spec}</span>
     </div>
-    <div style="display:flex;align-items:center;justify-content:between">
+    <div style="display:flex;align-items:center;justify-content:space-between">
       <span style="border:0.0375rem solid var(--foreground);border-radius:var(--radius-pill);padding:0.5rem 0.75rem;font:400 var(--text-caption)/normal 'Instrument Serif',serif;letter-spacing:0.04em">Ships in 3 days</span>
       <span style="font:400 var(--text-body)/normal 'Instrument Serif',serif;letter-spacing:0.02em">${p.price}</span>
     </div>
@@ -1199,6 +1196,8 @@ for (const char of "HALDEN") {
   span.innerHTML = `<span class="inner">${char}</span>`;
   wm.appendChild(span);
 }
+
+function $(s, r = document) { return r.querySelector(s); }
 </script>
 </body>
 </html>
