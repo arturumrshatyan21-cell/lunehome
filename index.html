@@ -2,1173 +2,517 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Halden</title>
-<meta name="description" content="Halden makes furniture for considered living — oak, ash and walnut pieces built to belong in your everyday and stay with you for years. See the 2026 collection.">
-<meta name="theme-color" content="#de0419">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LUNE Home</title>
+<meta name="description" content="LUNE Home makes soft, rounded furniture for gentle living. See the 2026 collection.">
+<meta name="theme-color" content="#6b1f2e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-<script type="importmap">
-{
-  "imports": {
-    "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs"
-  }
-}
-</script>
-<noscript><style>#preloader{display:none}</style></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"lenis":"https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs"}}</script>
+<noscript><style>#pre{display:none}#stage{opacity:1!important}</style></noscript>
 <style>
-@font-face { font-family: "Instrument Serif"; font-weight: 400; font-style: normal; font-display: swap; src: url("https://storage.getlayers.ai/assets/halden-5875ef9537/fonts/InstrumentSerif-Regular.ttf") format("truetype"); }
-@font-face { font-family: "Instrument Serif"; font-weight: 400; font-style: italic; font-display: swap; src: url("https://storage.getlayers.ai/assets/halden-5875ef9537/fonts/InstrumentSerif-Italic.ttf") format("truetype"); }
-@font-face { font-family: "Bebas Neue"; font-weight: 400; font-style: normal; font-display: swap; src: url("https://storage.getlayers.ai/assets/halden-5875ef9537/fonts/BebasNeue-Regular.otf") format("opentype"); }
-@font-face { font-family: "Bebas Neue"; font-weight: 700; font-style: normal; font-display: swap; src: url("https://storage.getlayers.ai/assets/halden-5875ef9537/fonts/BebasNeue-Bold.otf") format("opentype"); }
+:root{--bg:#f1e4dc;--ac:#6b1f2e;--on:#fff;--band:#f8f0ea;--strong:#2a1418;--muted:#8a6f66;--rule:#dcc5b8;--sub:#dcc5b8;--se:"Instrument Serif",serif;--di:"Bebas Neue",sans-serif;--ease:cubic-bezier(.2,0,0,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px}
+@media(min-width:600px){html{font-size:16px}}
+@media(min-width:1200px){html{font-size:1.111111vw}}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-stopped{overflow:hidden}
+body{background:var(--bg);color:#000;font-family:var(--se);-webkit-font-smoothing:antialiased;min-height:100vh}
+img{display:block;max-width:none}a{color:inherit;text-decoration:none}ul{list-style:none}
+button,input{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tr{text-box:trim-both cap alphabetic}.ab{position:absolute}
+.ln{display:block;overflow:hidden}.ln.nc{overflow:visible}.un{display:inline-block}
+.ch{display:inline-block;white-space:pre}.wd{display:inline-block;white-space:nowrap}
 
-:root {
-  --background: #edeae2;
-  --foreground: #000000;
-  --surface-accent: #de0419;
-  --foreground-accent: #de0419;
-  --foreground-on-accent: #ffffff;
-  --foreground-on-band: #f4f2ed;
-  --foreground-strong: #14130f;
-  --foreground-muted: #6e6a60;
-  --rule: #d8d3c0;
-  --surface-subtle: #d8d3c0;
-  --surface-overlay: #f4f2ed;
-  --scrim: #14130f;
-  --text-display: 15rem;
-  --text-wordmark: 12.01425rem;
-  --text-manifesto: 4.875rem;
-  --text-section: 3.875rem;
-  --text-category: 3.375rem;
-  --text-headline: 2.875rem;
-  --text-title: 1.625rem;
-  --text-body: 1rem;
-  --text-label: 0.875rem;
-  --text-caption: 0.75rem;
-  --text-micro: 0.625rem;
-  --text-nano: 0.5rem;
-  --radius-image: 0.125rem;
-  --radius-pill: 6.25rem;
-  --ease-entrance: cubic-bezier(0.2, 0, 0, 1);
+/* header */
+#hdr{position:fixed;left:0;top:0;z-index:50;width:100%;height:3.25rem;border-bottom:.08rem solid var(--ac);background:var(--bg);color:var(--ac);transition:background-color .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
+#hdr.on{background:var(--ac);border-color:var(--on);color:var(--on)}
+.mk{position:absolute;left:1rem;top:50%;translate:0 -50%;font:500 .875rem/1 "Inter",sans-serif;letter-spacing:.14em}
+.mk i{font-style:normal;position:absolute;left:100%;top:-.2em;font-size:.5rem;margin-left:.1rem}
+#hdr nav{position:absolute;top:50%}
+#hdr ul{display:flex;align-items:center;gap:1rem;font:400 1rem/1 var(--di);letter-spacing:.08em}
+.n1{display:none;left:50%;translate:-50% -50%}.n2{right:1rem;translate:0 -50%}
+.ni{--bc:var(--ac);--hc:var(--band);position:relative;isolation:isolate;flex-shrink:0}
+#hdr.on .ni,footer .ni{--bc:#fff;--hc:var(--ac)}
+.ni .bar{position:absolute;inset:-.2em -.42em;z-index:-1;transform-origin:left;transform:scaleX(0);background:var(--bc)}
+.ni .lb{display:block;white-space:nowrap;transition:color .15s var(--ease)}
+.ni:hover .lb{color:var(--hc)}
+
+/* shared sections */
+.sec{position:relative;overflow:hidden;background:var(--bg);padding:3.5rem 1.25rem}
+.h2{font:400 clamp(2.1rem,9vw,3.4rem)/1.1 var(--se);margin-bottom:1rem}
+.sp{font:400 1rem/1.3 var(--se);color:var(--strong);margin-bottom:1.25rem;max-width:30rem}
+.hr{height:1px;background:var(--rule);transform-origin:left;margin:1.25rem 0}
+.eb{font:400 .875rem/1.1 var(--se);text-transform:uppercase;margin-bottom:1rem}
+
+/* hero */
+#stage{opacity:0;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding:5.25rem 1rem 2.5rem;color:var(--ac)}
+#stage.go{opacity:1}
+h1{grid-column:1/-1;position:relative;pointer-events:none;font:400 clamp(5rem,27vw,17rem)/.88 var(--di);margin-bottom:.5rem}
+h1 .w{display:block;white-space:nowrap}#w2{padding-left:15vw}
+.cap{display:none}
+.plate{position:relative;isolation:isolate;overflow:hidden;border-radius:.125rem;cursor:none;aspect-ratio:1}
+.plate img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;translate:0 var(--py,0px)}
+.fl img{scale:-1 1}.rv{position:absolute;inset:0;display:block}
+.tint{position:absolute;inset:0;pointer-events:none;background:var(--ac);mix-blend-mode:color-burn}
+.p3{grid-column:1/-1;aspect-ratio:16/10;order:1}.p1{order:2}.p2{order:3}.p4,.p5{aspect-ratio:3/4}.p4{order:4}.p5{order:5}
+.welcome{grid-column:1/-1;order:6;font:400 1.55rem/1 var(--di);text-transform:uppercase;margin-top:.5rem}
+.cta{grid-column:1/-1;order:7;display:flex;justify-content:center;align-items:center;white-space:nowrap;font:400 1.9rem/1 var(--di);letter-spacing:.08em;padding:.5rem 0}
+.cta b{font-weight:400;display:inline-block}
+
+/* manifesto */
+#mf{background:var(--ac);color:var(--on);padding:4rem .75rem}
+#mt{display:flex;flex-direction:column;align-items:center;gap:.25rem;font:400 clamp(1.3rem,5.6vw,2.9rem)/1.1 var(--se);text-align:center}
+#mt .row{display:flex;align-items:center;gap:.4em;white-space:nowrap}
+#mt em{position:relative;display:inline-block;font-style:italic}
+.ul{position:absolute;left:0;right:0;bottom:.02em;height:.045em;background:currentColor;transform-origin:left;transform:scaleX(0)}
+.cg{position:relative;flex-shrink:0;width:2.2em;height:1.3em;overflow:hidden;border-radius:.125rem}
+.ci{position:absolute;inset:0;display:block}
+.ci img{width:100%;height:100%;object-fit:cover;transform-origin:50% 92%;scale:1.12}
+
+/* catalogue */
+.cw{position:relative;margin:1.5rem 0}
+.band{position:absolute;left:50%;top:0;width:100vw;margin-left:-50vw;z-index:0;pointer-events:none}
+.band span{display:block;height:100%;background:var(--ac);transform-origin:center;transform:scaleX(0)}
+#cl{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;white-space:nowrap}
+#cl li{display:flex;align-items:flex-start;gap:.4rem;padding:.2rem 0;color:var(--strong);transition:color .15s var(--ease);cursor:pointer}
+#cl li b{font:400 clamp(1.6rem,8vw,2.6rem)/1.07 var(--se);display:block}
+#cl li i{font:400 .7rem/1 var(--di);font-style:normal;letter-spacing:.04em;color:var(--muted);transition:color .15s;margin-top:.2rem}
+#cl li.on,#cl li.on i{color:var(--band)}
+.cpl{display:flex;justify-content:center;gap:1rem;margin-top:2rem}
+.cpp{width:38vw;height:46vw;max-width:15rem;max-height:18rem;overflow:hidden;border-radius:.125rem;cursor:none}
+.cpp:first-child{rotate:-2deg}.cpp:last-child{rotate:2deg;margin-top:1rem}
+.cpp img{width:100%;height:100%;object-fit:cover;transition:opacity .2s}
+
+/* products */
+.fl2{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0}
+.pill{position:relative;isolation:isolate;overflow:hidden;border-radius:6.25rem;padding:.7rem 1rem;border:.04rem solid #000;font:400 .875rem/1 var(--se);letter-spacing:.04em;cursor:pointer;transition:color .15s}
+.pill.on{background:#000;color:var(--band)}.pill .fi{position:absolute;inset:0;z-index:-1;background:var(--sub);transform-origin:left;transform:scaleX(0)}
+.pl{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -1.25rem;padding:0 1.25rem 1rem;scrollbar-width:none}.pl::-webkit-scrollbar{display:none}
+.card{flex:0 0 72vw;max-width:20.4rem;scroll-snap-align:center;display:flex;flex-direction:column;gap:1rem;opacity:.5;scale:.94;transition:opacity .35s var(--ease),scale .35s var(--ease)}
+.card.on{opacity:1;scale:1}
+.cpt{position:relative;height:24rem;overflow:hidden;border-radius:.125rem;cursor:none}
+.cpt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cx{position:absolute;left:1rem;top:1rem;font:400 1rem/1 var(--se);letter-spacing:.06em;color:var(--on);mix-blend-mode:difference}
+.chip{position:absolute;right:1rem;top:1rem;width:1.75rem;height:1.75rem;border-radius:6.25rem;background:var(--sub);overflow:hidden;transition:background-color .15s;cursor:none}
+.card:hover .chip,.chip.sv{background:var(--ac)}
+.chip i{position:absolute;inset:0;display:block;color:#000;font-size:1rem}
+.card:hover .chip i,.chip.sv i{color:#fff}
+.chip i:before,.chip i:after{content:"";position:absolute;left:50%;top:50%;translate:-50% -50%;background:currentColor;border-radius:.5px}
+.chip i:before{width:.43em;height:.045em}.chip i:after{width:.045em;height:.43em}
+.cn{font:400 1.625rem/1.15 var(--se);white-space:nowrap}.cn span{display:block;font-size:.875rem;margin-top:.4rem;color:rgba(0,0,0,.4)}
+.cb{display:flex;align-items:center;justify-content:space-between}
+.cb span:first-child{border:.04rem solid #000;border-radius:6.25rem;padding:.5rem .75rem;font-size:.75rem;letter-spacing:.04em}
+
+/* room */
+.rw{position:relative;margin-top:1.5rem}
+#rp{position:relative;overflow:hidden;border-radius:.125rem;aspect-ratio:4/3;cursor:none}
+#rp>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#rs{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .25s}
+#rt{position:absolute;inset:0;z-index:2}
+.tag{position:absolute;translate:-50% -50%}
+.tag button{position:relative;display:flex;align-items:center;gap:.75rem;overflow:visible;border-radius:6.25rem;background:transparent;padding:0;text-align:left;transition:opacity .25s}
+.tag button:after{content:"";position:absolute;inset:-.6rem}
+.tag.dim button{opacity:0;pointer-events:none}
+.mk2{position:relative;width:1.5rem;height:1.5rem;flex-shrink:0;border-radius:6.25rem;background:var(--sub);overflow:hidden;color:#000;font-size:.9rem;transition:background-color .15s,rotate .15s}
+.mk2 i{position:absolute;inset:0;display:block}
+.mk2 i:before,.mk2 i:after{content:"";position:absolute;left:50%;top:50%;translate:-50% -50%;background:currentColor;border-radius:.5px}
+.mk2 i:before{width:.43em;height:.045em}.mk2 i:after{width:.045em;height:.43em}
+.tag button:hover .mk2,.tag.sel .mk2{background:var(--ac);color:#fff;rotate:45deg}
+.tx{display:none}
+.rc{display:flex;justify-content:space-between;gap:1rem;margin-top:.75rem;font:400 .75rem/1.2 var(--se);letter-spacing:.04em}
+#rcap{transition:color .15s}.rc #rcap.pk{color:var(--ac)}
+
+/* footer */
+footer{position:relative;overflow:hidden;background:var(--ac);color:var(--on);padding:3rem 1.25rem 2rem}
+footer h2{font:400 clamp(1.9rem,8vw,2.9rem)/1.05 var(--se);margin-bottom:1.5rem}footer h2 span{display:block}
+.nl{position:relative;display:flex;height:3.25rem;align-items:center;justify-content:space-between;overflow:hidden;border-radius:6.25rem;border:1px solid rgba(255,255,255,.35);padding:.375rem .375rem .375rem 1.25rem;transition:border-color .25s}
+.nl.aw{border-color:rgba(255,255,255,.9)}
+.nl label{pointer-events:none;position:absolute;left:1.25rem;font:400 .55rem/1 var(--di);letter-spacing:.14em;color:rgba(255,255,255,.75);opacity:0;translate:0 .8rem;transition:all .25s}
+.nl.aw label{opacity:1;translate:0 -.8rem}
+.nl input{min-width:0;flex:1;outline:none;font:400 .95rem/1 var(--se);cursor:text;transition:translate .25s}
+.nl.aw input{translate:0 .32rem}.nl input::placeholder{color:#fff;opacity:.75}
+.nb{position:relative;display:flex;height:100%;align-items:center;overflow:hidden;border-radius:6.25rem;background:rgba(255,255,255,.25);padding:0 1.5rem;font:400 1rem/1 var(--se);transition:background-color .15s}
+.nb:hover{background:rgba(255,255,255,.4)}.nb em{position:absolute;right:.5rem;top:0;bottom:0;display:flex;align-items:center;font-style:normal}
+.fc{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;gap:1rem;margin:2.5rem 0}
+.fc h3{font:400 .875rem/1 var(--se);letter-spacing:.08em;color:rgba(255,255,255,.55);margin-bottom:.9rem}
+.fc ul{display:flex;flex-direction:column;gap:.9rem}.fc ul li{font-size:.95rem}
+.fr{height:1px;background:rgba(255,255,255,.35);transform-origin:left;margin-bottom:1.25rem}
+.fg{display:flex;flex-direction:column;gap:.5rem;font:400 .75rem/1.4 var(--se);margin-bottom:1rem}
+#wm{white-space:nowrap;font:400 5.3rem/1.02 var(--se);letter-spacing:.4em;margin:1.5rem 0 -.5rem;display:flex}
+#wm span{display:inline-block;overflow:hidden}#wm span i{display:inline-block;font-style:normal}
+
+/* search */
+#sp{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;background:var(--ac);color:var(--on);padding:1rem 1rem 1.25rem;visibility:hidden}
+#sp .tp{display:flex;justify-content:space-between;align-items:baseline;font:400 1rem/1 var(--di);letter-spacing:.14em;text-transform:uppercase}
+#sp .tp button{transition:opacity .15s}#sp .tp button:hover{opacity:.7}
+#sp form{margin-top:1.5rem;border-bottom:.09rem solid #fff;padding-bottom:.75rem}
+#si{width:100%;outline:none;font:400 clamp(2rem,9vw,4.5rem)/1 var(--di);text-transform:uppercase;letter-spacing:.02em;cursor:text}#si::placeholder{color:#fff;opacity:.4}
+#ss{margin-top:.9rem;font:400 1rem/1.2 var(--se);text-transform:uppercase;letter-spacing:.08em;opacity:.7}
+#sr{margin-top:1.1rem;flex:1;min-height:0;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem .75rem;align-content:start}
+#sr .im{position:relative;aspect-ratio:326/438;overflow:hidden;border-radius:.125rem;cursor:none;margin-bottom:.6rem}
+#sr .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#sr b{display:block;font:400 1.05rem/1.15 var(--se)}#sr small{display:block;opacity:.6;font-size:.8rem}#sr span{font-size:.95rem;letter-spacing:.02em}
+.none{grid-column:1/-1;font-size:1.4rem;opacity:.7}
+
+/* cursor */
+#cur{position:fixed;inset:0;z-index:60;pointer-events:none;display:none}
+@media(pointer:fine){#cur{display:block}}
+#cur i{position:absolute;width:.6875rem;height:.6875rem;border:0 solid var(--ac);transition:border-color .15s}
+#cur.lt i{border-color:var(--band)}
+#cur i:nth-child(1){border-width:1.4px 0 0 1.4px}#cur i:nth-child(2){border-width:1.4px 1.4px 0 0}#cur i:nth-child(3){border-width:0 0 1.4px 1.4px}#cur i:nth-child(4){border-width:0 1.4px 1.4px 0}
+
+/* preloader */
+#pre{position:fixed;inset:0;z-index:100;pointer-events:none}
+#pre .vl{position:absolute;inset:0;background:var(--bg)}
+#fr{position:absolute;left:50%;top:50%;translate:-50% -50%}
+#pb{position:absolute;inset:5px;overflow:hidden}
+#pb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s}
+#fr .c{position:absolute;border:0 solid var(--ac)}
+.tl{left:0;top:0;border-left-width:1.4px;border-top-width:1.4px}.tr2{right:0;top:0;border-right-width:1.4px;border-top-width:1.4px}
+.bl{left:0;bottom:0;border-left-width:1.4px;border-bottom-width:1.4px}.br{right:0;bottom:0;border-right-width:1.4px;border-bottom-width:1.4px}
+#fr .cp{position:absolute;left:0;bottom:-2.1rem;width:100%;display:flex;align-items:baseline;justify-content:space-between;color:var(--ac)}
+.cp b{font:400 1.125rem/1 var(--di);letter-spacing:.16em}.cp span{font:400 1rem/1 var(--se);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+#err{position:fixed;left:0;right:0;bottom:0;z-index:200;background:#000;color:#fff;font:12px/1.5 monospace;padding:8px 12px;display:none;white-space:pre-wrap}
+
+/* tablet and up: wider flow */
+@media(min-width:700px){.card{flex-basis:40vw}.cpt{height:26rem}.tx{display:flex}#rp{aspect-ratio:16/9}#sr{grid-template-columns:repeat(4,1fr)}#wm{font-size:8rem}}
+@media(min-width:980px){#hdr{height:4.5rem}.n1{display:block}#hdr ul{gap:1.5rem}.mk{left:1.5rem}.n2{right:1.5rem}}
+
+/* desktop: the 1440 comp, 1 rem = 1 board px */
+@media(min-width:1200px){
+#hdr{border-bottom-width:.08125rem}.mk{left:2rem;top:1.5rem;translate:none}.mk i{left:4.4375rem;margin:0;top:-.0625rem}
+#hdr nav{top:calc(50% + .071875rem)}#hdr ul{gap:2.5rem}.n2{right:auto;left:calc(50% + 35.875rem);translate:-50% -50%}
+.sec{padding:0}.h2{font-size:3.875rem;margin:0}.sp,.hr,.eb,.h2{position:absolute}
+.sp{max-width:none;margin:0}.hr{margin:0;left:2rem;width:86rem}
+#hero{height:100lvh;overflow:hidden}#stage{display:block;height:50rem;padding:0}
+h1{position:absolute;inset:0;font-size:15rem;line-height:normal;margin:0}h1 .w{position:absolute;pointer-events:auto}
+#w1{left:1.5625rem;top:7.5rem}#w2{left:16rem;top:19.625rem;padding:0;display:flex;align-items:center;gap:.5rem}
+.cap{display:block;position:absolute;font:400 1rem/1.1 var(--se);text-transform:uppercase}.cap.r{translate:-100% 0;text-align:right}
+.plate{position:absolute;aspect-ratio:auto}.plate img{top:0;height:100%;translate:none}
+.p1{left:79.3125rem;top:7.5rem;width:8.6875rem;height:6.5rem}.p2{left:9.25rem;top:24rem;width:6.4375rem;height:6.25rem}
+.p3{left:46.5625rem;top:34.8125rem;width:22.8125rem;height:13.1875rem}.p4{left:69.875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem}.p5{left:79.1875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem}
+.welcome{position:absolute;left:2rem;top:43.8125rem;width:10.6875rem;font-size:1.625rem;margin-top:-.24rem}
+.cta{position:absolute;left:73.5625rem;top:28.625rem;display:flex;width:max-content;padding:0;font-size:1.625rem}
+#mf{height:50rem;padding:0}#mt{position:absolute;left:calc(50% + .03rem);top:50%;translate:-50% -50%;font-size:4.875rem;line-height:1.0769;width:max-content;gap:.25rem}
+#mt .row{gap:.17em}#mt .row.c{gap:1.125rem}
+#cat{height:50rem}#cat .eb{left:2rem;top:2rem}#cat .sp{left:59.8125rem;top:2rem;width:27.1875rem}#cat .hr{top:6.625rem}
+.cw{position:absolute;left:50%;top:9.1875rem;translate:-50% 0;margin:0}#cl li{gap:.5rem;padding:.25rem 0}#cl li b{font-size:3.375rem}#cl li i{font-size:.75rem}
+.cpl{position:absolute;inset:0;display:block;margin:0;pointer-events:none}
+.cpp{position:absolute;pointer-events:auto;max-width:none;max-height:none}
+.cpp:first-child{left:9.375rem;top:14.35rem;width:12.25rem;height:9.25rem}.cpp:last-child{right:9.375rem;left:auto;top:12.75rem;width:10.75rem;height:13.125rem;margin:0}
+#prod{height:50rem}#prod .h2{left:2rem;top:2rem}#prod .sp{left:59.8125rem;top:3.125rem;width:12.8125rem}#prod .hr{top:7.75rem}
+.fl2{position:absolute;left:2rem;top:10.3125rem;margin:0}
+.srt{position:absolute;left:80.8125rem;top:11.6875rem;white-space:pre;font:400 .875rem/1 var(--se);letter-spacing:.04em}
+.pl{position:absolute;left:2rem;top:13.5625rem;width:86rem;margin:0;padding:0;gap:1.5rem;overflow:hidden}
+.card{flex:0 0 20.375rem;opacity:1;scale:1;gap:1.25rem}.cpt{height:27.375rem}
+#room{height:50rem}#room .h2{left:2rem;top:2rem}#room .sp{left:59.8125rem;top:3.125rem;width:18.6875rem}#room .hr{top:7.75rem}
+.rw{position:absolute;left:2rem;top:10.3125rem;width:86rem;margin:0}#rp{height:37.6875rem;aspect-ratio:auto}
+.rc{position:absolute;left:2rem;right:2rem;bottom:1rem;margin:0;font-size:.875rem;color:var(--band);z-index:3;pointer-events:none}
+.mk2{width:1.875rem;height:1.875rem;font-size:1.125rem}
+.tag button{overflow:hidden;background:color-mix(in oklab,var(--band) 92%,transparent);padding:.375rem 1.25rem .375rem .375rem}
+.tx{flex-direction:column;gap:.5rem;white-space:nowrap}.tx b{font:400 .75rem/1 var(--se);letter-spacing:.01em;color:var(--strong)}.tx em{font:400 .625rem/1 var(--se);font-style:normal;letter-spacing:.02em;color:rgba(0,0,0,.4)}
+footer{height:34.4375rem;padding:0}footer .ft{position:absolute;left:2rem;top:2rem;width:26.875rem}footer h2{font-size:2.875rem;line-height:1.0435}
+.fc{position:absolute;left:52.625rem;top:2rem;display:flex;gap:8rem;margin:0}
+.fr{position:absolute;left:2rem;top:17.25rem;width:86rem;margin:0}
+.fg{position:absolute;left:2rem;top:18.5625rem;margin:0;font-size:.875rem;white-space:pre}.fg.so{left:75.8125rem}
+#wm{position:absolute;left:2rem;top:23.8125rem;margin:-.1875rem 0 0;font-size:12.01425rem;letter-spacing:.85em;line-height:1.0204}
+#sp{padding:1.5rem 2rem 2rem}#sr{gap:2.5rem 1.5rem}
 }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; }
-@media (max-width: 1440px) { html { font-size: 1.111111vw; } }
-@media (max-width: 1024px) { html { font-size: 1.5625vw; } }
-@media (max-width: 768px) { html { font-size: 2.083333vw; } }
-@media (max-width: 548px) { html { font-size: 4.102564vw; } }
-
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-.lenis.lenis-stopped { overflow: hidden; }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Instrument Serif", serif;
-}
-
-img { display: block; max-width: none; }
-a { color: inherit; text-decoration: none; }
-ul { list-style: none; }
-button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.trim { text-box: trim-both cap alphabetic; }
-.abs { position: absolute; }
-
-/* Header */
-header {
-  position: fixed; left: 0; top: 0; z-index: 50; width: 100%; height: 4.5rem;
-  border-bottom: 0.08125rem solid var(--foreground-accent);
-  background: var(--background); color: var(--foreground-accent);
-  transition: background-color 0.25s var(--ease-entrance), border-color 0.25s var(--ease-entrance), color 0.25s var(--ease-entrance);
-}
-header.on { background: var(--surface-accent); border-color: var(--foreground-on-accent); color: var(--foreground-on-accent); }
-.mark { position: absolute; left: 2rem; top: 1.5rem; font: 500 0.875rem/1 "Inter", sans-serif; letter-spacing: 0.14em; }
-.mark i { font-style: normal; position: absolute; left: 4.4375rem; top: 0; font-size: 0.5rem; }
-header nav { position: absolute; top: calc(50% + 0.071875rem); translate: -50% -50%; }
-header nav ul { display: flex; align-items: center; gap: 2.5rem; font: 700 1rem/1 "Bebas Neue", sans-serif; letter-spacing: 0.08em; }
-.n1 { left: 50%; }
-.n2 { left: calc(50% + 35.875rem); }
-.ni { position: relative; isolation: isolate; flex-shrink: 0; }
-.ni .bar { position: absolute; inset: -0.2em -0.42em; z-index: -1; display: block; transform-origin: left; transform: scaleX(0); background: var(--foreground-accent); }
-header.on .ni .bar { background: var(--foreground-on-accent); }
-.ni .lb { display: block; white-space: nowrap; transition: color 0.15s var(--ease-entrance); }
-.ni:hover .lb { color: var(--foreground-on-band); }
-header.on .ni:hover .lb { color: var(--foreground-accent); }
-
-/* Preloader */
-#preloader { position: fixed; inset: 0; z-index: 100; pointer-events: none; }
-#preloader .veil { position: absolute; inset: 0; background: var(--background); }
-#frame { position: absolute; left: 50%; top: 50%; translate: -50% -50%; }
-#frame .box { position: absolute; inset: 0.3125rem; overflow: hidden; }
-#frame .box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.25s; }
-#frame .c { position: absolute; border: 0 solid var(--surface-accent); }
-.tl { left: 0; top: 0; border-left-width: 1.4px; border-top-width: 1.4px; }
-.tr { right: 0; top: 0; border-right-width: 1.4px; border-top-width: 1.4px; }
-.bl { left: 0; bottom: 0; border-left-width: 1.4px; border-bottom-width: 1.4px; }
-.br { right: 0; bottom: 0; border-right-width: 1.4px; border-bottom-width: 1.4px; }
-#frame .cp { position: absolute; left: 0; bottom: -2.125rem; width: 100%; display: flex; align-items: baseline; justify-content: space-between; color: var(--foreground-accent); }
-.cp b { font: 700 1.125rem/1 "Bebas Neue", sans-serif; text-transform: uppercase; letter-spacing: 0.16em; }
-.cp span { font: 1rem/1 "Instrument Serif", serif; text-transform: uppercase; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
-#err { position: fixed; left: 0; right: 0; bottom: 0; z-index: 200; background: #000; color: #fff; font: 12px/1.5 monospace; padding: 8px 12px; display: none; }
-
-/* Framing Cursor */
-#cursor-layer { position: fixed; inset: 0; z-index: 60; pointer-events: none; display: none; }
-@media (pointer: fine) { #cursor-layer { display: block; } }
-.cursor-mark { position: absolute; height: 0.6875rem; width: 0.6875rem; border-color: var(--foreground-accent); transition: border-color 0.15s; }
-[data-frame-cursor="light"] ~ #cursor-layer .cursor-mark, #cursor-layer.light .cursor-mark { border-color: var(--foreground-on-band); }
-.cm-tl { border-top-width: 1.4px; border-left-width: 1.4px; }
-.cm-tr { border-top-width: 1.4px; border-right-width: 1.4px; }
-.cm-bl { border-bottom-width: 1.4px; border-left-width: 1.4px; }
-.cm-br { border-bottom-width: 1.4px; border-right-width: 1.4px; }
-
-/* Hero */
-#hero { height: 100lvh; width: 100%; overflow: hidden; background: var(--background); color: var(--foreground-accent); }
-#stage { position: relative; width: 100%; height: 50rem; opacity: 0; }
-#stage.go { opacity: 1; }
-h1 { position: absolute; inset: 0; pointer-events: none; font: 700 var(--text-display)/normal "Bebas Neue", sans-serif; color: var(--foreground-accent); }
-h1 .w { position: absolute; white-space: nowrap; pointer-events: auto; display: flex; align-items: center; }
-.cap { position: absolute; font: 1rem/1.1 "Instrument Serif", serif; text-transform: uppercase; }
-.ln { display: block; overflow: hidden; }
-.un { display: inline-block; }
-.plate { position: absolute; isolation: isolate; overflow: hidden; cursor: none; border-radius: var(--radius-image); }
-.plate .rv { display: block; width: 100%; height: 100%; }
-.plate img { width: 100%; height: 100%; object-fit: cover; }
-.plate.fl img { transform: scaleX(-1); }
-.tint { position: absolute; inset: 0; pointer-events: none; background: var(--surface-accent); mix-blend-mode: color-burn; }
-.cta { position: absolute; display: flex; width: max-content; align-items: center; white-space: nowrap; font: 700 var(--text-title)/normal "Bebas Neue", sans-serif; letter-spacing: 0.08em; }
-.cta b { display: inline-block; font-weight: 700; }
-.welcome { position: absolute; margin-top: -0.24375rem; width: 10.6875rem; font: 700 var(--text-title)/1 "Bebas Neue", sans-serif; text-transform: uppercase; }
-
-/* Manifesto */
-#manifesto { position: relative; width: 100%; overflow: hidden; background: var(--surface-accent); height: 50rem; color: var(--foreground-on-accent); }
-.manifesto-text { position: absolute; left: calc(50% + 0.03125rem); top: 50%; translate: -50% -50%; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; font: 400 var(--text-manifesto)/1.0769 "Instrument Serif", serif; text-align: center; }
-.manifesto-text em { font-style: italic; position: relative; display: inline-block; }
-.manifesto-text .underline { position: absolute; bottom: 0.02em; left: 0; right: 0; height: 0.045em; background: currentColor; transform-origin: left; }
-.chair-gap { position: relative; flex-shrink: 0; width: 6.5rem; height: 3.75rem; border-radius: var(--radius-image); }
-.chair-gap .inner { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 8.125rem; height: 8.125rem; }
-.chair-gap img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Catalogue */
-#catalogue { position: relative; width: 100%; overflow: hidden; background: var(--background); height: 50rem; }
-.cat-band { position: absolute; left: 0; top: 17.4375rem; width: 90rem; height: 4.125rem; background: var(--surface-accent); transform-origin: center; }
-.cat-list { position: absolute; left: calc(50% + 0.03125rem); top: 9.1875rem; translate: -50% 0; display: flex; flex-direction: column; align-items: center; overflow: hidden; white-space: nowrap; }
-.cat-row { display: flex; flex-shrink: 0; align-items: start; gap: 0.5rem; padding: 0.25rem 0; transition: color 0.15s; }
-.cat-row.active { color: var(--foreground-on-band); }
-.cat-row .count { font: 700 var(--text-caption)/normal "Bebas Neue", sans-serif; letter-spacing: 0.04em; transition: color 0.15s; }
-.cat-plates { position: absolute; inset: 0; pointer-events: none; }
-.cat-plate { position: absolute; width: 12.25rem; height: 9.25rem; border-radius: var(--radius-image); overflow: hidden; cursor: none; }
-.cat-plate.left { left: 9.375rem; top: 18.96875rem; translate: 0 -50%; rotate: 2deg; }
-.cat-plate.right { right: 9.375rem; top: 19.30875rem; translate: 0 -50%; rotate: -2deg; width: 10.75rem; height: 13.125rem; }
-.cat-plate img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Products */
-#products { position: relative; width: 100%; overflow: hidden; background: var(--background); height: 50rem; }
-.filters { position: absolute; left: 2rem; top: 10.3125rem; display: flex; align-items: start; gap: 0.5rem; overflow: hidden; }
-.pill { position: relative; isolation: isolate; flex-shrink: 0; display: flex; align-items: center; overflow: hidden; border-radius: var(--radius-pill); padding: 0.6875rem 1rem; border: 0.0375rem solid var(--foreground); font: 400 var(--text-label)/normal "Instrument Serif", serif; letter-spacing: 0.04em; transition: color 0.15s, border-color 0.15s; }
-.pill.active { background: var(--foreground); color: var(--foreground-on-band); border-color: var(--foreground); }
-.pill .fill { position: absolute; inset: 0; z-index: -1; background: var(--surface-subtle); transform-origin: left; transform: scaleX(0); }
-.product-list { position: absolute; left: 2rem; top: 13.5625rem; display: flex; width: 86rem; align-items: start; gap: 1.5rem; overflow: hidden; }
-.card { display: flex; width: 20.375rem; flex-shrink: 0; flex-direction: column; gap: 1.25rem; }
-.card-plate { position: relative; height: 27.375rem; width: 100%; flex-shrink: 0; cursor: none; overflow: hidden; border-radius: var(--radius-image); }
-.card-plate img { position: absolute; max-width: none; }
-.save-chip { position: absolute; right: 1rem; top: 1rem; width: 1.75rem; height: 1.75rem; cursor: none; overflow: hidden; border-radius: var(--radius-pill); background: var(--surface-subtle); transition: background-color 0.15s, rotate 0.15s; display: flex; align-items: center; justify-content: center; }
-.save-chip:hover, .save-chip.saved { background: var(--surface-accent); }
-.save-chip .bar { position: absolute; background: currentColor; border-radius: 0.5px; transition: rotate 0.15s; }
-.save-chip .bar.h { width: 0.43em; height: 0.045em; }
-.save-chip .bar.v { width: 0.045em; height: 0.43em; }
-.save-chip:hover .bar, .save-chip.saved .bar { background: var(--foreground-on-accent); rotate: 90deg; }
-
-/* Room */
-#room { position: relative; width: 100%; overflow: hidden; background: var(--background); height: 50rem; }
-.room-plate { position: absolute; left: 2rem; top: 10.3125rem; height: 37.6875rem; width: 86rem; cursor: none; overflow: hidden; border-radius: var(--radius-image); }
-.room-plate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.room-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.25s; }
-.room-tags { position: relative; z-index: 2; }
-.tag { position: absolute; display: flex; align-items: center; gap: 0.75rem; overflow: hidden; border-radius: var(--radius-pill); background: color-mix(in oklab, var(--surface-overlay) 92%, transparent); padding: 0.375rem 1.25rem 0.375rem 0.375rem; text-align: left; transition: opacity 0.25s; }
-.tag.dimmed { opacity: 0; pointer-events: none; }
-.tag .mark { position: relative; width: 1.875rem; height: 1.875rem; flex-shrink: 0; overflow: hidden; border-radius: var(--radius-pill); background: var(--surface-subtle); transition: background-color 0.15s, transform 0.15s; display: flex; align-items: center; justify-content: center; }
-.tag:hover .mark, .tag.selected .mark { background: var(--surface-accent); transform: rotate(45deg); }
-.tag .text { display: flex; flex-shrink: 0; flex-direction: column; align-items: start; gap: 0.5rem; white-space: nowrap; font: 400 var(--text-caption)/normal "Instrument Serif", serif; letter-spacing: 0.01em; }
-.tag .spec { font-size: var(--text-micro); letter-spacing: 0.02em; color: color-mix(in oklab, var(--foreground) 40%, transparent); }
-
-/* Footer */
-footer { position: relative; width: 100%; overflow: hidden; background: var(--surface-accent); color: var(--foreground-on-accent); height: 34.4375rem; }
-.newsletter-row { position: relative; display: flex; height: 3.25rem; width: 100%; align-items: center; justify-content: space-between; overflow: hidden; border-radius: var(--radius-pill); border: 0.0375rem solid color-mix(in oklab, var(--foreground-on-accent) 35%, transparent); padding: 0.375rem 0.375rem 0.375rem 1.25rem; transition: border-color 0.25s; }
-.newsletter-row.awake { border-color: color-mix(in oklab, var(--foreground-on-accent) 90%, transparent); }
-.nl-label { pointer-events: none; position: absolute; left: 1.25rem; font: 700 var(--text-nano)/1 "Bebas Neue", sans-serif; letter-spacing: 0.14em; color: color-mix(in oklab, var(--foreground-on-accent) 75%, transparent); opacity: 0; translate: 0 0.8rem; transition: all 0.25s; }
-.newsletter-row.awake .nl-label { opacity: 1; translate: 0 -0.8rem; }
-.nl-input { min-width: 0; flex: 1; background: transparent; font: 400 var(--text-label)/normal "Instrument Serif", serif; outline: none; color: var(--foreground-on-accent); }
-.nl-input::placeholder { color: color-mix(in oklab, var(--foreground-on-accent) 40%, transparent); }
-.newsletter-row.awake .nl-input { translate: 0 -0.32rem; }
-.nl-btn { position: relative; display: flex; height: 100%; flex-shrink: 0; align-items: center; overflow: hidden; border-radius: var(--radius-pill); background: color-mix(in oklab, var(--foreground-on-accent) 25%, transparent); padding: 0.75rem 1.5rem; font: 400 var(--text-body)/normal "Instrument Serif", serif; transition: background-color 0.15s; }
-.nl-btn:hover { background: color-mix(in oklab, var(--foreground-on-accent) 40%, transparent); }
-.footer-nav { position: absolute; left: 52.625rem; top: 2rem; display: flex; align-items: center; gap: 8rem; white-space: nowrap; font: 400 var(--text-body)/normal "Instrument Serif", serif; }
-.footer-col { display: flex; flex-shrink: 0; flex-direction: column; align-items: start; gap: 0.875rem; }
-.footer-col h3 { font-size: var(--text-label); letter-spacing: 0.08em; color: color-mix(in oklab, var(--foreground-on-accent) 55%, transparent); }
-.footer-col a { position: relative; isolation: isolate; display: inline-block; transition: color 0.15s; }
-.footer-col a .bar { position: absolute; inset: -0.2em -0.4em; z-index: -1; background: var(--foreground-on-accent); transform-origin: left; transform: scaleX(0); transition: transform 0.25s var(--ease-entrance); }
-.footer-col a:hover { color: var(--surface-accent); }
-.footer-col a:hover .bar { transform: scaleX(1); }
-.wordmark { position: absolute; left: 2rem; top: 23.8125rem; margin-top: -0.1875rem; white-space: nowrap; font: 400 var(--text-wordmark)/1.0204 "Instrument Serif", serif; letter-spacing: 0.85em; }
-.wordmark .letter { display: inline-block; overflow: hidden; }
-.wordmark .inner { display: inline-block; }
-
-/* =========================================
-   RESPONSIVE - MOBILE FLOW LAYOUT
-   ========================================= */
-@media (max-width: 1024px) {
-  header { height: 4rem; }
-  .mark { left: 1.5rem; top: 1.6875rem; }
-  .n1 { gap: 1.875rem; }
-  .n2 { left: calc(50% + 24rem); }
-  #stage { height: 48rem; }
-  h1 { font-size: 12.75rem; }
-  #manifesto { height: 34.5rem; }
-  .manifesto-text { font-size: 3.5rem; }
-  .chair-gap { width: 4.75rem; height: 2.75rem; }
-  .chair-gap .inner { width: 6rem; height: 6rem; }
-  #catalogue { height: 43.9375rem; }
-  .cat-band { top: 16.3125rem; width: 64rem; height: 3.4375rem; }
-  .cat-list { left: 25.8125rem; top: 9.5rem; translate: 0 0; }
-  .cat-plate.left { left: 6.875rem; top: 18.84375rem; }
-  .cat-plate.right { right: 2.25rem; top: 19.3125rem; }
-  #products { height: 43.125rem; }
-  .product-list { width: 60rem; }
-  .card { width: 13.875rem; }
-  .card-plate { height: 18.75rem; }
-  #room { height: 44.0625rem; }
-  .room-plate { width: 60rem; height: 30rem; }
-  footer { height: 32.625rem; }
-  .footer-nav { left: 42.5rem; width: 19.5rem; justify-content: space-between; gap: 0; }
-  .wordmark { font-size: 8.382rem; }
-}
-
-@media (max-width: 768px) {
-  header { height: 4rem; }
-  .mark { top: 1.375rem; }
-  .n1 { display: none; }
-  .n2 { left: calc(50% + 16.625rem); gap: 1.25rem; }
-  
-  /* Hero */
-  #stage { height: 64rem; }
-  h1 { font-size: 9.4375rem; }
-  .cap, .cta { display: none; }
-  .plate:not(.keep) { display: none; }
-  
-  /* Manifesto - FLOW LAYOUT */
-  #manifesto { 
-    height: auto; 
-    min-height: 25rem; 
-    padding: 4rem 1.5rem; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-  }
-  .manifesto-text { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    translate: none; 
-    text-align: left; 
-    font-size: 2.5rem; 
-    width: 100%; 
-  }
-  .chair-gap { width: 3.625rem; height: 2.125rem; }
-  .chair-gap .inner { width: 4.5rem; height: 4.5rem; }
-  
-  /* Catalogue - FLOW LAYOUT */
-  #catalogue { 
-    height: auto; 
-    min-height: 36.875rem; 
-    padding: 4rem 1.5rem; 
-  }
-  #catalogue > h2, #catalogue > p { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    width: 100%; 
-    margin-bottom: 1rem; 
-  }
-  #catalogue > .abs { display: none; }
-  .cat-band { display: none; }
-  .cat-list { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    translate: none; 
-    margin: 2rem 0; 
-    width: 100%; 
-  }
-  .cat-plates { display: none; }
-  
-  /* Products - FLOW LAYOUT */
-  #products { 
-    height: auto; 
-    min-height: 87.6875rem; 
-    padding: 4rem 1.5rem; 
-  }
-  #products > h2, #products > p { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    width: 100%; 
-    margin-bottom: 1rem; 
-  }
-  #products > .abs { display: none; }
-  .filters { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    flex-wrap: wrap; 
-    overflow: visible; 
-    margin: 2rem 0; 
-    width: 100%; 
-  }
-  .product-list { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 1rem; 
-    width: 100%; 
-  }
-  .card { width: 100%; }
-  .card-plate { height: 29.25rem; }
-  
-  /* Room - FLOW LAYOUT */
-  #room { 
-    height: auto; 
-    min-height: 31.0625rem; 
-    padding: 4rem 1.5rem; 
-  }
-  #room > h2, #room > p { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    width: 100%; 
-    margin-bottom: 1rem; 
-  }
-  #room > .abs { display: none; }
-  .room-plate { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    width: 100%; 
-    height: 22.5rem; 
-    margin: 2rem 0; 
-  }
-  .tag .text { display: none; }
-  .tag { padding: 0; background: transparent; gap: 0; overflow: visible; }
-  .tag .mark { width: 1.375rem; height: 1.375rem; }
-  
-  /* Footer - FLOW LAYOUT */
-  footer { 
-    height: auto; 
-    min-height: 27.6875rem; 
-    padding: 4rem 1.5rem; 
-  }
-  footer > .abs { display: none; }
-  footer > div:first-child { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    width: 100%; 
-    margin-bottom: 3rem; 
-  }
-  .footer-nav { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    flex-direction: column; 
-    gap: 2rem; 
-    margin-bottom: 3rem; 
-    width: 100%; 
-  }
-  .wordmark { 
-    position: relative; 
-    left: auto; 
-    top: auto; 
-    font-size: 6.25rem; 
-    letter-spacing: 0.31em; 
-    margin-top: 2rem; 
-  }
-  
-  /* Show legal and social in flow */
-  #foot-legal { 
-    display: flex !important; 
-    position: relative !important; 
-    left: auto !important; 
-    top: auto !important; 
-    margin-bottom: 2rem; 
-    white-space: normal !important; 
-  }
-  #foot-social { 
-    display: block !important; 
-    position: relative !important; 
-    left: auto !important; 
-    top: auto !important; 
-    margin-bottom: 2rem; 
-  }
-  #foot-rule { 
-    display: block !important; 
-    position: relative !important; 
-    left: auto !important; 
-    top: auto !important; 
-    width: 100% !important; 
-    margin-bottom: 2rem; 
-  }
-}
-
-@media (max-width: 548px) {
-  header { height: 3.1875rem; }
-  .mark { left: 1rem; top: 0.9375rem; }
-  .n2 { left: calc(50% + 6.171875rem); gap: 1rem; font-size: var(--text-label); }
-  
-  /* Hero 390px */
-  #stage { height: 52.75rem; }
-  h1 { font-size: 4.875rem; }
-  .w#w1 { left: 1rem !important; top: 4.1875rem !important; }
-  .w#w2 { left: 5.3125rem !important; top: 8.3125rem !important; gap: 0.1875rem !important; }
-  
-  .hero-rule-390 { display: block !important; position: absolute; left: 1rem; top: 18.375rem; height: 1px; width: 22.375rem; background: var(--rule); }
-  .plate-390[data-d="520"] { display: block !important; left: 1rem !important; top: 19.6875rem !important; width: 22.375rem !important; height: 12.5625rem !important; }
-  .plate-390[data-d="520"] img { left: 0 !important; top: -7.1% !important; width: 100.84% !important; height: 107.34% !important; transform: scaleX(-1) !important; }
-  .cap-390[data-d="560"] { display: block !important; left: 23.375rem !important; top: 33.25rem !important; translate: -100% 0 !important; text-align: right !important; }
-  .plate-390[data-d="620"] { display: block !important; left: 1rem !important; top: 35.125rem !important; width: 11.1875rem !important; height: 15.5625rem !important; }
-  .plate-390[data-d="620"] img { transform: scaleX(1) !important; }
-  .plate-390[data-d="660"] { display: block !important; left: 12.625rem !important; top: 35.125rem !important; width: 10.75rem !important; height: 15.5625rem !important; }
-  .plate-390[data-d="660"] img { transform: scaleX(1) !important; left: -23.81% !important; top: -63.24% !important; width: 123.81% !important; height: 170.17% !important; }
-  .cap-390[data-d="600"] { display: block !important; left: 1rem !important; top: 51.1875rem !important; }
-  .cap-390[data-d="slash"] { display: block !important; left: 23.375rem !important; top: 51.1875rem !important; translate: -100% 0 !important; text-align: right !important; }
-  .welcome { left: 1rem !important; top: 15rem !important; width: 5.9375rem !important; text-align: left !important; font-size: 0.875rem !important; }
-
-  /* Manifesto 390px */
-  #manifesto { min-height: 13.5rem; padding: 2.5rem 1rem; }
-  .manifesto-text { font-size: 1.375rem; }
-  .chair-gap { width: 2rem; height: 1.1875rem; }
-  .chair-gap .inner { width: 2.625rem; height: 2.625rem; }
-  
-  /* Catalogue 390px */
-  #catalogue { min-height: 24.1875rem; padding: 2.5rem 1rem; }
-  
-  /* Products 390px */
-  #products { min-height: 147.875rem; padding: 2.5rem 1rem; }
-  .filters { left: 1rem; top: 8.0625rem; width: 100%; flex-wrap: wrap; overflow: visible; }
-  .product-list { grid-template-columns: 1fr; gap: 2.5rem; }
-  .card { width: 100%; }
-  .card-plate { height: 23.75rem; }
-  
-  /* Room 390px */
-  #room { min-height: 25.3125rem; padding: 2.5rem 1rem; }
-  .room-plate { height: 12.5rem; }
-  .room-plate img { left: -13.13%; top: -22.75%; width: 122.7%; height: 123.48%; }
-  
-  /* Footer 390px */
-  footer { min-height: 37.6875rem; padding: 2.5rem 1rem; }
-  .footer-nav { flex-direction: column; gap: 2rem; }
-  .wordmark { font-size: 5rem; }
-}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
 </style>
 </head>
 <body>
-
-<header id="hdr">
-  <a class="mark" href="#" aria-label="Halden — home">HALDEN<i>®</i></a>
-  <nav class="n1" aria-label="Primary"><ul id="nav1"></ul></nav>
-  <nav class="n2" aria-label="Account and basket"><ul id="nav2"></ul></nav>
-</header>
+<header id="hdr"><a class="mk" href="#" aria-label="LUNE Home — home">LUNE<i>®</i></a><nav class="n1" aria-label="Primary"><ul id="n1"></ul></nav><nav class="n2" aria-label="Account and basket"><ul id="n2"></ul></nav></header>
 
 <main>
-  <section id="hero" aria-label="Halden — timeless furniture">
-    <div id="stage">
-      <h1>
-        <span class="w trim" id="w1" style="left:1.5625rem;top:7.5rem">timeless</span>
-        <span class="w trim" id="w2" style="left:16rem;top:19.625rem;gap:0.5rem">furniture/<span aria-hidden="true">/</span></span>
-      </h1>
+<section id="hero" aria-label="LUNE Home — soft living">
+ <div id="stage">
+  <h1><span class="w" id="w1">soft</span><span class="w" id="w2">living&nbsp;<span aria-hidden="true">/</span></span></h1>
+  <a href="#" class="cta" id="cta"><b id="b1" aria-hidden="true">[</b><span data-rv="line" data-d="560" style="padding:0 .22em">explore collection</span><b id="b2" aria-hidden="true">]</b></a>
+  <p class="welcome" data-rv="soft" data-d="700" data-nc="1">WELCOME TO LUNE – sOFT DESIGN, MADE TO COMFORT.</p>
+  <div class="plate p1" data-d="340"><img src="images/Red_lounge_chair_against_wall_2K_20261001215231.jpg" alt="Burgundy sculptural lounge chair from the 2026 collection"></div>
+  <div class="plate p2" data-d="440"><img src="images/Black_wooden_dining_chair_2K_20261001215335.jpg" alt="Black wooden dining chair"></div>
+  <div class="plate p3 fl" data-d="520"><img src="images/Modular_sofa_with_coffee_table_2K_20261001215444.jpg" alt="Modular sofa with a low coffee table in a bright living room"></div>
+  <div class="plate p4 fl" data-d="620"><img src="images/Wooden_sideboard_with_lamp_and_2K_20261001215509.jpg" alt="Sideboard with a table lamp and framed print"></div>
+  <div class="plate p5 fl" data-d="660"><img src="images/Round_dining_table_with_chairs_2K_20261001215553.jpg" alt="Round dining table with four chairs"></div>
+ </div>
+</section>
 
-      <div class="hero-rule-390" style="display:none;"></div>
+<section id="mf" class="sec" data-ha><h2 id="mt"></h2></section>
 
-      <span class="abs hero-hide-390" style="left:74.3125rem;top:7.375rem;width:4.5625rem"><span class="cap trim sr-l" data-d="320" style="position:static;display:block">collection 2026</span></span>
-      <span class="abs hero-hide-390" style="left:74.3125rem;top:13.125rem"><span class="cap trim sr-l" data-d="380" style="position:static;display:block">01-11</span></span>
-      <span class="abs hero-hide-390" style="left:2rem;top:23.875rem;width:5rem"><span class="cap trim sr-l" data-d="420" style="position:static;display:block">dining chair 32"W x 38"H</span></span>
-      <span class="abs hero-hide-390" style="left:2rem;top:29.25rem;width:5rem"><span class="cap trim sr-l" data-d="480" style="position:static;display:block;line-height:normal">$499.99</span></span>
-      <span class="abs hero-hide-390" style="left:46.0625rem;top:34.6875rem;width:5.8125rem;translate:-100% 0;text-align:right"><span class="cap trim sr-l" data-d="500" style="position:static;display:block">modular sofa 98"W x 38"H</span></span>
-      
-      <span class="abs cap-390" data-d="560" style="left:46.0625rem;top:46.9375rem;translate:-100% 0;text-align:right;display:none;"><span class="cap trim sr-l" style="position:static;display:block;line-height:normal">$2999.99</span></span>
-      <span class="abs cap-390" data-d="600" style="left:69.875rem;top:37.5625rem;display:none;"><span class="cap trim sr-l" style="position:static;display:block">new arrivals</span></span>
-      <span class="cap trim cap-390" aria-hidden="true" data-d="slash" style="left:88rem;top:37.6875rem;translate:-100% 0;text-align:right;line-height:normal;display:none;">//</span>
+<section id="cat" class="sec">
+ <h2 class="eb tr" data-rv="fade">(02) — Catalogue</h2>
+ <p class="sp" data-rv="fade" data-d="160">Nine categories, and that's the whole company. No outlet line, no seasonal drop, no second brand for the cheap version. If it isn't on this list, we don't make it.</p>
+ <div class="hr" data-rv="rule"></div>
+ <div class="cw"><div class="band" id="band"><span></span></div><ul id="cl"></ul></div>
+ <div class="cpl"><span class="cpp" data-fc><img id="pl" alt=""></span><span class="cpp" data-fc><img id="pr" alt=""></span></div>
+</section>
 
-      <a href="#" class="cta hero-hide-390" id="cta" style="left:73.5625rem;top:28.625rem">
-        <b id="br1" aria-hidden="true">[</b><span class="trim sr-l" data-d="560" data-gap="0.24" style="padding:0 0.22em" data-full="1">explore collection</span><b id="br2" aria-hidden="true">]</b>
-      </a>
+<section id="prod" class="sec">
+ <h2 class="h2" data-rv="soft" data-from="left" data-nc="1">Finished, boxed, waiting by the door</h2>
+ <p class="sp" data-rv="fade" data-d="160">Our current collection – ready to ship. Pieces in stock ship within days.</p>
+ <div class="hr" data-rv="rule"></div>
+ <ul class="fl2" id="fl"></ul>
+ <div class="srt tr" data-rv="fade" data-d="420">Sorted by lead time  <svg viewBox="0 0 8 10" style="height:.62em;width:.5em;vertical-align:baseline;fill:none;stroke:currentColor;stroke-width:1" aria-hidden="true"><path d="M4 0v9M.6 5.6L4 9.2 7.4 5.6"/></svg></div>
+ <ul class="pl" id="pl2"></ul>
+</section>
 
-      <p class="welcome trim sr-l" data-d="700" data-nc="1" style="left:2rem;top:43.8125rem">WELCOME TO HALDEN – tIMELESS DESIGN, MADE TO LAST.</p>
-
-      <div class="plate hero-hide-390" data-d="340" style="left:79.3125rem;top:7.5rem;width:8.6875rem;height:6.5rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/collection-chair.png" alt="Red sculptural lounge chair"></div>
-      <div class="plate hero-hide-390" data-d="440" style="left:9.25rem;top:24rem;width:6.4375rem;height:6.25rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/dining-chair.png" alt="Black wooden dining chair"></div>
-      
-      <div class="plate fl keep plate-390" data-d="520" style="left:46.5625rem;top:34.8125rem;width:22.8125rem;height:13.1875rem;display:none;"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/modular-sofa.png" alt="Modular sofa"></div>
-      <div class="plate fl keep plate-390" data-d="620" style="left:69.875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem;display:none;"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-1.png" alt="Sideboard"></div>
-      <div class="plate fl keep plate-390" data-d="660" style="left:79.1875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem;display:none;"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-2.png" alt="Dining table"></div>
-    </div>
-  </section>
-
-  <section id="manifesto" data-header-accent>
-    <h2 class="manifesto-text" id="manifesto-text">
-      <div style="display:flex; gap:0.17em; white-space:nowrap;">
-        <span class="sr">(Halden) is made for considered living, </span>
-        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="0"></span></span>
-        <em class="written-wrap" style="position:relative; display:inline-block; font-style:italic;">
-          <span aria-hidden="true" class="written-chars" data-frag="1"></span>
-          <span class="underline" id="m-underline"></span>
-        </em>
-      </div>
-      <div style="position:relative; display:flex; align-items:center; gap:1.125rem;">
-        <span class="sr">for beautiful spaces, made to last — </span>
-        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="2"></span></span>
-        <span class="chair-gap">
-          <span class="inner"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/manifesto/armchair-blue.png" alt="Tufted blue armchair"></span>
-        </span>
-        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="3"></span></span>
-      </div>
-      <div style="position:relative; display:flex; align-items:center; gap:1.125rem;">
-        <span class="sr">furniture that belongs in your everyday, </span>
-        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="4"></span></span>
-        <span class="chair-gap">
-          <span class="inner"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/manifesto/armchair-orange.png" alt="Orange swivel lounge chair"></span>
-        </span>
-        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="5"></span></span>
-      </div>
-      <div style="white-space:nowrap;">
-        <span class="sr">and stays with you for years to come.</span>
-        <span class="written-wrap"><span aria-hidden="true" class="written-chars" data-frag="6"></span></span>
-      </div>
-    </h2>
-  </section>
-
-  <section id="catalogue">
-    <h2 class="abs trim" style="left:2rem;top:2rem;font:400 var(--text-body)/1.1 'Instrument Serif',serif;text-transform:uppercase">(02) — Catalogue</h2>
-    <p class="abs trim" style="left:59.8125rem;top:2rem;width:27.1875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif;color:var(--foreground-strong)">Nine categories, and that's the whole company. No outlet line, no seasonal drop, no second brand for the cheap version. If it isn't on this list, we don't make it.</p>
-    <div class="abs" style="left:2rem;top:6.625rem;height:1px;width:86rem;background:var(--rule);transform-origin:left" id="cat-rule"></div>
-    <div class="cat-band" id="cat-band"></div>
-    <div class="cat-plates">
-      <div class="cat-plate left" id="plate-l"><img src="" alt=""></div>
-      <div class="cat-plate right" id="plate-r"><img src="" alt=""></div>
-    </div>
-    <ul class="cat-list" id="cat-list"></ul>
-  </section>
-
-  <section id="products">
-    <h2 class="abs trim" style="left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif" id="prod-title">Finished, boxed, waiting by the door</h2>
-    <p class="abs trim" style="left:59.8125rem;top:3.125rem;width:12.8125rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our current collection - ready to ship. Pieces in stock ship within days.</p>
-    <div class="abs" style="left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left" id="prod-rule"></div>
-    <ul class="filters" id="filters">
-      <li class="pill active" data-filter="all"><span class="fill"></span>All (14)</li>
-      <li class="pill" data-filter="chairs"><span class="fill"></span>Chairs (5)</li>
-      <li class="pill" data-filter="tables"><span class="fill"></span>Tables (3)</li>
-      <li class="pill" data-filter="seating"><span class="fill"></span>Seating (4)</li>
-      <li class="pill" data-filter="storage"><span class="fill"></span>Storage (2)</li>
-    </ul>
-    <div class="abs trim" style="left:80.8125rem;top:11.6875rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">Sorted by lead time  <svg viewBox="0 0 8 10" style="height:0.62em;width:0.5em;vertical-align:baseline;fill:none;stroke:currentColor;stroke-width:1"><path d="M4 0v9M0.6 5.6L4 9.2 7.4 5.6"/></svg></div>
-    <ul class="product-list" id="product-list"></ul>
-  </section>
-
-  <section id="room">
-    <h2 class="abs trim" style="left:2rem;top:2rem;font:400 var(--text-section)/1.0968 'Instrument Serif',serif">See it where it actually lives</h2>
-    <p class="abs trim" style="left:59.8125rem;top:3.125rem;width:18.6875rem;font:400 var(--text-body)/1.3 'Instrument Serif',serif">Our furniture in real homes. Explore the pieces in their natural surroundings and get inspired.</p>
-    <div class="abs" style="left:2rem;top:7.75rem;height:1px;width:86rem;background:var(--rule);transform-origin:left" id="room-rule"></div>
-    <div class="room-plate" id="room-plate" data-frame-cursor="light">
-      <img src="https://storage.getlayers.ai/assets/halden-5875ef9537/room/christianshavn.png" alt="Apartment interior in Christianshavn">
-      <div class="room-scrim" id="room-scrim"></div>
-      <ul class="room-tags" id="room-tags"></ul>
-    </div>
-    <div class="abs trim" style="left:4rem;top:44.875rem;white-space:nowrap;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em;color:var(--foreground-on-band)">Apartment, Christianshavn — photographed May 2026</div>
-    <div class="abs trim" style="left:81.3125rem;top:44.9375rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif;letter-spacing:0.04em">01/ 06  ← →</div>
-  </section>
+<section id="room" class="sec">
+ <h2 class="h2" data-rv="soft" data-from="left" data-nc="1">See it where it actually lives</h2>
+ <p class="sp" data-rv="fade" data-d="160">Our furniture in real homes. Explore the pieces in their natural surroundings and get inspired.</p>
+ <div class="hr" data-rv="rule"></div>
+ <div class="rw">
+  <div id="rp" data-fc="light" data-rv="ct" data-d="220"><img id="ph" src="images/Copenhagen_apartment_interior_fu%E2%80%A6_2K_20261001220953.jpg" alt="Apartment interior with a dining table, sideboard and red sofa"><div id="rs"></div><ul id="rt"></ul></div>
+  <div class="rc"><span id="rcap">Apartment, Copenhagen — photographed May 2026</span><span>01 / 06 ← →</span></div>
+ </div>
+</section>
 </main>
 
-<footer data-header-accent>
-  <div class="abs" style="left:2rem;top:2rem;display:flex;width:26.875rem;flex-direction:column;align-items:start;gap:2rem">
-    <h2 style="width:100%;font:400 var(--text-headline)/1.0435 'Instrument Serif',serif">
-      <span class="trim sr-l" style="display:block">Four emails a year,</span>
-      <span class="trim sr-l" style="display:block" data-d="110">and none of them are sales</span>
-    </h2>
-    <div class="newsletter-row" id="nl-row">
-      <span class="nl-label">EMAIL</span>
-      <input type="email" class="nl-input" placeholder="you@somewhere.dk" aria-label="Email address">
-      <button class="nl-btn" id="nl-btn">
-        <span class="trim">Sign me up</span>
-        <span style="position:absolute;inset-y:0;right:0.5rem;display:flex;align-items:center" id="nl-arrow">→</span>
-      </button>
-    </div>
-  </div>
-  <nav class="footer-nav" aria-label="Footer" id="footer-nav"></nav>
-  <div class="abs" style="left:2rem;top:17.25rem;height:1px;width:86rem;background:color-mix(in oklab, var(--foreground-on-accent) 35%, transparent);transform-origin:left" id="foot-rule"></div>
-  <div class="abs" style="left:2rem;top:18.5625rem;display:flex;flex-direction:column;align-items:start;gap:0.5rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif" id="foot-legal">
-    <span>Halden Møbler ApS  ·  Refshalevej 88, 1432 København K  · +45 32 96 11 04</span>
-    <span>© 2026  ·  Made in Denmark, mostly by hand</span>
-  </div>
-  <div class="abs trim" style="left:75.8125rem;top:18.5625rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif" id="foot-social">Instagram  ·  Pinterest  ·  hello@halden.dk</div>
-  <div class="wordmark" aria-hidden="true" id="wordmark">HALDEN</div>
+<footer data-ha>
+ <div class="ft">
+  <h2><span data-rv="soft" data-from="left" data-nc="1">Four emails a year,</span><span data-rv="soft" data-from="left" data-nc="1" data-d="110">and none of them are sales</span></h2>
+  <form class="nl" id="nl" data-rv="fade" data-d="280" onsubmit="return false"><label for="em">EMAIL</label><input id="em" type="email" placeholder="you@somewhere.pt" autocomplete="off"><button class="nb" type="button" id="nb"><span id="nbt">Sign me up</span><em id="nba">→</em></button></form>
+ </div>
+ <nav class="fc" aria-label="Footer" id="fc"></nav>
+ <div class="fr" data-rv="rule" data-d="340"></div>
+ <div class="fg" data-rv="fade" data-d="420"><span>LUNE Home ApS  ·  Rua das Flores 41, 1200-195 Lisboa  ·  +351 21 555 01 82</span><span>© 2026  ·  Made in Portugal, mostly by hand</span></div>
+ <div class="fg so" data-rv="fade" data-d="470"><span>Instagram  ·  Pinterest  ·  hello@lunehome.pt</span></div>
+ <div id="wm" aria-hidden="true"></div>
 </footer>
 
-<div id="preloader" role="status" aria-live="polite" aria-label="Loading Halden">
-  <div class="veil" id="veil"></div>
-  <div id="frame">
-    <div class="box" id="pbox"></div>
-    <span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
-    <div class="cp"><b>HALDEN</b><span id="pct">0%</span></div>
-  </div>
+<div id="sp" role="dialog" aria-modal="true" aria-label="Search the collection" aria-hidden="true">
+ <div class="tp"><b>LUNE</b><button id="sx" type="button">Close</button></div>
+ <form role="search" onsubmit="return false"><label class="sr" for="si">Search</label><input id="si" type="search" placeholder="Search" autocomplete="off"></form>
+ <p id="ss" aria-live="polite">The collection</p><ul id="sr"></ul>
 </div>
+
+<div id="pre" role="status" aria-live="polite" aria-label="Loading LUNE Home"><div class="vl" id="vl"></div><div id="fr"><div id="pb"></div><span class="c tl"></span><span class="c tr2"></span><span class="c bl"></span><span class="c br"></span><div class="cp"><b>LUNE</b><span id="pc">0%</span></div></div></div>
+<div id="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div id="err"></div>
 
-<div id="cursor-layer">
-  <div class="cursor-mark cm-tl"></div>
-  <div class="cursor-mark cm-tr"></div>
-  <div class="cursor-mark cm-bl"></div>
-  <div class="cursor-mark cm-br"></div>
-</div>
-
 <script type="module">
-import Lenis from "lenis";
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const W={m:2.4,t:120,f:34},S={m:1.4,t:170,f:30},INK={m:1,t:420,f:34};
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const noHover=()=>innerWidth<=768, wide=()=>innerWidth>=1200;
+const MAP={"hero-collection-chair": "Red_lounge_chair_against_wall_2K_20261001215231","hero-dining-chair": "Black_wooden_dining_chair_2K_20261001215335","hero-modular-sofa": "Modular_sofa_with_coffee_table_2K_20261001215444","hero-new-arrival-1": "Wooden_sideboard_with_lamp_and_2K_20261001215509","hero-new-arrival-2": "Round_dining_table_with_chairs_2K_20261001215553","manifesto-armchair-blue": "Blue_armchair_studio_product_shot_2K_20261001215619","manifesto-armchair-orange": "Orange_swivel_lounge_chair_2K_20261001215645","sofas-1": "Cream_sofa_in_living_room_2K_20261001215759","sofas-2": "Red_wool_sofa_cushion_close-up_2K_20261001215827","chairs-1": "Armchair_next_to_side_table_2K_20261001215854","chairs-2": "Red_chair_on_cream_backdrop_2K_20261001215925","tables-1": "Ash_dining_table_with_chairs_2K_20261001220003","tables-2": "Oak_coffee_table_with_vase_2K_20261001220027","storage-1": "Oak_sideboard_with_lamp_2K_20261001220051","storage-2": "Wooden_sideboard_with_lamp_and_2K_20261001215509","beds-1": "Oak_bedside_table_with_lamp_2K_20261001220252","beds-2": "Wooden_bed_headboard_with_pillows_2K_20261001220217","bedsides-1": "Oak_bedside_table_with_lamp_2K_20261001220252","bedsides-2": "Walnut_bedside_cabinet_against_wall_2K_20261001220316","lighting-1": "Ceramic_lamp_on_wooden_sideboard_2K_20261001220440","lighting-2": "Pendant_lamp_hanging_against_wall_2K_20261001220413","mirrors-1": "Round_mirror_leaning_in_hallway_2K_20261001220503","mirrors-2": "Arch_mirror_on_cream_wall_2K_20261001220537","product-elara": "Lounge_chair_on_warm_backdrop_2K_20261001220607","product-ansel": "Oval_dining_table_on_backdrop_2K_20261001220706","product-marlow": "Red_sofa_on_light_backdrop_2K_20261001220750","product-vega": "Oak_sideboard_with_lamp_2K_20261001220051","room": "Copenhagen_apartment_interior_fu…_2K_20261001220953"};
+/* storage-2, beds-1 and product-vega use stand-ins until those three photos exist */
+const IMG=n=>"images/"+encodeURIComponent(MAP[n]||n)+".jpg";
 
-const ASSET = (p) => `https://storage.getlayers.ai/assets/halden-5875ef9537/${p}`;
-const WEIGHT = { m: 2.4, t: 120, f: 34 };
-const SOFT = { m: 1.4, t: 170, f: 30 };
-const INK = { m: 1, t: 420, f: 34 };
-const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const noHover = () => innerWidth <= 768;
-const $ = (s, r = document) => r.querySelector(s);
+/* failed loads are visible */
+const err=$("#err"),fail=u=>{err.style.display="block";err.textContent+="Failed to load: "+u+"\n"};
+addEventListener("error",e=>{const t=e.target;if(t&&(t.src||t.href)&&!t.dataset?.fb)fail(t.src||t.href)},true);
 
-const err = $("#err");
-const fail = (u) => { err.style.display = "block"; err.textContent += "Failed to load: " + u + "\n"; };
-addEventListener("error", (e) => { const t = e.target; if (t && (t.src || t.href)) fail(t.src || t.href); }, true);
+/* spring solver (react-spring integrator, with mass) */
+const jobs=new Set();
+const mk=(render,init)=>{const o={s:{...init},v:{},t:{},c:{},d:{},render};render(o.s);return o};
+function go(o,to,cfg=W,delay=0){
+  for(const k in to){if(reduced){o.s[k]=to[k];continue}
+    if(o.t[k]===to[k])continue;o.t[k]=to[k];o.c[k]=cfg;o.v[k]??=0;o.d[k]=performance.now()+delay}
+  if(reduced)o.render(o.s);else jobs.add(o)}
+function step(now,dt){dt=Math.min(dt,64);
+  for(const o of jobs){let rest=true;
+    for(const k in o.t){if(now<o.d[k]){rest=false;continue}
+      const{m,t,f}=o.c[k];let p=o.s[k],v=o.v[k];const to=o.t[k];
+      for(let i=0;i<dt;i++){v+=(-t*1e-6*(p-to)+-f*1e-3*v)/m;p+=v}
+      if(Math.abs(v)<.001&&Math.abs(p-to)<=.01){p=to;v=0}else rest=false;o.s[k]=p;o.v[k]=v}
+    o.render(o.s);if(rest)jobs.delete(o)}}
 
-const jobs = new Set();
-const mk = (render, init) => { const o = { s: { ...init }, v: {}, t: {}, c: {}, d: {}, render }; render(o.s); return o; };
-function go(o, to, cfg = WEIGHT, delay = 0) {
-  for (const k in to) {
-    if (reduced) { o.s[k] = to[k]; continue; }
-    if (o.t[k] === to[k]) continue;
-    o.t[k] = to[k]; o.c[k] = cfg; o.v[k] ??= 0; o.d[k] = performance.now() + delay;
-  }
-  if (reduced) o.render(o.s); else jobs.add(o);
-}
-function step(now, dt) {
-  dt = Math.min(dt, 64);
-  for (const o of jobs) {
-    let rest = true;
-    for (const k in o.t) {
-      if (now < o.d[k]) { rest = false; continue; }
-      const { m, t, f } = o.c[k]; let p = o.s[k], v = o.v[k]; const to = o.t[k];
-      for (let i = 0; i < dt; i++) { v += (-t * 1e-6 * (p - to) + -f * 1e-3 * v) / m; p += v; }
-      if (Math.abs(v) < 0.001 && Math.abs(p - to) <= 0.01) { p = to; v = 0; } else rest = false;
-      o.s[k] = p; o.v[k] = v;
-    }
-    o.render(o.s);
-    if (rest) jobs.delete(o);
-  }
-}
+/* shared ticker, Lenis first (CDN failure never breaks the page) */
+let lenis=null;try{const{default:L}=await import("lenis");lenis=new L({smoothWheel:true});window.lenis=lenis}catch(e){console.warn("Lenis unavailable",e)}
+scrollTo(0,0);
+const subs=[];let last=0;const sub=fn=>subs.push(fn);
+(function frame(t){lenis&&lenis.raf(t);const dt=last?t-last:16;last=t;
+  for(const f of subs){try{f(t)}catch(e){console.error(e)}}step(performance.now(),dt);requestAnimationFrame(frame)})(0);
 
-window.scrollTo(0, 0);
-const lenis = new Lenis({ smoothWheel: true }); window.lenis = lenis;
-const subs = []; let last = 0;
-const sub = (fn, gap = 0) => subs.push({ fn, gap, last: 0 });
-function frame(time) {
-  lenis.raf(time);
-  const dt = last ? time - last : 16; last = time;
-  for (const s of subs) { if (time - s.last <= s.gap) continue; s.last = time; try { s.fn(time); } catch (e) { console.error(e); } }
-  step(performance.now(), dt);
-  requestAnimationFrame(frame);
-}
-requestAnimationFrame(frame);
+/* behaviours */
+function hover(tr,o,from,to,cfg){tr.addEventListener("mouseenter",()=>{if(!noHover())go(o,to,cfg)});tr.addEventListener("mouseleave",()=>go(o,from,cfg))}
+function line(el,{from="up",delay=0,soft=false,clip=true}={}){
+  const tx=el.textContent;el.innerHTML=`<span class="sr">${tx}</span><span aria-hidden="true" class="ln ${clip?"":"nc"}"><span class="un">${tx}</span></span>`;
+  const u=$(".un",el),pc=clip&&from==="up";
+  const o=mk(s=>{u.style.transform=`translate3d(${s.x}px,${s.y}${pc?"%":"px"},0)`;u.style.opacity=s.o},pc?{y:110,x:0,o:1}:from==="left"?{y:0,x:-48,o:0}:{y:18,x:0,o:0});
+  return()=>go(o,{y:0,x:0,o:1},soft?S:W,delay)}
+function rv(el){const t=el.dataset.rv,d=+el.dataset.d||0;
+  if(t==="line"||t==="soft")return line(el,{from:el.dataset.from||"up",delay:d,soft:t==="soft",clip:!el.dataset.nc});
+  if(t==="fade"){const o=mk(s=>{el.style.opacity=s.o;el.style.transform=`translate3d(0,${s.y}px,0)`},{o:0,y:18});return()=>go(o,{o:1,y:0},S,d)}
+  if(t==="ct"){const o=mk(s=>el.style.clipPath=`inset(0 0 ${s.c}% 0)`,{c:100});return()=>go(o,{c:0},W,d)}
+  if(t==="rule"){const o=mk(s=>el.style.transform=`scaleX(${s.x})`,{x:0});return()=>go(o,{x:1},W,d)}}
+function inview(el,fn,th=0){const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){fn();io.disconnect()}},{threshold:th});io.observe(el)}
+const hs=$("#stage");
+/* desktop captions (hidden on touch layouts) */
+[["collection 2026",74.3125,7.375,320,0,4.5625],["01-11",74.3125,13.125,380],['lounge chair 32"W x 38"H',2,23.875,420,0,5],["$499.99",2,29.25,480],['modular sofa 98"W x 38"H',46.0625,34.6875,500,1,5.8125],["$2999.99",46.0625,46.9375,560,1],["new arrivals",69.875,37.5625,600]].forEach(([t,l,tp,d,r,w])=>{
+  const p=document.createElement("p");p.className="cap tr"+(r?" r":"");p.textContent=t;p.dataset.rv="soft";p.dataset.d=d;p.style.left=l+"rem";p.style.top=tp+"rem";if(w)p.style.width=w+"rem";hs.appendChild(p)});
+const sl=document.createElement("span");sl.className="cap r";sl.setAttribute("aria-hidden","true");sl.textContent="//";sl.style.cssText="left:88rem;top:37.6875rem";hs.appendChild(sl);
+$$("[data-rv]").forEach(el=>{const p=rv(el);if(!p)return;if(hs.contains(el))el._p=p;else inview(el,p)});
 
-sub(() => {
-  const w = innerWidth, r = document.documentElement;
-  if (w > 1440) r.style.fontSize = (16 - (16 * ((1440 - w) / 1440 * 100)) / 100) + "px";
-  else r.style.removeProperty("font-size");
-});
+/* header navs */
+function nav(ul,items,base){items.forEach((t,i)=>{
+  const li=document.createElement("li");li.className="ni";li.innerHTML='<span class="bar"></span>';
+  const a=document.createElement(t.b?"button":"a");if(t.b){a.id=t.b;a.type="button"}else a.href="#";
+  a.innerHTML=`<span class="lb tr">${t.l}</span>`;li.appendChild(a);ul.appendChild(li);
+  const bar=$(".bar",li),b=mk(s=>bar.style.transform=`scaleX(${s.x})`,{x:0});hover(li,b,{x:0},{x:1},{m:1,t:280,f:28});
+  if(base>=0){const e=mk(s=>{li.style.opacity=s.o;li.style.transform=`translate3d(0,${s.y}px,0)`},{o:0,y:12});go(e,{o:1,y:0},S,base+i*70)}})}
+nav($("#n1"),["Catalogue","Rooms","ABOUT","MATERIALS"].map(l=>({l})),120);
+nav($("#n2"),[{l:"Search",b:"sb"},{l:"Saved (3)"},{l:"Bag (0)"}],400);
+const hdr=$("#hdr");
+sub(()=>{const y=hdr.offsetHeight/2;let on=false;$$("[data-ha]").forEach(p=>{const r=p.getBoundingClientRect();if(r.top<=y&&r.bottom>y)on=true});hdr.classList.toggle("on",on)});
 
-const clipR = (s) => `inset(${s.c}% 0 0 0)`;
-function line(el, { from = "up", delay = 0, soft = false, clip = true } = {}) {
-  const txt = el.textContent;
-  el.innerHTML = `<span class="sr">${txt}</span><span aria-hidden="true" class="ln ${clip ? "" : "nc"}"><span class="un">${txt}</span></span>`;
-  const u = $(".un", el), pct = clip && from === "up";
-  const OUT = pct ? { y: 110, x: 0, o: 1 } : from === "left" ? { y: 0, x: -48, o: 0 } : from === "right" ? { y: 0, x: 48, o: 0 } : { y: 18, x: 0, o: 0 };
-  const o = mk(s => { u.style.transform = `translate3d(${s.x}px,${s.y}${pct ? "%" : "px"},0)`; u.style.opacity = s.o; }, OUT);
-  return { o, play: () => go(o, { y: 0, x: 0, o: 1 }, soft ? SOFT : WEIGHT, delay) };
-}
-function hover(trigger, o, from, to, cfg) {
-  trigger.addEventListener("mouseenter", () => { if (!noHover()) go(o, to, cfg); });
-  trigger.addEventListener("mouseleave", () => go(o, from, cfg));
-}
-function plate(el) {
-  const img = el.firstElementChild;
-  const rv = document.createElement("span"); rv.className = "rv"; el.insertBefore(rv, img); rv.appendChild(img);
-  const tint = document.createElement("span"); tint.className = "tint"; el.appendChild(tint);
-  const r = mk(s => rv.style.clipPath = clipR(s), { c: 100 }), t = mk(s => tint.style.clipPath = clipR(s), { c: 100 });
-  hover(el, t, { c: 100 }, { c: 0 }, { m: 1, t: 240, f: 30 });
-  return () => go(r, { c: 0 }, WEIGHT, +el.dataset.d);
-}
+/* hero: remounted when the shutter opens */
+const TN={m:1,t:240,f:30},plates=[];
+$$(".plate").forEach(el=>{const img=$("img",el),r=document.createElement("span");r.className="rv";el.insertBefore(r,img);r.appendChild(img);
+  const tn=document.createElement("span");tn.className="tint";el.appendChild(tn);
+  const a=mk(s=>r.style.clipPath=`inset(${s.c}% 0 0 0)`,{c:100}),t=mk(s=>tn.style.clipPath=`inset(${s.c}% 0 0 0)`,{c:100});
+  hover(el,t,{c:100},{c:0},TN);el.dataset.fc="light";plates.push({el,img,t,on:false,play:()=>go(a,{c:0},W,+el.dataset.d)})});
+function startHero(){hs.classList.add("go");
+  const w1=$("#w1"),w2=$("#w2"),m=(el,x)=>mk(s=>{el.style.opacity=s.o;el.style.transform=`translate3d(${s.x}px,0,0)`},{o:0,x});
+  go(m(w1,-170),{o:1,x:0});go(m(w2,170),{o:1,x:0},W,140);
+  $$("[data-rv]",hs).forEach(e=>e._p&&e._p());plates.forEach(p=>p.play());
+  [["#b1",-7],["#b2",7]].forEach(([id,dx])=>{const el=$(id),o=mk(s=>el.style.transform=`translate3d(${s.x}px,0,0)`,{x:0});hover($("#cta"),o,{x:0},{x:dx},{m:1,t:240,f:24})})}
+addEventListener("halden:opening",startHero,{once:true});
+/* touch has no hover: the red tint and a soft parallax follow the scroll instead */
+sub(()=>{const vh=innerHeight;plates.forEach(p=>{const r=p.el.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;const c=r.top+r.height/2;
+  if(!wide())p.img.style.setProperty("--py",((vh/2-c)*.05).toFixed(1)+"px");
+  if(noHover()){const on=Math.abs(c-vh*.55)<vh*.2;if(on!==p.on){p.on=on;go(p.t,{c:on?0:100},TN)}}})});
 
-const mkNav = (ul, items, base) => items.forEach((t, i) => {
-  const li = document.createElement("li"); li.className = "ni";
-  const a = document.createElement(t.btn ? "button" : "a"); if (!t.btn) a.href = "#";
-  li.innerHTML = `<span class="bar"></span>`; const lb = document.createElement("span"); lb.className = "lb trim"; lb.textContent = t.l;
-  li.appendChild(a); a.appendChild(lb); ul.appendChild(li);
-  const bar = $(".bar", li), b = mk(s => bar.style.transform = `scaleX(${s.x})`, { x: 0 });
-  hover(li, b, { x: 0 }, { x: 1 }, { m: 1, t: 280, f: 28 });
-  const e = mk(s => { li.style.opacity = s.o; li.style.transform = `translate3d(0,${s.y}px,0)`; }, { o: 0, y: 12 });
-  go(e, { o: 1, y: 0 }, SOFT, base + i * 70);
-});
-mkNav($("#nav1"), [{ l: "Catalogue" }, { l: "Rooms" }, { l: "ABOUT" }, { l: "MATERIALS" }], 120);
-mkNav($("#nav2"), [{ l: "Search", btn: 1 }, { l: "Saved (3)" }, { l: "Bag (0)" }], 400);
+/* preloader: the viewfinder */
+const SHOTS=["hero-modular-sofa","hero-collection-chair","hero-new-arrival-1","hero-dining-chair","hero-new-arrival-2"];
+const frameFor=w=>{const x=Math.round(Math.max(240,Math.min(w*.32,460)));return{w:x,h:Math.round(x*288/460)}};
+(function(){const pre=$("#pre");
+  const now0=()=>{window.__haldenOpening=window.__haldenReady=true;dispatchEvent(new Event("halden:opening"));dispatchEvent(new Event("halden:ready"));pre.remove()};
+  if(reduced)return now0();
+  document.body.style.overflow="hidden";
+  const fr=$("#fr"),box=$("#pb"),vl=$("#vl"),pc=$("#pc"),cs=[".tl",".tr2",".bl",".br"].map(c=>$(c,fr));
+  const imgs=SHOTS.map(s=>{const i=document.createElement("img");i.src=IMG(s);i.alt="";i.dataset.fb=1;box.appendChild(i);return i});
+  const P=mk(s=>{fr.style.width=s.w+"px";fr.style.height=s.h+"px";fr.style.opacity=s.frame;box.style.opacity=s.content;vl.style.opacity=s.veil;
+    cs.forEach(c=>{c.style.width=s.ax+"px";c.style.height=s.ay+"px"});pc.textContent=Math.min(100,Math.max(0,Math.round(s.pct)))+"%";$(".cp",fr).style.opacity=s.content},
+    {pct:0,w:460,h:288,ax:15,ay:15,content:0,veil:1,frame:1});
+  const base={m:1.6,t:150,f:26},TICK=15;go(P,{content:1},base);
+  let f=frameFor(innerWidth);P.s.w=f.w;P.s.h=f.h;P.render(P.s);let fin=false;
+  addEventListener("resize",()=>{f=frameFor(innerWidth);if(!fin)go(P,{w:f.w,h:f.h},base)});
+  const U=SHOTS.length+1;let fonts=false,arrived=0,rel=0,lr=0;document.fonts.ready.then(()=>fonts=true);
+  SHOTS.forEach(s=>{const im=new Image();im.src=IMG(s);const m=()=>arrived++;im.decode().then(m,()=>{fail(IMG(s));m()})});
+  const t0=performance.now();
+  const tick=setInterval(()=>{const n=performance.now();
+    if(!fin&&rel<arrived&&n-lr>=150){rel++;lr=n;imgs.forEach((im,i)=>im.style.opacity=i===rel-1?1:0)}
+    const p=(rel+(fonts?1:0))/U;go(P,{pct:p*100},{m:1.6,t:260,f:34});go(P,{ax:TICK+(f.w/2-TICK)*p,ay:TICK+(f.h/2-TICK)*p},base);
+    const el=n-t0;if(!fin&&((rel===SHOTS.length&&fonts&&el>=900)||el>=7000)){clearInterval(tick);finish()}},40);
+  function finish(){fin=true;go(P,{pct:100},{m:1.6,t:320,f:34});
+    const sw=f.w-Math.round(f.w*.048),sh=f.h-Math.round(f.h*.049);go(P,{w:sw,h:sh,ax:sw/2,ay:sh/2},{m:1,t:320,f:15});
+    setTimeout(()=>{go(P,{content:0},{m:1.6,t:200,f:30});go(P,{ax:TICK,ay:TICK},{m:1,t:220,f:30})},300);
+    setTimeout(()=>{go(P,{w:innerWidth*1.6,h:innerHeight*1.6},{m:1.4,t:130,f:30});go(P,{veil:0},{m:1.6,t:120,f:28});go(P,{frame:0},{m:1.6,t:170,f:30},420)},520);
+    setTimeout(()=>{window.__haldenOpening=true;dispatchEvent(new Event("halden:opening"))},620);
+    setTimeout(()=>{window.__haldenReady=true;dispatchEvent(new Event("halden:ready"));pre.remove();document.body.style.overflow=""},1420)}})();
 
-const hdr = $("#hdr");
-sub(() => {
-  const lineY = hdr.offsetHeight / 2; let on = false;
-  document.querySelectorAll("[data-header-accent]").forEach(p => {
-    const r = p.getBoundingClientRect(); if (r.top <= lineY && r.bottom > lineY) on = true;
-  });
-  hdr.classList.toggle("on", on);
-});
+/* manifesto: the hand writes, 9 ms a character */
+const PACE=9,mt=$("#mt");
+const ROWS=[[["(LUNE) is made for"],["gentle living,",1]],[["for rounded"],"blue",["corners, made to hold you —"]],[["furniture that softens"],"orange",["your everyday,"]],[["and keeps you company for years to come."]]];
+const plays=[];let at=0,full="";
+ROWS.forEach((row,ri)=>{const d=document.createElement("div");d.className="row"+(row.includes("blue")||row.includes("orange")?" c":"");
+  row.forEach(it=>{
+    if(typeof it==="string"){const g=document.createElement("span");g.className="cg";g.setAttribute("aria-hidden","true");
+      const n="manifesto-armchair-"+(it==="blue"?"blue":"orange"),im=document.createElement("img");im.src=IMG(n);im.alt="";im.style.objectPosition=it==="blue"?"50% 70%":"50% 30%";g.innerHTML='<span class="ci"></span>';$(".ci",g).appendChild(im);d.appendChild(g);
+      const o=mk(s=>{g.style.opacity=s.o;g.style.transform=`translate3d(0,${s.y}px,0)`},{o:0,y:-18}),rk=mk(s=>im.style.transform=`rotate(${s.r}deg)`,{r:0}),R={m:1,t:260,f:11};
+      const delay=at*PACE;plays.push(()=>go(o,{o:1,y:0},W,delay));
+      hover(g,rk,{r:0},{r:-5},R);g.addEventListener("click",()=>{go(rk,{r:-5},R);setTimeout(()=>go(rk,{r:0},R),420)});return}
+    const[tx,it2]=it,start=at;full+=tx+" ";at+=tx.length+1;
+    const host=document.createElement(it2?"em":"span");
+    tx.split(" ").forEach((w,wi,a)=>{const wd=document.createElement("span");wd.className="wd";wd.setAttribute("aria-hidden","true");
+      [...w].forEach(c=>{const s=document.createElement("span");s.className="ch";s.textContent=c;wd.appendChild(s)});host.appendChild(wd);if(wi<a.length-1)host.appendChild(document.createTextNode(" "))});
+    if(it2){const u=document.createElement("span");u.className="ul";host.appendChild(u);const o=mk(s=>u.style.transform=`scaleX(${s.x})`,{x:0});plays.push(()=>go(o,{x:1},W,(start+tx.length)*PACE))}
+    d.appendChild(host);
+    $$(".ch",host).forEach((s,i)=>{const o=mk(st=>{s.style.opacity=st.o;s.style.transform=`translate3d(0,${st.y}px,0)`},{o:0,y:6});plays.push(()=>go(o,{o:1,y:0},INK,(start+i)*PACE))})});
+  mt.appendChild(d)});
+mt.setAttribute("aria-label",full.trim());
+inview($("#mf"),()=>plays.forEach(p=>p()),.25);
 
-function startHero() {
-  const stage = $("#stage"); stage.classList.add("go");
-  const w1 = $("#w1"), w2 = $("#w2");
-  const a = mk(s => { w1.style.opacity = s.o; w1.style.transform = `translate3d(${s.x}px,0,0)`; }, { o: 0, x: -170 });
-  const b = mk(s => { w2.style.opacity = s.o; w2.style.transform = `translate3d(${s.x}px,0,0)`; }, { o: 0, x: 170 });
-  go(a, { o: 1, x: 0 }); go(b, { o: 1, x: 0 }, WEIGHT, 140);
-  stage.querySelectorAll(".sr-l").forEach(el => {
-    const L = line(el, { from: "up", delay: +el.dataset.d, soft: !el.dataset.full, clip: !el.dataset.nc });
-    L.play();
-  });
-  stage.querySelectorAll(".plate").forEach(el => plate(el)());
-  const cta = $("#cta");
-  [["#br1", -7], ["#br2", 7]].forEach(([id, dx]) => {
-    const el = $(id), o = mk(s => el.style.transform = `translate3d(${s.x}px,0,0)`, { x: 0 });
-    hover(cta, o, { x: 0 }, { x: dx }, { m: 1, t: 240, f: 24 });
-  });
-}
-window.__haldenOpening = false;
-addEventListener("halden:opening", startHero, { once: true });
+/* catalogue: the band slides onto the hovered row */
+const CATS=[["All products",152,"beds-1","mirrors-2"],["Sofas",12,"sofas-1","sofas-2"],["Chairs",34,"chairs-1","chairs-2"],["Tables",21,"tables-1","tables-2"],["Storage",18,"storage-1","storage-2"],["Beds",9,"beds-1","beds-2"],["Bedsides",7,"bedsides-1","bedsides-2"],["Lighting",14,"lighting-1","lighting-2"],["Mirrors",11,"mirrors-1","mirrors-2"]];
+const catPlays=[],cl=$("#cl"),band=$("#band"),bs=$("span",band),pl=$("#pl"),pr=$("#pr"),rows=[],RS=2;
+let act=RS,hold=false,seen=false;
+const by=mk(s=>band.style.transform=`translate3d(0,${s.y}px,0)`,{y:0});
+CATS.forEach((c,i)=>{const li=document.createElement("li");li.innerHTML=`<b>${c[0]}</b><i>${c[1]}</i>`;cl.appendChild(li);rows.push(li);
+  const o=mk(s=>{li.style.opacity=s.o;li.style.transform=`translate3d(0,${s.y}px,0)`},{o:0,y:i===RS?0:i<RS?26:-26});
+  catPlays.push(()=>go(o,{o:1,y:0},W,260+Math.abs(i-RS)*70));
+  li.addEventListener("mouseenter",()=>{if(!noHover())setAct(i)});li.addEventListener("pointerdown",()=>setAct(i))});
+const sw=(img,n)=>{if(img.dataset.s===n)return;const first=!img.dataset.s;img.dataset.s=n;if(first)return void(img.src=IMG(n));img.style.opacity=0;setTimeout(()=>{img.src=IMG(n);img.style.opacity=1},200)};
+function setAct(i,first){act=i;rows.forEach((r,j)=>r.classList.toggle("on",j===i));const r=rows[i];band.style.height=r.offsetHeight+"px";
+  if(first){by.s.y=r.offsetTop;by.render(by.s)}go(by,{y:r.offsetTop},{m:1,t:210,f:30});sw(pl,CATS[i][2]);sw(pr,CATS[i][3])}
+setAct(RS,true);addEventListener("resize",()=>setAct(act,true));
+cl.addEventListener("mouseleave",()=>{if(wide()&&!noHover())setAct(RS)});
+inview($("#cat"),()=>{catPlays.forEach(p=>p());go(mk(s=>bs.style.transform=`scaleX(${s.x})`,{x:0}),{x:1},W)},.1);
+/* tablet and phone: the band steps through the rows on a 2.4 s beat while on screen */
+new IntersectionObserver(e=>seen=e[0].isIntersecting,{threshold:.4}).observe($("#cat"));
+cl.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse")hold=true});cl.addEventListener("pointerleave",()=>hold=false);
+setInterval(()=>{if(!wide()&&seen&&!hold&&!reduced)setAct((act+1)%CATS.length)},2400);
 
-const SHOTS = [
-  "hero/modular-sofa.png", "hero/collection-chair.png", "hero/new-arrival-1.png", "hero/dining-chair.png", "hero/new-arrival-2.png"
-];
-const FRAME_W = 460, FRAME_RATIO = 288 / 460, FRAME_MIN = 240, FRAME_SHARE = 0.32, TICK = 15;
-const frameFor = w => { const x = Math.round(Math.max(FRAME_MIN, Math.min(w * FRAME_SHARE, FRAME_W))); return { w: x, h: Math.round(x * FRAME_RATIO) }; };
+/* products */
+const PRODS=[["(01)","Elara Lounge Chair","Oiled oak, bouclé 12","Ships in 3 days","€1,840","product-elara","chairs seating"],["(02)","Ansel Dining Table","Solid ash, 220 cm","Ships in 3 days","€3,120","product-ansel","tables"],["(03)","Marlow Two-Seater","Walnut, wool 04","Ships in 5 days","€4,460","product-marlow","seating"],["(04)","Vega Sideboard","Smoked oak, brass","Last one","€2,290","product-vega","storage"]];
+const pl2=$("#pl2"),cards=[];
+PRODS.forEach((p,i)=>{const li=document.createElement("li");li.className="card";
+  li.innerHTML=`<div class="cpt" data-fc><img src="${IMG(p[5])}" alt="${p[1]}" loading="lazy"><span class="cx">${p[0]}</span><button class="chip" type="button" aria-pressed="false" aria-label="Save ${p[1]}"><i></i></button></div><h3 class="cn tr">${p[1]}<span>${p[2]}</span></h3><div class="cb"><span class="tr">${p[3]}</span><span class="tr">${p[4]}</span></div>`;
+  pl2.appendChild(li);cards.push({li,cat:p[6]});
+  const pt=$(".cpt",li),o=mk(s=>pt.style.clipPath=`inset(0 0 ${s.c}% 0)`,{c:100});inview(li,()=>go(o,{c:0},W,i*110));
+  const chip=$(".chip",li),ic=$("i",chip),rk=mk(s=>ic.style.transform=`rotate(${s.r}deg)`,{r:0}),R={m:1,t:200,f:14};
+  hover(li,rk,{r:0},{r:90},R);chip.addEventListener("click",()=>{const v=chip.classList.toggle("sv");chip.setAttribute("aria-pressed",v);go(rk,{r:v?90:0},R)})});
+const FIL=["All","Chairs","Tables","Seating","Storage"],fl=$("#fl");
+FIL.forEach((t,i)=>{const key=t.toLowerCase(),n=key==="all"?PRODS.length:PRODS.filter(p=>p[6].includes(key)).length;
+  const li=document.createElement("li");li.className="pill"+(i?"":" on");li.innerHTML=`<span class="fi"></span>${t} (${n})`;fl.appendChild(li);
+  const f=$(".fi",li),o=mk(s=>f.style.transform=`scaleX(${s.x})`,{x:0});hover(li,o,{x:0},{x:1},{m:1,t:260,f:28});
+  const e=mk(s=>{li.style.opacity=s.o;li.style.transform=`translate3d(0,${s.y}px,0)`},{o:0,y:14});inview(li,()=>go(e,{o:1,y:0},S,260+i*70));
+  li.addEventListener("click",()=>{$$(".pill").forEach(x=>x.classList.toggle("on",x===li));cards.forEach(c=>c.li.style.display=key==="all"||c.cat.includes(key)?"":"none");pl2.scrollTo({left:0,behavior:"smooth"})})});
+/* the card nearest the centre of the swipe row wakes up */
+const cio=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("on",e.isIntersecting)),{root:pl2,threshold:.65});cards.forEach(c=>cio.observe(c.li));
 
-(function preload() {
-  const pre = $("#preloader");
-  const finishNow = () => { window.__haldenOpening = window.__haldenReady = true; dispatchEvent(new Event("halden:opening")); dispatchEvent(new Event("halden:ready")); pre.remove(); };
-  if (reduced) { finishNow(); return; }
-  document.body.style.overflow = "hidden";
-  const fr = $("#frame"), box = $("#pbox"), veil = $("#veil"), pctEl = $("#pct");
-  const cs = [".tl", ".tr", ".bl", ".br"].map(c => $(c, fr));
-  const imgs = SHOTS.map(s => { const i = document.createElement("img"); i.src = ASSET(s); i.alt = ""; box.appendChild(i); return i; });
-  const P = mk(s => {
-    fr.style.width = s.w + "px"; fr.style.height = s.h + "px"; fr.style.opacity = s.frame;
-    box.style.opacity = s.content; veil.style.opacity = s.veil;
-    cs.forEach(c => { c.style.width = s.ax + "px"; c.style.height = s.ay + "px"; });
-    pctEl.textContent = Math.min(100, Math.max(0, Math.round(s.pct))) + "%";
-    $(".cp", fr).style.opacity = s.content;
-  }, { pct: 0, w: 460, h: 288, ax: 15, ay: 15, content: 0, veil: 1, frame: 1 });
-  const base = { m: 1.6, t: 150, f: 26 };
-  go(P, { content: 1 }, base);
-  let f = frameFor(innerWidth); P.s.w = f.w; P.s.h = f.h; P.render(P.s);
-  let finished = false;
-  addEventListener("resize", () => { f = frameFor(innerWidth); if (!finished) go(P, { w: f.w, h: f.h }, base); });
-  const UNITS = SHOTS.length + 1; let fontsReady = false; document.fonts.ready.then(() => fontsReady = true);
-  let arrived = 0, released = 0, lastR = 0;
-  SHOTS.forEach(src => {
-    const im = new Image(); im.src = ASSET(src); const mark = () => arrived++;
-    im.decode().then(mark, () => { fail(src); mark(); });
-  });
-  const started = performance.now();
-  const tick = setInterval(() => {
-    const now = performance.now();
-    if (!finished && released < arrived && now - lastR >= 150) { released++; lastR = now; imgs.forEach((im, i) => im.style.opacity = i === released - 1 ? 1 : 0); }
-    const p = (released + (fontsReady ? 1 : 0)) / UNITS;
-    go(P, { pct: p * 100 }, { m: 1.6, t: 260, f: 34 });
-    go(P, { ax: TICK + (f.w / 2 - TICK) * p, ay: TICK + (f.h / 2 - TICK) * p }, base);
-    const el = now - started;
-    if (!finished && ((released === SHOTS.length && fontsReady && el >= 900) || el >= 7000)) { clearInterval(tick); finish(); }
-  }, 40);
-  function finish() {
-    finished = true;
-    go(P, { pct: 100 }, { m: 1.6, t: 320, f: 34 });
-    const sw = f.w - Math.round(f.w * 0.048), sh = f.h - Math.round(f.h * 0.049);
-    go(P, { w: sw, h: sh, ax: sw / 2, ay: sh / 2 }, { m: 1, t: 320, f: 15 });
-    setTimeout(() => { go(P, { content: 0 }, { m: 1.6, t: 200, f: 30 }); go(P, { ax: TICK, ay: TICK }, { m: 1, t: 220, f: 30 }); }, 300);
-    setTimeout(() => {
-      go(P, { w: innerWidth * 1.6, h: innerHeight * 1.6 }, { m: 1.4, t: 130, f: 30 });
-      go(P, { veil: 0 }, { m: 1.6, t: 120, f: 28 });
-      go(P, { frame: 0 }, { m: 1.6, t: 170, f: 30 }, 420);
-    }, 520);
-    setTimeout(() => { window.__haldenOpening = true; dispatchEvent(new Event("halden:opening")); }, 620);
-    setTimeout(() => { window.__haldenReady = true; dispatchEvent(new Event("halden:ready")); pre.remove(); document.body.style.overflow = ""; }, 1420);
-  }
-})();
+/* room: point at a tag, the room goes dark around the piece */
+const HS=[["Pendant Lamp","Enamel & steel — €410",.255,.32],["Table Lamp","Glossy ceramic — €185",.46,.43],["Ansel Dining Table","Solid ash, 220 cm — €3,120",.26,.62],["Sofa","Upholstered in velvet — €2,950",.74,.66],["Ansel Dining Chair","Solid oak, woven seat — €640",.37,.72]];
+const rp=$("#rp"),ph=$("#ph"),rs=$("#rs"),rt=$("#rt"),rcap=$("#rcap"),CAP=rcap.textContent,tags=[];
+let cur=null,pin=null,ptype="mouse";
+const spot=h=>{const p=rp.getBoundingClientRect(),nw=ph.naturalWidth||1376,nh=ph.naturalHeight||603,s=Math.max(p.width/nw,p.height/nh),w=nw*s,hh=nh*s;return{x:(p.width-w)/2+h[2]*w,y:(p.height-hh)/2+h[3]*hh}};
+function place(){HS.forEach((h,i)=>{const q=spot(h);tags[i].style.left=q.x+"px";tags[i].style.top=q.y+"px"});if(cur!==null)light(cur)}
+function light(i){const q=spot(HS[i]),m=innerWidth<=548;rs.style.background=`radial-gradient(circle at ${q.x}px ${q.y}px,transparent ${m?"2.5rem":"5.5rem"},color-mix(in srgb,#2a1418 66%,transparent) ${m?"6rem":"14rem"})`}
+function focus(i){cur=i;light(i);rs.style.opacity=1;tags.forEach((t,j)=>{t.classList.toggle("dim",j!==i&&innerWidth>548);t.classList.toggle("sel",j===i)});rcap.textContent=HS[i][0]+" — "+HS[i][1];rcap.classList.add("pk")}
+function release(){cur=null;pin=null;rs.style.opacity=0;tags.forEach(t=>t.classList.remove("dim","sel"));rcap.textContent=CAP;rcap.classList.remove("pk")}
+addEventListener("pointerdown",e=>ptype=e.pointerType);
+HS.forEach((h,i)=>{const li=document.createElement("li");li.className="tag";
+  li.innerHTML=`<button type="button" aria-label="${h[0]} — ${h[1]}. Add to bag"><span class="mk2"><i></i></span><span class="tx"><b class="tr">${h[0]}</b><em class="tr">${h[1]}</em></span></button>`;rt.appendChild(li);tags.push(li);
+  const b=$("button",li),ic=$("i",li),rk=mk(s=>ic.style.transform=`rotate(${s.r}deg)`,{r:0}),R={m:1,t:200,f:14};hover(b,rk,{r:0},{r:90},R);
+  const e=mk(s=>{li.style.opacity=s.o;li.style.scale=s.s},{o:0,s:.82});inview(rp,()=>go(e,{o:1,s:1},W,520+i*90));
+  b.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse"&&pin===null)focus(i)});
+  b.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse"&&pin===null)release()});
+  b.addEventListener("focus",()=>focus(i));b.addEventListener("blur",()=>{if(pin===null)release()});
+  b.addEventListener("click",()=>{if(ptype==="mouse"){pin=pin===i?null:i;focus(i);if(pin===null)release()}else cur===i?release():focus(i)})});
+ph.addEventListener("load",place);addEventListener("resize",place);place();
 
-const PACE = 15;
-const F = [
-  { text: "(Halden) is made for ", at: 0 },
-  { text: "considered living,", at: 21, italic: true },
-  { text: "for beautiful ", at: 39 },
-  { text: "spaces, made to last — ", at: 52 },
-  { text: "furniture that belongs ", at: 74 },
-  { text: "in your everyday, ", at: 96 },
-  { text: "and stays with you for years to come.", at: 113 }
-];
+/* footer */
+const nl=$("#nl"),inp=$("#em");
+nl.addEventListener("pointerenter",()=>nl.classList.add("aw"));nl.addEventListener("pointerleave",()=>{if(document.activeElement!==inp)nl.classList.remove("aw")});
+inp.addEventListener("focus",()=>nl.classList.add("aw"));inp.addEventListener("blur",()=>nl.classList.remove("aw"));
+const nbt=$("#nbt"),nba=$("#nba"),nb=mk(s=>{nbt.style.transform=`translate3d(${s.x}px,0,0)`;nba.style.transform=`translate3d(${s.a}px,0,0)`;nba.style.opacity=s.o},{x:0,a:-8,o:0});
+hover($("#nb"),nb,{x:0,a:-8,o:0},{x:-4,a:0,o:1},{m:1,t:280,f:26});
+const FC=[["Shop",["Catalogue","In stock now","Gift cards","Trade & contract"]],["Workshop",["Our story","Materials","Repairs","Journal"]],["Help",["Delivery","Returns","Care guide","Contact"]]];
+FC.forEach((c,ci)=>{const d=document.createElement("div");d.dataset.rv="fade";d.dataset.d=ci*110;d.innerHTML=`<h3 class="tr">${c[0]}</h3><ul></ul>`;$("#fc").appendChild(d);nav($("ul",d),c[1].map(l=>({l})),-1);inview(d,rv(d))});
+const wm=$("#wm");[..."LUNE"].forEach((c,i)=>{const s=document.createElement("span"),n=document.createElement("i");n.textContent=c;s.appendChild(n);wm.appendChild(s);
+  const o=mk(st=>n.style.transform=`translate3d(0,${st.y}%,0)`,{y:110});inview(wm,()=>go(o,{y:0},W,i*90))});
 
-const mText = $("#manifesto-text");
-let manifestoAnimated = false;
+/* search panel */
+const sp=$("#sp"),si=$("#si"),srl=$("#sr"),ss=$("#ss"),sy=mk(s=>sp.style.transform=`translateY(${s.y}%)`,{y:-100}),SC={m:1.2,t:190,f:30};
+let open=false,park;
+function list(){const q=si.value.trim().toLowerCase(),r=PRODS.filter(p=>(p[1]+" "+p[2]).toLowerCase().includes(q));
+  ss.textContent=q?`${r.length} ${r.length===1?"piece":"pieces"}`:"The collection";
+  srl.innerHTML=r.length?r.map(p=>`<li><div class="im" data-fc="light"><img src="${IMG(p[5])}" alt="${p[1]}"></div><b>${p[1]}</b><small>${p[2]}</small><span>${p[4]}</span></li>`).join(""):'<li class="none">Nothing under that name. Try a material — oak, ash, walnut.</li>'}
+function toggle(v){open=v;clearTimeout(park);sp.setAttribute("aria-hidden",!v);document.body.style.overflow=v?"hidden":"";
+  if(v){sp.style.visibility="visible";go(sy,{y:0},SC);requestAnimationFrame(()=>si.focus())}else{go(sy,{y:-100},SC);park=setTimeout(()=>sp.style.visibility="hidden",700);si.value="";list();$("#sb").focus()}}
+list();si.addEventListener("input",list);$("#sx").addEventListener("click",()=>toggle(false));$("#sb").addEventListener("click",()=>toggle(true));
+addEventListener("keydown",e=>{if(e.key==="Escape"&&open)toggle(false)});
 
-function runManifestoWritten() {
-  if (manifestoAnimated) return;
-  manifestoAnimated = true;
-  
-  if (reduced) {
-    F.forEach((frag, idx) => {
-      const el = mText.querySelector(`.written-chars[data-frag="${idx}"]`);
-      if (el) el.textContent = frag.text;
-    });
-    const ul = mText.querySelector(".underline");
-    if (ul) ul.style.transform = "scaleX(1)";
-    mText.querySelectorAll(".chair-gap").forEach(ch => {
-      ch.style.opacity = 1;
-      ch.style.transform = "translate3d(0,0,0)";
-    });
-    return;
-  }
-
-  const allChars = [];
-  F.forEach((frag, idx) => {
-    const el = mText.querySelector(`.written-chars[data-frag="${idx}"]`);
-    if (el) {
-      for (let i = 0; i < frag.text.length; i++) {
-        allChars.push({
-          el: el,
-          char: frag.text[i],
-          delay: (frag.at + i) * PACE
-        });
-      }
-    }
-  });
-
-  allChars.sort((a, b) => a.delay - b.delay);
-
-  const cursor = document.createElement("span");
-  cursor.className = "writing-cursor";
-  cursor.style.cssText = `
-    display: inline-block;
-    width: 2px;
-    height: 0.9em;
-    background: currentColor;
-    margin-left: 2px;
-    vertical-align: text-bottom;
-    animation: blink 0.8s infinite;
-  `;
-  
-  if (!document.getElementById("cursor-style")) {
-    const style = document.createElement("style");
-    style.id = "cursor-style";
-    style.textContent = `
-      @keyframes blink {
-        0%, 49% { opacity: 1; }
-        50%, 100% { opacity: 0; }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  let i = 0;
-  let lastEl = null;
-
-  function next() {
-    if (i >= allChars.length) {
-      cursor.remove();
-      
-      const ul = mText.querySelector(".underline");
-      if (ul) {
-        const uo = mk(s => ul.style.transform = `scaleX(${s.x})`, { x: 0 });
-        go(uo, { x: 1 }, WEIGHT, 39 * PACE);
-      }
-      
-      const chairs = mText.querySelectorAll(".chair-gap");
-      chairs.forEach((ch, idx) => {
-        const delay = idx === 0 ? 74 * PACE : 113 * PACE;
-        const o = mk(s => { 
-          ch.style.opacity = s.o; 
-          ch.style.transform = `translate3d(0,${s.y}px,0)`; 
-        }, { o: 0, y: -18 });
-        go(o, { o: 1, y: 0 }, WEIGHT, delay);
-        
-        const img = ch.querySelector("img");
-        const rock = mk(s => img.style.transform = `rotate(${s.r}deg)`, { r: 0 });
-        ch.addEventListener("mouseenter", () => { 
-          if (!noHover()) go(rock, { r: -5 }, { m: 1, t: 260, f: 11 }); 
-        });
-        ch.addEventListener("mouseleave", () => go(rock, { r: 0 }, { m: 1, t: 260, f: 11 }));
-      });
-      return;
-    }
-    
-    const c = allChars[i];
-    
-    if (c.el !== lastEl) {
-      if (lastEl && cursor.parentNode) cursor.remove();
-      c.el.parentNode.appendChild(cursor);
-      lastEl = c.el;
-    }
-    
-    const prevDelay = i > 0 ? allChars[i - 1].delay : 0;
-    const variation = (Math.random() - 0.5) * 4;
-    const actualDelay = Math.max(1, c.delay - prevDelay + variation);
-    
-    setTimeout(() => {
-      c.el.textContent += c.char;
-      i++;
-      next();
-    }, actualDelay);
-  }
-  
-  setTimeout(next, 500);
-}
-
-const manifestoObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !manifestoAnimated) {
-      runManifestoWritten();
-    }
-  });
-}, { threshold: 0.2, rootMargin: "0px" });
-
-manifestoObserver.observe(mText);
-
-const CATS = [
-  { label: "All products", count: "152", l: ASSET("catalogue/beds-1.png"), r: ASSET("catalogue/mirrors-2.png") },
-  { label: "Sofas", count: "12", l: ASSET("catalogue/sofas-1.png"), r: ASSET("catalogue/sofas-2.png") },
-  { label: "Chairs", count: "34", active: true, l: ASSET("catalogue/preview-left.png"), r: ASSET("catalogue/preview-right.png") },
-  { label: "Tables", count: "21", l: ASSET("catalogue/tables-1.png"), r: ASSET("catalogue/tables-2.png") },
-  { label: "Storage", count: "18", l: ASSET("catalogue/storage-1.png"), r: ASSET("catalogue/storage-2.png") },
-  { label: "Beds", count: "9", l: ASSET("catalogue/beds-1.png"), r: ASSET("catalogue/beds-2.png") },
-  { label: "Bedsides", count: "7", l: ASSET("catalogue/bedsides-1.png"), r: ASSET("catalogue/bedsides-2.png") },
-  { label: "Lighting", count: "14", l: ASSET("catalogue/lighting-1.png"), r: ASSET("catalogue/lighting-2.png") },
-  { label: "Mirrors", count: "11", l: ASSET("catalogue/mirrors-1.png"), r: ASSET("catalogue/mirrors-2.png") }
-];
-const catList = $("#cat-list");
-let activeRow = 2;
-CATS.forEach((cat, i) => {
-  const li = document.createElement("li"); li.className = `cat-row ${cat.active ? "active" : ""}`; li.dataset.idx = i;
-  li.innerHTML = `<span class="trim" style="font:400 var(--text-category)/1.0741 'Instrument Serif',serif">${cat.label}</span><span class="count trim">${cat.count}</span>`;
-  catList.appendChild(li);
-  const o = mk(s => { li.style.opacity = s.o; li.style.transform = `translate3d(0,${s.y}px,0)`; }, { o: 0, y: i === 2 ? 0 : i < 2 ? 26 : -26 });
-  go(o, { o: 1, y: 0 }, WEIGHT, 260 + Math.abs(i - 2) * 70);
-  
-  li.addEventListener("mouseenter", () => { if (!noHover()) setActive(i); });
-  li.addEventListener("pointerdown", () => setActive(i));
-});
-
-function setActive(idx) {
-  activeRow = idx;
-  document.querySelectorAll(".cat-row").forEach((r, i) => {
-    r.classList.toggle("active", i === idx);
-    r.style.color = i === idx ? "var(--foreground-on-band)" : "var(--foreground-strong)";
-    r.querySelector(".count").style.color = i === idx ? "var(--foreground-on-band)" : "var(--foreground-muted)";
-  });
-  const band = $("#cat-band");
-  const rows = document.querySelectorAll(".cat-row");
-  const targetY = rows[idx].offsetTop - rows[2].offsetTop;
-  go(mk(s => band.style.transform = `translateY(${s.y}px)`, { y: 0 }), { y: targetY }, { m: 1, t: 210, f: 30 });
-  
-  const pl = $("#plate-l"), pr = $("#plate-r");
-  pl.querySelector("img").src = CATS[idx].l;
-  pr.querySelector("img").src = CATS[idx].r;
-}
-setActive(2);
-
-if (innerWidth <= 1024) {
-  const obs = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting && !noHover()) {
-      setInterval(() => { setActive((activeRow + 1) % CATS.length); }, 2400);
-      obs.disconnect();
-    }
-  }, { threshold: 0.4 });
-  obs.observe($("#catalogue"));
-}
-
-const PRODS = [
-  { name: "Elara Lounge Chair", spec: "Oiled oak, bouclé 12", price: "€1,840", img: "products/elara-lounge-chair.png", crop: { w: "118.31%", h: "100%", l: "-18.36%", t: "0%" } },
-  { name: "Ansel Dining Table", spec: "Solid ash, 220 cm", price: "€3,120", img: "products/ansel-dining-table.png", crop: { w: "107.19%", h: "106.21%", l: "-7.16%", t: "-3.1%" } },
-  { name: "Marlow Two-Seater", spec: "Walnut, wool 04", price: "€4,460", img: "products/marlow-two-seater.png", crop: { w: "167.95%", h: "144.47%", l: "-30.48%", t: "-44.47%" } },
-  { name: "Vega Sideboard", spec: "Smoked oak, brass", price: "€2,290", img: "products/vega-sideboard.png", crop: { w: "108.3%", h: "107.31%", l: "-5.24%", t: "-3.2%" } }
-];
-const pList = $("#product-list");
-PRODS.forEach((p, i) => {
-  const li = document.createElement("li"); li.className = "card";
-  li.innerHTML = `
-    <div class="card-plate" data-frame-cursor>
-      <img src="${ASSET(p.img)}" alt="${p.name}" style="width:${p.crop.w};height:${p.crop.h};left:${p.crop.l};top:${p.crop.t}">
-      <button class="save-chip" aria-label="Save ${p.name}"><span class="bar h"></span><span class="bar v"></span></button>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:0.5rem;white-space:nowrap;font:400 var(--text-title)/1.1538 'Instrument Serif',serif">
-      <h3 class="trim">${p.name}</h3>
-      <span class="trim" style="font-size:var(--text-label);color:color-mix(in oklab, var(--foreground) 35%, transparent)">${p.spec}</span>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:space-between">
-      <span class="trim" style="border:0.0375rem solid var(--foreground);border-radius:var(--radius-pill);padding:0.5rem 0.75rem;font:400 var(--text-caption)/normal 'Instrument Serif',serif;letter-spacing:0.04em">Ships in 3 days</span>
-      <span class="trim" style="font:400 var(--text-body)/normal 'Instrument Serif',serif;letter-spacing:0.02em">${p.price}</span>
-    </div>
-  `;
-  pList.appendChild(li);
-  
-  const o = mk(s => li.querySelector(".card-plate").style.clipPath = `inset(${s.c}% 0 0 0)`, { c: 100 });
-  go(o, { c: 0 }, WEIGHT, i * 110);
-  
-  const chip = li.querySelector(".save-chip");
-  chip.addEventListener("click", () => chip.classList.toggle("saved"));
-});
-
-const HOTSPOTS = [
-  { name: "Pendant Lamp", spec: "Enamel & steel — €410", left: "21.125rem", top: "4.3125rem", focus: { x: 0.205, y: 0.275 } },
-  { name: "Table Lamp", spec: "Glossy ceramic — €185", left: "38rem", top: "9.5625rem", focus: { x: 0.413, y: 0.39 } },
-  { name: "Ansel Dining Table", spec: "Solid ash, 220 cm — €3,120", left: "20.75rem", top: "18.5625rem", focus: { x: 0.22, y: 0.58 } },
-  { name: "Sofa", spec: "Upholstered in fabric — €2.950", left: "60.75rem", top: "15.5rem", focus: { x: 0.8, y: 0.62 } },
-  { name: "Ansel Dining Chair", spec: "Solid oak, woven seat — €640", left: "35.1875rem", top: "30.5rem", focus: { x: 0.33, y: 0.67 } }
-];
-const rTags = $("#room-tags");
-let activeSpot = null;
-HOTSPOTS.forEach((h, i) => {
-  const li = document.createElement("li"); li.className = "tag"; li.style.left = h.left; li.style.top = h.top;
-  li.innerHTML = `
-    <span class="mark"><span class="bar h" style="position:absolute;left:50%;top:50%;translate:-50% -50%;width:0.43em;height:0.045em;background:currentColor;border-radius:0.5px"></span><span class="bar v" style="position:absolute;left:50%;top:50%;translate:-50% -50%;width:0.045em;height:0.43em;background:currentColor;border-radius:0.5px"></span></span>
-    <span class="text"><span class="trim">${h.name}</span><span class="spec trim">${h.spec}</span></span>
-  `;
-  rTags.appendChild(li);
-  const o = mk(s => { li.style.opacity = s.o; li.style.transform = `scale(${s.s})`; }, { o: 0, s: 0.82 });
-  go(o, { o: 1, s: 1 }, WEIGHT, 520 + i * 90);
-  
-  const enter = () => {
-    activeSpot = h;
-    document.querySelectorAll(".tag").forEach((t, idx) => t.classList.toggle("dimmed", idx !== i));
-    $("#room-scrim").style.opacity = 1;
-    updateScrim();
-  };
-  const leave = () => {
-    activeSpot = null;
-    document.querySelectorAll(".tag").forEach(t => t.classList.remove("dimmed"));
-    $("#room-scrim").style.opacity = 0;
-  };
-  
-  li.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") enter(); });
-  li.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") leave(); });
-  li.addEventListener("click", () => activeSpot === h ? leave() : enter());
-});
-
-function updateScrim() {
-  if (!activeSpot) return;
-  const plate = $("#room-plate");
-  const photo = plate.querySelector("img");
-  const p = plate.getBoundingClientRect(), b = photo.getBoundingClientRect();
-  const nw = photo.naturalWidth || 1, nh = photo.naturalHeight || 1;
-  const scale = Math.max(b.width / nw, b.height / nh);
-  const painted = { w: nw * scale, h: nh * scale };
-  const origin = { x: b.left - p.left + (b.width - painted.w) / 2, y: b.top - p.top + (b.height - painted.h) / 2 };
-  const isMobile = innerWidth <= 548;
-  const clear = isMobile ? "2.5rem" : "5.5rem";
-  const fade = isMobile ? "6rem" : "14rem";
-  const sx = origin.x + activeSpot.focus.x * painted.w;
-  const sy = origin.y + activeSpot.focus.y * painted.h;
-  $("#room-scrim").style.background = `radial-gradient(circle at ${sx}px ${sy}px, transparent ${clear}, color-mix(in srgb, var(--scrim) 66%, transparent) ${fade})`;
-}
-addEventListener("resize", updateScrim);
-
-const nlRow = $("#nl-row");
-nlRow.addEventListener("pointerenter", () => nlRow.classList.add("awake"));
-nlRow.addEventListener("pointerleave", () => { if (!nlRow.querySelector(".nl-input").matches(":focus")) nlRow.classList.remove("awake"); });
-nlRow.querySelector(".nl-input").addEventListener("focus", () => nlRow.classList.add("awake"));
-nlRow.querySelector(".nl-input").addEventListener("blur", () => nlRow.classList.remove("awake"));
-
-const hoverBar = (el) => {
-  const bar = document.createElement("span"); bar.className = "bar"; el.appendChild(bar);
-  const o = mk(s => bar.style.transform = `scaleX(${s.x})`, { x: 0 });
-  hover(el, o, { x: 0 }, { x: 1 }, { m: 1, t: 280, f: 28 });
-};
-
-const FCOLS = [
-  { heading: "Shop", links: ["Catalogue", "In stock now", "Gift cards", "Trade & contract"] },
-  { heading: "Workshop", links: ["Our story", "Materials", "Repairs", "Journal"] },
-  { heading: "Help", links: ["Delivery", "Returns", "Care guide", "Contact"] }
-];
-const fNav = $("#footer-nav");
-FCOLS.forEach((col, ci) => {
-  const div = document.createElement("div"); div.className = "footer-col";
-  div.innerHTML = `<h3 class="trim">${col.heading}</h3>`;
-  const ul = document.createElement("ul"); ul.style.display = "flex"; ul.style.flexDirection = "column"; ul.style.gap = "0.875rem";
-  col.links.forEach((link, li) => {
-    const a = document.createElement("a"); a.href = "#"; a.textContent = link; a.className = "trim";
-    hoverBar(a);
-    ul.appendChild(a);
-  });
-  div.appendChild(ul);
-  fNav.appendChild(div);
-  const o = mk(s => { div.style.opacity = s.o; div.style.transform = `translate3d(0,${s.y}px,0)`; }, { o: 0, y: 20 });
-  go(o, { o: 1, y: 0 }, SOFT, ci * 110);
-});
-
-const wm = $("#wordmark");
-wm.innerHTML = "";
-for (const char of "HALDEN") {
-  const span = document.createElement("span"); span.className = "letter";
-  span.innerHTML = `<span class="inner trim">${char}</span>`;
-  wm.appendChild(span);
-}
-const letters = wm.querySelectorAll(".inner");
-letters.forEach((l, i) => {
-  const o = mk(s => l.style.transform = `translate3d(0,${s.y}%,0)`, { y: 110 });
-  go(o, { y: 0 }, WEIGHT, i * 90);
-});
-
-const cursorLayer = $("#cursor-layer");
-const marks = cursorLayer.querySelectorAll(".cursor-mark");
-let cx = 0, cy = 0, spread = 0;
-const co = mk(s => {
-  const gap = 5 + s.spread * 17;
-  marks.forEach((m, i) => {
-    const dx = i % 2 === 0 ? -gap : gap - 11;
-    const dy = i < 2 ? -gap : gap - 11;
-    m.style.left = s.x + "px"; m.style.top = s.y + "px";
-    m.style.opacity = s.spread;
-    m.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
-  });
-}, { x: 0, y: 0, spread: 0 });
-
-addEventListener("mousemove", e => {
-  if (e.pointerType === "mouse" || e.movementX !== undefined) {
-    cx = e.clientX; cy = e.clientY;
-    spread = e.target.closest("[data-frame-cursor]") ? 1 : 0;
-    cursorLayer.classList.toggle("light", !!e.target.closest("[data-frame-cursor='light']"));
-    go(co, { x: cx, y: cy, spread }, { m: 0.8, t: 380, f: 30 });
-  }
-});
-addEventListener("pointerleave", () => { spread = 0; go(co, { spread: 0 }); });
-
-["cat-rule", "prod-rule", "room-rule", "foot-rule"].forEach(id => {
-  const el = $(`#${id}`);
-  if (el) {
-    const o = mk(s => el.style.transform = `scaleX(${s.x})`, { x: 0 });
-    go(o, { x: 1 }, WEIGHT, 200);
-  }
-});
+/* framing cursor: mouse only */
+if(matchMedia("(pointer: fine)").matches){const cu=$("#cur"),mks=$$("i",cu),
+  co=mk(s=>{const g=5+s.p*17;mks.forEach((m,i)=>{m.style.left=s.x+"px";m.style.top=s.y+"px";m.style.opacity=s.p;m.style.transform=`translate3d(${i%2?g-11:-g}px,${i<2?-g:g-11}px,0)`})},{x:-50,y:-50,p:0});
+  addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;const t=e.target.closest?.("[data-fc]");cu.classList.toggle("lt",t?.dataset.fc==="light");go(co,{x:e.clientX,y:e.clientY,p:t?1:0},{m:.8,t:380,f:30})});
+  document.addEventListener("pointerleave",()=>go(co,{p:0},{m:.8,t:380,f:30}))}
 </script>
 </body>
 </html>
