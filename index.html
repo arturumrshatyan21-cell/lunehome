@@ -1305,7 +1305,7 @@ const frameFor = w => { const x = Math.round(Math.max(FRAME_MIN, Math.min(w * FR
   }
 })();
 
-// === ИСПРАВЛЕННЫЙ МАНИФЕСТ ===
+// === ЭФФЕКТ БЫСТРОГО ПИСЬМА ДЛЯ MANIFESTO ===
 const PACE = 9;
 const F = [
   { text: "(Halden) is made for ", at: 0 },
@@ -1350,15 +1350,48 @@ function runManifestoWritten() {
 
   allChars.sort((a, b) => a.delay - b.delay);
 
+  // Создаем мигающий курсор
+  const cursor = document.createElement("span");
+  cursor.className = "writing-cursor";
+  cursor.style.cssText = `
+    display: inline-block;
+    width: 2px;
+    height: 0.9em;
+    background: currentColor;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink 0.8s infinite;
+  `;
+  
+  // Добавляем стиль для мигания, если его еще нет
+  if (!document.getElementById("cursor-style")) {
+    const style = document.createElement("style");
+    style.id = "cursor-style";
+    style.textContent = `
+      @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   let i = 0;
+  let lastEl = null;
+
   function next() {
     if (i >= allChars.length) {
+      // Письмо завершено — убираем курсор
+      cursor.remove();
+      
+      // Рисуем подчеркивание под "considered living,"
       const ul = mText.querySelector(".underline");
       if (ul) {
         const uo = mk(s => ul.style.transform = `scaleX(${s.x})`, { x: 0 });
         go(uo, { x: 1 }, WEIGHT, 39 * PACE);
       }
       
+      // Показываем кресла с эффектом падения
       const chairs = mText.querySelectorAll(".chair-gap");
       chairs.forEach((ch, idx) => {
         const delay = idx === 0 ? 74 * PACE : 113 * PACE;
@@ -1368,6 +1401,7 @@ function runManifestoWritten() {
         }, { o: 0, y: -18 });
         go(o, { o: 1, y: 0 }, WEIGHT, delay);
         
+        // Эффект покачивания при наведении
         const img = ch.querySelector("img");
         const rock = mk(s => img.style.transform = `rotate(${s.r}deg)`, { r: 0 });
         ch.addEventListener("mouseenter", () => { 
@@ -1379,14 +1413,28 @@ function runManifestoWritten() {
     }
     
     const c = allChars[i];
+    
+    // Перемещаем курсор к текущему элементу
+    if (c.el !== lastEl) {
+      if (lastEl && cursor.parentNode) cursor.remove();
+      c.el.parentNode.appendChild(cursor);
+      lastEl = c.el;
+    }
+    
     const prevDelay = i > 0 ? allChars[i - 1].delay : 0;
+    
+    // Небольшое случайное варьирование скорости для реалистичности (±2мс)
+    const variation = (Math.random() - 0.5) * 4;
+    const actualDelay = Math.max(1, c.delay - prevDelay + variation);
+    
     setTimeout(() => {
       c.el.textContent += c.char;
       i++;
       next();
-    }, Math.max(0, c.delay - prevDelay));
+    }, actualDelay);
   }
   
+  // Начинаем писать через 500мс после загрузки
   setTimeout(next, 500);
 }
 
