@@ -908,14 +908,23 @@ footer {
 }
 
 /* =========================================
-   MOBILE OPTIMIZATIONS (768px & 548px)
+   RESPONSIVE - EXACT SPEC HEIGHTS
    ========================================= */
+
+/* 1024px */
 @media (max-width: 1024px) {
   header { height: 4rem; }
   .mark { left: 1.5rem; top: 1.6875rem; }
   .n1 { gap: 1.875rem; }
   .n2 { left: calc(50% + 24rem); }
-  #stage, #manifesto, #catalogue, #products, #room { height: 48rem; }
+  
+  #stage { height: 48rem; }
+  #manifesto { height: 34.5rem; }
+  #catalogue { height: 43.9375rem; }
+  #products { height: 43.125rem; }
+  #room { height: 44.0625rem; }
+  footer { height: 32.625rem; }
+  
   .cat-band { top: 16.3125rem; width: 64rem; height: 3.4375rem; }
   .product-list { width: 60rem; }
   .card { width: 13.875rem; }
@@ -923,6 +932,7 @@ footer {
   .footer-nav { left: 42.5rem; width: 19.5rem; justify-content: between; gap: 0; }
 }
 
+/* 768px */
 @media (max-width: 768px) {
   header { height: 4rem; }
   .mark { top: 1.375rem; }
@@ -931,22 +941,24 @@ footer {
   
   #stage { height: 64rem; }
   h1 { font-size: 9.4375rem; }
-  .hide-768 { display: none !important; }
   
-  #manifesto, #catalogue, #products, #room { height: 36.875rem; }
+  #manifesto { height: 25rem; }
   .manifesto-text { left: 1.6875rem; top: 3.125rem; translate: 0 0; text-align: left; font-size: 2.5rem; }
   .chair-gap { width: 3.625rem; height: 2.125rem; }
   .chair-gap .inner { width: 4.5rem; height: 4.5rem; }
   
+  #catalogue { height: 36.875rem; }
   .cat-band { top: 13.875rem; width: 48rem; height: 3.0625rem; }
   .cat-plate.left { left: 1.5rem; top: 15.0417rem; }
   .cat-plate.right { right: 1.6875rem; top: 14.84375rem; width: 6.5rem; height: 8rem; }
   
+  #products { height: 87.6875rem; }
   .filters { top: 9.0625rem; flex-wrap: wrap; overflow: visible; }
   .product-list { left: 1.5rem; top: 12.5625rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 45rem; }
   .card { width: 100%; }
   .card-plate { height: 29.25rem; }
   
+  #room { height: 31.0625rem; }
   .room-plate { left: 1.5rem; top: 7.0625rem; width: 45rem; height: 22.5rem; }
   .tag .text { display: none; }
   .tag { padding: 0; background: transparent; gap: 0; overflow: visible; }
@@ -957,50 +969,143 @@ footer {
   .wordmark { left: 1.5rem; top: 20.625rem; font-size: 6.25rem; letter-spacing: 0.31em; }
 }
 
+/* 390px (548px breakpoint) */
 @media (max-width: 548px) {
   header { height: 3.1875rem; }
   .mark { left: 1rem; top: 0.9375rem; }
   .n2 { left: calc(50% + 6.171875rem); gap: 1rem; font-size: var(--text-label); }
   
+  /* Hero 390px - EXACT SPEC */
   #stage { height: 52.75rem; }
   h1 { font-size: 4.875rem; }
   .w#w1 { left: 1rem !important; top: 4.1875rem !important; }
   .w#w2 { left: 5.3125rem !important; top: 8.3125rem !important; }
-  .hide-390 { display: none !important; }
   
-  /* Hero 390px specific layout */
-  .hero-rule-390 { display: block !important; position: absolute; left: 1rem; top: 18.375rem; height: 1px; width: 22.375rem; background: var(--rule); }
-  .plate.keep-390[data-d="520"] { display: block !important; left: 1rem; top: 19.6875rem; width: 22.375rem; height: 12.5625rem; }
-  .plate.keep-390[data-d="520"] img { left: 0; top: -7.1%; width: 100.84%; height: 107.34%; transform: scaleX(-1); }
-  .cap.keep-390[data-d="560"] { display: block !important; left: 23.375rem; top: 33.25rem; translate: -100% 0; text-align: right; line-height: normal; }
-  .plate.keep-390[data-d="620"] { display: block !important; left: 1rem; top: 35.125rem; width: 11.1875rem; height: 15.5625rem; }
-  .plate.keep-390[data-d="620"] img { transform: scaleX(1) !important; }
-  .plate.keep-390[data-d="660"] { display: block !important; left: 12.625rem; top: 35.125rem; width: 10.75rem; height: 15.5625rem; }
-  .plate.keep-390[data-d="660"] img { transform: scaleX(1) !important; left: -23.81%; top: -63.24%; width: 123.81%; height: 170.17%; }
-  .cap.keep-390[data-d="600"] { display: block !important; left: 1rem; top: 51.1875rem; }
-  .cap.keep-390[data-d="slash"] { display: block !important; left: 23.375rem; top: 51.1875rem; translate: -100% 0; text-align: right; line-height: normal; }
-  .welcome { left: 1rem !important; top: 15rem !important; width: 5.9375rem !important; text-align: left !important; font-size: 0.875rem !important; }
+  /* Hide non-essential hero elements on 390px */
+  .hero-hide-390 { display: none !important; }
+  
+  /* Hero rule for 390px */
+  .hero-rule-390 { 
+    display: block !important; 
+    position: absolute; 
+    left: 1rem; 
+    top: 18.375rem; 
+    height: 1px; 
+    width: 22.375rem; 
+    background: var(--rule); 
+  }
+  
+  /* Modular sofa plate - 390px */
+  .plate-390[data-d="520"] { 
+    display: block !important; 
+    left: 1rem !important; 
+    top: 19.6875rem !important; 
+    width: 22.375rem !important; 
+    height: 12.5625rem !important; 
+  }
+  .plate-390[data-d="520"] img { 
+    left: 0 !important; 
+    top: -7.1% !important; 
+    width: 100.84% !important; 
+    height: 107.34% !important; 
+    transform: scaleX(-1) !important; 
+  }
+  
+  /* Price $2999.99 - 390px */
+  .cap-390[data-d="560"] { 
+    display: block !important; 
+    left: 23.375rem !important; 
+    top: 33.25rem !important; 
+    translate: -100% 0 !important; 
+    text-align: right !important; 
+  }
+  
+  /* New arrival 1 - 390px */
+  .plate-390[data-d="620"] { 
+    display: block !important; 
+    left: 1rem !important; 
+    top: 35.125rem !important; 
+    width: 11.1875rem !important; 
+    height: 15.5625rem !important; 
+  }
+  .plate-390[data-d="620"] img { 
+    transform: scaleX(1) !important; 
+  }
+  
+  /* New arrival 2 - 390px */
+  .plate-390[data-d="660"] { 
+    display: block !important; 
+    left: 12.625rem !important; 
+    top: 35.125rem !important; 
+    width: 10.75rem !important; 
+    height: 15.5625rem !important; 
+  }
+  .plate-390[data-d="660"] img { 
+    transform: scaleX(1) !important; 
+    left: -23.81% !important; 
+    top: -63.24% !important; 
+    width: 123.81% !important; 
+    height: 170.17% !important; 
+  }
+  
+  /* New arrivals caption - 390px */
+  .cap-390[data-d="600"] { 
+    display: block !important; 
+    left: 1rem !important; 
+    top: 51.1875rem !important; 
+  }
+  
+  /* // mark - 390px */
+  .cap-390[data-d="slash"] { 
+    display: block !important; 
+    left: 23.375rem !important; 
+    top: 51.1875rem !important; 
+    translate: -100% 0 !important; 
+    text-align: right !important; 
+  }
+  
+  /* Welcome line - 390px */
+  .welcome { 
+    left: 1rem !important; 
+    top: 15rem !important; 
+    width: 5.9375rem !important; 
+    text-align: left !important; 
+    font-size: 0.875rem !important; 
+  }
 
-  #manifesto, #catalogue, #products, #room { height: 24.1875rem; }
+  /* Manifesto 390px */
+  #manifesto { height: 13.5rem; }
   .manifesto-text { font-size: 1.375rem; }
   .chair-gap { width: 2rem; height: 1.1875rem; }
   .chair-gap .inner { width: 2.625rem; height: 2.625rem; }
   
+  /* Catalogue 390px */
+  #catalogue { height: 24.1875rem; }
   .cat-band { top: 10.75rem; width: 24.375rem; height: 1.6875rem; }
   .cat-plate.left { left: 1rem; top: 11.375rem; width: 6rem; height: 4.625rem; }
   .cat-plate.right { right: 1rem; top: 11.25rem; width: 5rem; height: 6rem; }
   
-  .product-list { left: 1rem; top: 15.625rem; grid-template-columns: 1fr; gap: 2.5rem; width: 22.375rem; }
+  /* Products 390px - EXACT SPEC HEIGHT */
+  #products { height: 147.875rem; }
+  .product-list { 
+    left: 1rem; 
+    top: 15.625rem; 
+    grid-template-columns: 1fr; 
+    gap: 2.5rem; 
+    width: 22.375rem; 
+  }
   .card { width: 22.375rem; }
   .card-plate { height: 23.75rem; }
   
+  /* Room 390px */
+  #room { height: 25.3125rem; }
   .room-plate { left: 1rem; top: 9.0625rem; width: 22.375rem; height: 12.5rem; }
   .room-plate img { left: -13.13%; top: -22.75%; width: 122.7%; height: 123.48%; }
   
+  /* Footer 390px */
   footer { height: 37.6875rem; }
   .footer-nav { left: 1rem; top: 13.125rem; flex-direction: column; align-items: start; gap: 3rem; }
   .wordmark { left: 1rem; top: 30.6875rem; font-size: 5rem; }
-  .foot-legal-last { position: absolute; left: 1rem; top: 35.625rem; font-size: var(--text-caption); }
 }
 </style>
 </head>
@@ -1023,28 +1128,32 @@ footer {
       <!-- Hero rule for 390px -->
       <div class="hero-rule-390" style="display:none;"></div>
 
-      <span class="abs hide-390" style="left:74.3125rem;top:7.375rem;width:4.5625rem"><span class="cap trim sr-l" data-d="320" style="position:static;display:block">collection 2026</span></span>
-      <span class="abs hide-390" style="left:74.3125rem;top:13.125rem"><span class="cap trim sr-l" data-d="380" style="position:static;display:block">01-11</span></span>
-      <span class="abs hide-390" style="left:2rem;top:23.875rem;width:5rem"><span class="cap trim sr-l" data-d="420" style="position:static;display:block">dining chair 32"W x 38"H</span></span>
-      <span class="abs hide-390" style="left:2rem;top:29.25rem;width:5rem"><span class="cap trim sr-l" data-d="480" style="position:static;display:block;line-height:normal">$499.99</span></span>
-      <span class="abs hide-390" style="left:46.0625rem;top:34.6875rem;width:5.8125rem;translate:-100% 0;text-align:right"><span class="cap trim sr-l" data-d="500" style="position:static;display:block">modular sofa 98"W x 38"H</span></span>
+      <!-- Hidden on 390px -->
+      <span class="abs hero-hide-390" style="left:74.3125rem;top:7.375rem;width:4.5625rem"><span class="cap trim sr-l" data-d="320" style="position:static;display:block">collection 2026</span></span>
+      <span class="abs hero-hide-390" style="left:74.3125rem;top:13.125rem"><span class="cap trim sr-l" data-d="380" style="position:static;display:block">01-11</span></span>
+      <span class="abs hero-hide-390" style="left:2rem;top:23.875rem;width:5rem"><span class="cap trim sr-l" data-d="420" style="position:static;display:block">dining chair 32"W x 38"H</span></span>
+      <span class="abs hero-hide-390" style="left:2rem;top:29.25rem;width:5rem"><span class="cap trim sr-l" data-d="480" style="position:static;display:block;line-height:normal">$499.99</span></span>
+      <span class="abs hero-hide-390" style="left:46.0625rem;top:34.6875rem;width:5.8125rem;translate:-100% 0;text-align:right"><span class="cap trim sr-l" data-d="500" style="position:static;display:block">modular sofa 98"W x 38"H</span></span>
       
-      <span class="abs keep-390" style="left:46.0625rem;top:46.9375rem;translate:-100% 0;text-align:right"><span class="cap trim sr-l" data-d="560" style="position:static;display:block;line-height:normal">$2999.99</span></span>
-      
-      <span class="abs keep-390" style="left:69.875rem;top:37.5625rem"><span class="cap trim sr-l" data-d="600" style="position:static;display:block">new arrivals</span></span>
-      <span class="cap trim keep-390" aria-hidden="true" data-d="slash" style="left:88rem;top:37.6875rem;translate:-100% 0;text-align:right;line-height:normal">//</span>
+      <!-- Shown on 390px -->
+      <span class="abs cap-390" data-d="560" style="left:46.0625rem;top:46.9375rem;translate:-100% 0;text-align:right;display:none;"><span class="cap trim sr-l" style="position:static;display:block;line-height:normal">$2999.99</span></span>
+      <span class="abs cap-390" data-d="600" style="left:69.875rem;top:37.5625rem;display:none;"><span class="cap trim sr-l" style="position:static;display:block">new arrivals</span></span>
+      <span class="cap trim cap-390" aria-hidden="true" data-d="slash" style="left:88rem;top:37.6875rem;translate:-100% 0;text-align:right;line-height:normal;display:none;">//</span>
 
-      <a href="#" class="cta hide-390" id="cta" style="left:73.5625rem;top:28.625rem">
+      <a href="#" class="cta hero-hide-390" id="cta" style="left:73.5625rem;top:28.625rem">
         <b id="br1" aria-hidden="true">[</b><span class="trim sr-l" data-d="560" data-gap="0.24" style="padding:0 0.22em" data-full="1">explore collection</span><b id="br2" aria-hidden="true">]</b>
       </a>
 
       <p class="welcome trim sr-l" data-d="700" data-nc="1" style="left:2rem;top:43.8125rem">WELCOME TO HALDEN – tIMELESS DESIGN, MADE TO LAST.</p>
 
-      <div class="plate hide-390" data-d="340" style="left:79.3125rem;top:7.5rem;width:8.6875rem;height:6.5rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/collection-chair.png" alt="Red sculptural lounge chair"></div>
-      <div class="plate hide-390" data-d="440" style="left:9.25rem;top:24rem;width:6.4375rem;height:6.25rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/dining-chair.png" alt="Black wooden dining chair"></div>
-      <div class="plate fl keep-390" data-d="520" style="left:46.5625rem;top:34.8125rem;width:22.8125rem;height:13.1875rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/modular-sofa.png" alt="Modular sofa"></div>
-      <div class="plate fl keep-390" data-d="620" style="left:69.875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-1.png" alt="Sideboard"></div>
-      <div class="plate fl keep-390" data-d="660" style="left:79.1875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-2.png" alt="Dining table"></div>
+      <!-- Hidden on 390px -->
+      <div class="plate hero-hide-390" data-d="340" style="left:79.3125rem;top:7.5rem;width:8.6875rem;height:6.5rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/collection-chair.png" alt="Red sculptural lounge chair"></div>
+      <div class="plate hero-hide-390" data-d="440" style="left:9.25rem;top:24rem;width:6.4375rem;height:6.25rem"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/dining-chair.png" alt="Black wooden dining chair"></div>
+      
+      <!-- Shown on 390px -->
+      <div class="plate fl plate-390" data-d="520" style="left:46.5625rem;top:34.8125rem;width:22.8125rem;height:13.1875rem;display:none;"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/modular-sofa.png" alt="Modular sofa"></div>
+      <div class="plate fl plate-390" data-d="620" style="left:69.875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem;display:none;"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-1.png" alt="Sideboard"></div>
+      <div class="plate fl plate-390" data-d="660" style="left:79.1875rem;top:38.9375rem;width:8.8125rem;height:9.0625rem;display:none;"><img src="https://storage.getlayers.ai/assets/halden-5875ef9537/hero/new-arrival-2.png" alt="Dining table"></div>
     </div>
   </section>
 
@@ -1141,7 +1250,7 @@ footer {
   <div class="abs" style="left:2rem;top:17.25rem;height:1px;width:86rem;background:color-mix(in oklab, var(--foreground-on-accent) 35%, transparent);transform-origin:left" id="foot-rule"></div>
   <div class="abs" style="left:2rem;top:18.5625rem;display:flex;flex-direction:column;align-items:start;gap:0.5rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif" id="foot-legal">
     <span>Halden Møbler ApS  ·  Refshalevej 88, 1432 København K  · +45 32 96 11 04</span>
-    <span class="foot-legal-last">© 2026  ·  Made in Denmark, mostly by hand</span>
+    <span>© 2026  ·  Made in Denmark, mostly by hand</span>
   </div>
   <div class="abs trim" style="left:75.8125rem;top:18.5625rem;white-space:pre;font:400 var(--text-label)/normal 'Instrument Serif',serif" id="foot-social">Instagram  ·  Pinterest  ·  hello@halden.dk</div>
   <div class="wordmark" aria-hidden="true" id="wordmark">HALDEN</div>
@@ -1346,8 +1455,8 @@ const frameFor = w => { const x = Math.round(Math.max(FRAME_MIN, Math.min(w * FR
   }
 })();
 
-// === ЭФФЕКТ БЫСТРОГО ПИСЬМА ДЛЯ MANIFESTO ===
-const PACE = 15; // Замедлено на ~70% (было 9мс)
+// === MANIFESTO WRITTEN EFFECT - SLOW (15ms per char) ===
+const PACE = 15;
 const F = [
   { text: "(Halden) is made for ", at: 0 },
   { text: "considered living,", at: 21, italic: true },
@@ -1482,7 +1591,6 @@ const manifestoObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.2, rootMargin: "0px" });
 
 manifestoObserver.observe(mText);
-// ==============================
 
 const CATS = [
   { label: "All products", count: "152", l: ASSET("catalogue/beds-1.png"), r: ASSET("catalogue/mirrors-2.png") },
