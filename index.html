@@ -6,11 +6,15 @@
 <title>LUNE Home</title>
 <meta name="description" content="LUNE Home makes soft, rounded furniture for gentle living. See the 2026 collection.">
 <meta name="theme-color" content="#6b1f2e">
+<meta property="og:title" content="LUNE Home — soft living"><meta property="og:description" content="Soft, rounded furniture for gentle living. Request the 2026 catalogue."><meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 fill=%27%236b1f2e%27/%3E%3Ctext x=%2750%27 y=%2772%27 font-size=%2772%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27serif%27%3EL%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <script type="importmap">{"imports":{"lenis":"https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs"}}</script>
-<noscript><style>#pre{display:none}#stage{opacity:1!important}</style></noscript>
+<noscript><style>#pre{display:none}#stage{opacity:1!important}#fab{position:fixed;left:1rem;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));z-index:45;display:flex;justify-content:center;background:var(--ac);color:#fff;border-radius:6.25rem;padding:.95rem 1rem;font:400 1.25rem/1 var(--di);letter-spacing:.08em;opacity:0;pointer-events:none;translate:0 1rem;transition:opacity .3s var(--ease),translate .3s var(--ease);box-shadow:0 .5rem 1.5rem rgba(42,20,24,.3)}
+#fab.show{opacity:1;pointer-events:auto;translate:0 0}@media(min-width:980px){#fab{display:none}}
+</style></noscript>
 <style>
 :root{--bg:#f1e4dc;--ac:#6b1f2e;--on:#fff;--band:#f8f0ea;--strong:#2a1418;--muted:#8a6f66;--rule:#dcc5b8;--sub:#dcc5b8;--se:"Instrument Serif",serif;--di:"Bebas Neue",sans-serif;--ease:cubic-bezier(.2,0,0,1)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -38,7 +42,7 @@ button,input{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #hdr.on .ni,footer .ni{--bc:#fff;--hc:var(--ac)}
 .ni .bar{position:absolute;inset:-.2em -.42em;z-index:-1;transform-origin:left;transform:scaleX(0);background:var(--bc)}
 .ni .lb{display:block;white-space:nowrap;transition:color .15s var(--ease)}
-.ni:hover .lb{color:var(--hc)}
+@media(hover:hover) and (min-width:769px){.ni:hover .lb{color:var(--hc)}}
 
 /* shared sections */
 .sec{position:relative;overflow:hidden;background:var(--bg);padding:3.5rem 1.25rem}
@@ -206,7 +210,7 @@ h1{position:absolute;inset:0;font-size:15rem;line-height:normal;margin:0}h1 .w{p
 #prod{height:50rem}#prod .h2{left:2rem;top:2rem}#prod .sp{left:59.8125rem;top:3.125rem;width:12.8125rem}#prod .hr{top:7.75rem}
 .fl2{position:absolute;left:2rem;top:10.3125rem;margin:0}
 .srt{position:absolute;left:80.8125rem;top:11.6875rem;white-space:pre;font:400 .875rem/1 var(--se);letter-spacing:.04em}
-.pl{position:absolute;left:2rem;top:13.5625rem;width:86rem;margin:0;padding:0;gap:1.5rem;overflow:hidden}
+.pl{position:absolute;left:2rem;top:10.3125rem;width:86rem;margin:0;padding:0;gap:1.5rem;overflow:hidden}
 .card{flex:0 0 20.375rem;opacity:1;scale:1;gap:1.25rem}.cpt{height:27.375rem}
 #room{height:50rem}#room .h2{left:2rem;top:2rem}#room .sp{left:59.8125rem;top:3.125rem;width:18.6875rem}#room .hr{top:7.75rem}
 .rw{position:absolute;left:2rem;top:10.3125rem;width:86rem;margin:0}#rp{height:37.6875rem;aspect-ratio:auto}
@@ -221,6 +225,34 @@ footer{height:34.4375rem;padding:0}footer .ft{position:absolute;left:2rem;top:2r
 #wm{position:absolute;left:2rem;top:23.8125rem;margin:-.1875rem 0 0;font-size:12.01425rem;letter-spacing:.85em;line-height:1.0204}
 #sp{padding:1.5rem 2rem 2rem}#sr{gap:2.5rem 1.5rem}
 }
+
+.lp{position:relative;overflow:hidden;background:var(--bg);padding:4.5rem 1.25rem}
+#how{background:var(--ac);color:var(--on)}#how .wy li{border-color:rgba(255,255,255,.35)}#how .wy b{color:var(--on)}
+.lk{font:400 .875rem/1.1 var(--se);text-transform:uppercase;margin-bottom:1rem}
+.lt{font:400 clamp(2.1rem,8.5vw,3.6rem)/1.08 var(--se);max-width:15em;margin-bottom:2.25rem}
+.wy{display:grid;gap:1.75rem}.wy li{border-top:1px solid var(--rule);padding-top:1rem}
+.wy b{display:block;font:400 clamp(3rem,14vw,5rem)/.9 var(--di);color:var(--ac);letter-spacing:.02em}
+.wy h3{font:400 1.6rem/1.1 var(--se);margin-top:.6rem}.wy p{font:400 1.05rem/1.3 var(--se);margin-top:.6rem;max-width:20rem}
+.fq{max-width:60rem}.fq details{border-top:1px solid var(--rule);padding:1.1rem 0}.fq details:last-child{border-bottom:1px solid var(--rule)}
+.fq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;font:400 clamp(1.25rem,5vw,1.7rem)/1.2 var(--se)}
+.fq summary::-webkit-details-marker{display:none}.fq summary:after{content:"+";transition:rotate .45s cubic-bezier(.34,1.56,.64,1)}
+.fq details[open] summary:after{rotate:45deg}.fq details p{padding-top:.8rem;max-width:38rem;font:400 1.05rem/1.35 var(--se);color:var(--strong)}
+.ct{display:grid;gap:2rem}.sp2{font:400 1.05rem/1.35 var(--se);color:var(--strong);max-width:26rem}
+.fm{display:grid;gap:.75rem}
+.fm input:not([type=checkbox]),.fm select,.fm textarea{width:100%;border:1px solid rgba(0,0,0,.35);border-radius:6.25rem;background:transparent;padding:.95rem 1.25rem;font:400 1rem/1.2 var(--se);cursor:text;outline:none;transition:border-color .25s;color:#000;appearance:none}
+.fm select{cursor:pointer;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23000' stroke-width='1.2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 1.25rem center}.fm textarea{border-radius:1.5rem;min-height:7rem;resize:vertical}
+.fm input:focus,.fm select:focus,.fm textarea:focus{border-color:var(--ac)}.fm .bad{border-color:#c0152c!important}
+.ck{display:flex;gap:.6rem;align-items:flex-start;font:400 .9rem/1.3 var(--se);cursor:pointer}.ck input{margin-top:.15rem;accent-color:var(--ac)}
+.sbm{height:3.25rem;border-radius:6.25rem;background:var(--ac);color:var(--on);font:400 1.05rem/1 var(--se);letter-spacing:.02em;transition:opacity .15s}.sbm:hover{opacity:.88}
+.er{color:#c0152c;font-size:.9rem;min-height:1em}.ok{display:none;font:400 1.6rem/1.2 var(--se);color:var(--ac)}
+.eq{font:400 1rem/1 var(--se);letter-spacing:.02em;padding:.45rem 0;border-bottom:1px solid currentColor}
+#rask{display:none;pointer-events:auto;font:inherit;letter-spacing:inherit;border-bottom:1px solid currentColor}
+.fbtn{display:inline-flex;align-items:center;height:3.25rem;padding:0 1.5rem;border:1px solid rgba(255,255,255,.9);border-radius:6.25rem;font:400 1rem/1 var(--se);transition:background-color .15s}.fbtn:hover{background:rgba(255,255,255,.25)}
+.fg a:hover{opacity:.7}
+.n2 .ni .bar{inset:0;border-radius:6.25rem}.n2 .lb{padding:.6rem 1rem;border:.04rem solid currentColor;border-radius:6.25rem}
+@media(min-width:760px){.wy{grid-template-columns:repeat(2,1fr)}.ct{gap:3rem}}
+@media(min-width:960px){.ct{grid-template-columns:1fr 1fr;gap:5rem}}
+@media(min-width:1200px){.lp{padding:7rem 2rem}.wy{grid-template-columns:repeat(4,1fr);gap:1.5rem}.lt{font-size:4.25rem}.lk{font-size:1rem}.wy b{font-size:6.5rem}.ct{gap:6rem}.wy p,.fq details p,.sp2{font-size:1.15rem}}
 @media(prefers-reduced-motion:reduce){.card{transition:none}}
 </style>
 </head>
@@ -231,7 +263,7 @@ footer{height:34.4375rem;padding:0}footer .ft{position:absolute;left:2rem;top:2r
 <section id="hero" aria-label="LUNE Home — soft living">
  <div id="stage">
   <h1><span class="w" id="w1">soft</span><span class="w" id="w2">living&nbsp;<span aria-hidden="true">/</span></span></h1>
-  <a href="#" class="cta" id="cta"><b id="b1" aria-hidden="true">[</b><span data-rv="line" data-d="560" style="padding:0 .22em">explore collection</span><b id="b2" aria-hidden="true">]</b></a>
+  <a href="#contact" class="cta" id="cta"><b id="b1" aria-hidden="true">[</b><span data-rv="line" data-d="560" style="padding:0 .22em">request catalogue</span><b id="b2" aria-hidden="true">]</b></a>
   <p class="welcome" data-rv="soft" data-d="700" data-nc="1">WELCOME TO LUNE – sOFT DESIGN, MADE TO COMFORT.</p>
   <div class="plate p1" data-d="340"><img src="images/Red_lounge_chair_against_wall_2K_20261001215231.jpg" alt="Burgundy sculptural lounge chair from the 2026 collection"></div>
   <div class="plate p2" data-d="440"><img src="images/Black_wooden_dining_chair_2K_20261001215335.jpg" alt="Black wooden dining chair"></div>
@@ -243,6 +275,7 @@ footer{height:34.4375rem;padding:0}footer .ft{position:absolute;left:2rem;top:2r
 
 <section id="mf" class="sec" data-ha><h2 id="mt"></h2></section>
 
+<section id="why" class="lp"><p class="lk" data-rv="fade">(01) — Why LUNE</p><h2 class="lt" data-rv="soft" data-from="left" data-nc="1">Furniture that feels as good as it looks</h2><ul class="wy"><li data-rv="fade" data-d="0"><b>100%</b><p>Solid European oak, ash and walnut. No veneers, no particle board.</p></li><li data-rv="fade" data-d="110"><b>6 wks</b><p>Made to order in our Lisbon workshop, then delivered and set up.</p></li><li data-rv="fade" data-d="220"><b>10 yrs</b><p>Guarantee on every frame, with free repairs after.</p></li><li data-rv="fade" data-d="330"><b>30 days</b><p>Try it at home. If it isn't right, we collect it.</p></li></ul></section>
 <section id="cat" class="sec">
  <h2 class="eb tr" data-rv="fade">(02) — Catalogue</h2>
  <p class="sp" data-rv="fade" data-d="160">Nine categories, and that's the whole company. No outlet line, no seasonal drop, no second brand for the cheap version. If it isn't on this list, we don't make it.</p>
@@ -252,44 +285,48 @@ footer{height:34.4375rem;padding:0}footer .ft{position:absolute;left:2rem;top:2r
 </section>
 
 <section id="prod" class="sec">
- <h2 class="h2" data-rv="soft" data-from="left" data-nc="1">Finished, boxed, waiting by the door</h2>
- <p class="sp" data-rv="fade" data-d="160">Our current collection – ready to ship. Pieces in stock ship within days.</p>
+ <h2 class="h2" data-rv="soft" data-from="left" data-nc="1">Made to order, in oak, ash and walnut</h2>
+ <p class="sp" data-rv="fade" data-d="160">Four pieces from the 2026 collection. Tell us which one you like and we will send you the details.</p>
  <div class="hr" data-rv="rule"></div>
- <ul class="fl2" id="fl"></ul>
- <div class="srt tr" data-rv="fade" data-d="420">Sorted by lead time  <svg viewBox="0 0 8 10" style="height:.62em;width:.5em;vertical-align:baseline;fill:none;stroke:currentColor;stroke-width:1" aria-hidden="true"><path d="M4 0v9M.6 5.6L4 9.2 7.4 5.6"/></svg></div>
- <ul class="pl" id="pl2"></ul>
+   <ul class="pl" id="pl2"></ul>
 </section>
 
 <section id="room" class="sec">
  <h2 class="h2" data-rv="soft" data-from="left" data-nc="1">See it where it actually lives</h2>
- <p class="sp" data-rv="fade" data-d="160">Our furniture in real homes. Explore the pieces in their natural surroundings and get inspired.</p>
+ <p class="sp" data-rv="fade" data-d="160">Our furniture in real homes. Tap a piece to see what it is, then ask us about it.</p>
  <div class="hr" data-rv="rule"></div>
  <div class="rw">
   <div id="rp" data-fc="light" data-rv="ct" data-d="220"><img id="ph" src="images/Copenhagen_apartment_interior_fu%E2%80%A6_2K_20261001220953.jpg" alt="Apartment interior with a dining table, sideboard and red sofa"><div id="rs"></div><ul id="rt"></ul></div>
-  <div class="rc"><span id="rcap">Apartment, Copenhagen — photographed May 2026</span><span>01 / 06 ← →</span></div>
+  <div class="rc"><span id="rcap">Apartment, Copenhagen — photographed May 2026</span><button id="rask" type="button">Ask about this piece →</button></div>
  </div>
 </section>
+<section id="how" class="lp" data-ha><p class="lk" data-rv="fade">(03) — Process</p><h2 class="lt" data-rv="soft" data-from="left" data-nc="1">From first message to your living room</h2><ul class="wy"><li data-rv="fade" data-d="0"><b>01</b><h3>Tell us</h3><p>Request the catalogue or book a visit to the showroom.</p></li><li data-rv="fade" data-d="110"><b>02</b><h3>Choose</h3><p>Pick pieces, woods and fabrics with our designer.</p></li><li data-rv="fade" data-d="220"><b>03</b><h3>We build</h3><p>Made by hand in the workshop in about six weeks.</p></li><li data-rv="fade" data-d="330"><b>04</b><h3>Delivered</h3><p>We bring it home, set it up and take the packaging away.</p></li></ul></section>
+<section id="faq" class="lp"><p class="lk" data-rv="fade">(04) — Questions</p><h2 class="lt" data-rv="soft" data-from="left" data-nc="1">Before you ask</h2><div class="fq"><details data-rv="fade" data-d="0"><summary>How long does an order take?</summary><p>About six weeks from confirmation. Pieces in stock ship within days.</p></details><details data-rv="fade" data-d="60"><summary>Do you deliver abroad?</summary><p>Yes, across Europe. We deliver and assemble. The delivery cost depends on the address.</p></details><details data-rv="fade" data-d="120"><summary>Can I choose another wood or fabric?</summary><p>Yes. Every piece comes in oak, ash or walnut and in more than twenty fabrics.</p></details><details data-rv="fade" data-d="180"><summary>What if I don't like it?</summary><p>You have 30 days at home. If it isn't right, we collect it.</p></details><details data-rv="fade" data-d="240"><summary>Can I visit the showroom?</summary><p>Yes, by appointment. Book a visit in the form below and we will confirm a time.</p></details></div></section>
+<section id="contact" class="lp"><div class="ct"><div><p class="lk" data-rv="fade">(05) — Contact</p><h2 class="lt" data-rv="soft" data-from="left" data-nc="1">Request the catalogue or book a visit</h2><p class="sp2" data-rv="fade" data-d="160">Leave your details and we will reply within one working day. No spam, no sales calls.</p></div>
+<div><form class="fm" id="fm" data-rv="fade" data-d="200" novalidate><input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+<input id="nm" name="name" placeholder="Your name" required autocomplete="name"><input name="email" type="email" placeholder="Email" required autocomplete="email"><input name="phone" type="tel" placeholder="Phone (optional)" autocomplete="tel">
+<select id="it" name="interest" aria-label="I would like to"><option>Request the catalogue</option><option>Book a showroom visit</option><option>A specific piece</option><option>Custom order</option></select>
+<input id="pi" name="piece" placeholder="Piece you are interested in (optional)"><textarea name="message" placeholder="Tell us about your space"></textarea>
+<label class="ck"><input type="checkbox" name="consent" required> I agree that LUNE Home may contact me about my request.</label>
+<button class="sbm" type="submit">Send request</button><p class="er" id="er" aria-live="polite"></p></form>
+<p class="ok" id="ok" role="status">Thank you. We will reply within one working day.</p></div></div></section>
 </main>
 
 <footer data-ha>
  <div class="ft">
-  <h2><span data-rv="soft" data-from="left" data-nc="1">Four emails a year,</span><span data-rv="soft" data-from="left" data-nc="1" data-d="110">and none of them are sales</span></h2>
-  <form class="nl" id="nl" data-rv="fade" data-d="280" onsubmit="return false"><label for="em">EMAIL</label><input id="em" type="email" placeholder="you@somewhere.pt" autocomplete="off"><button class="nb" type="button" id="nb"><span id="nbt">Sign me up</span><em id="nba">→</em></button></form>
+  <h2><span data-rv="soft" data-from="left" data-nc="1">Soft living,</span><span data-rv="soft" data-from="left" data-nc="1" data-d="110">made to last</span></h2>
+  <a class="fbtn" href="#contact">Request the catalogue →</a>
  </div>
  <nav class="fc" aria-label="Footer" id="fc"></nav>
  <div class="fr" data-rv="rule" data-d="340"></div>
  <div class="fg" data-rv="fade" data-d="420"><span>LUNE Home ApS  ·  Rua das Flores 41, 1200-195 Lisboa  ·  +351 21 555 01 82</span><span>© 2026  ·  Made in Portugal, mostly by hand</span></div>
- <div class="fg so" data-rv="fade" data-d="470"><span>Instagram  ·  Pinterest  ·  hello@lunehome.pt</span></div>
+ <div class="fg so" data-rv="fade" data-d="470"><span><a href="https://instagram.com/">Instagram</a>  ·  <a href="mailto:hello@lunehome.pt">hello@lunehome.pt</a>  ·  <a href="tel:+351215550182">+351 21 555 01 82</a></span></div>
  <div id="wm" aria-hidden="true"></div>
 </footer>
 
-<div id="sp" role="dialog" aria-modal="true" aria-label="Search the collection" aria-hidden="true">
- <div class="tp"><b>LUNE</b><button id="sx" type="button">Close</button></div>
- <form role="search" onsubmit="return false"><label class="sr" for="si">Search</label><input id="si" type="search" placeholder="Search" autocomplete="off"></form>
- <p id="ss" aria-live="polite">The collection</p><ul id="sr"></ul>
-</div>
 
 <div id="pre" role="status" aria-live="polite" aria-label="Loading LUNE Home"><div class="vl" id="vl"></div><div id="fr"><div id="pb"></div><span class="c tl"></span><span class="c tr2"></span><span class="c bl"></span><span class="c br"></span><div class="cp"><b>LUNE</b><span id="pc">0%</span></div></div></div>
+<a id="fab" href="#contact">Request catalogue</a>
 <div id="cur" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div id="err"></div>
 
@@ -351,12 +388,12 @@ $$("[data-rv]").forEach(el=>{const p=rv(el);if(!p)return;if(hs.contains(el))el._
 /* header navs */
 function nav(ul,items,base){items.forEach((t,i)=>{
   const li=document.createElement("li");li.className="ni";li.innerHTML='<span class="bar"></span>';
-  const a=document.createElement(t.b?"button":"a");if(t.b){a.id=t.b;a.type="button"}else a.href="#";
+  const a=document.createElement(t.b?"button":"a");if(t.b){a.id=t.b;a.type="button"}else a.href=t.h||"#";
   a.innerHTML=`<span class="lb tr">${t.l}</span>`;li.appendChild(a);ul.appendChild(li);
   const bar=$(".bar",li),b=mk(s=>bar.style.transform=`scaleX(${s.x})`,{x:0});hover(li,b,{x:0},{x:1},{m:1,t:280,f:28});
   if(base>=0){const e=mk(s=>{li.style.opacity=s.o;li.style.transform=`translate3d(0,${s.y}px,0)`},{o:0,y:12});go(e,{o:1,y:0},S,base+i*70)}})}
-nav($("#n1"),["Catalogue","Rooms","ABOUT","MATERIALS"].map(l=>({l})),120);
-nav($("#n2"),[{l:"Search",b:"sb"},{l:"Saved (3)"},{l:"Bag (0)"}],400);
+nav($("#n1"),[{l:"Collection",h:"#prod"},{l:"Rooms",h:"#room"},{l:"About",h:"#mf"},{l:"Process",h:"#how"}],120);
+nav($("#n2"),[{l:"Request catalogue",h:"#contact"}],400);
 const hdr=$("#hdr");
 sub(()=>{const y=hdr.offsetHeight/2;let on=false;$$("[data-ha]").forEach(p=>{const r=p.getBoundingClientRect();if(r.top<=y&&r.bottom>y)on=true});hdr.classList.toggle("on",on)});
 
@@ -452,30 +489,23 @@ setInterval(()=>{if(!wide()&&seen&&!hold&&!reduced)setAct((act+1)%CATS.length)},
 const PRODS=[["(01)","Elara Lounge Chair","Oiled oak, bouclé 12","Ships in 3 days","€1,840","product-elara","chairs seating"],["(02)","Ansel Dining Table","Solid ash, 220 cm","Ships in 3 days","€3,120","product-ansel","tables"],["(03)","Marlow Two-Seater","Walnut, wool 04","Ships in 5 days","€4,460","product-marlow","seating"],["(04)","Vega Sideboard","Smoked oak, brass","Last one","€2,290","product-vega","storage"]];
 const pl2=$("#pl2"),cards=[];
 PRODS.forEach((p,i)=>{const li=document.createElement("li");li.className="card";
-  li.innerHTML=`<div class="cpt" data-fc><img src="${IMG(p[5])}" alt="${p[1]}" loading="lazy"><span class="cx">${p[0]}</span><button class="chip" type="button" aria-pressed="false" aria-label="Save ${p[1]}"><i></i></button></div><h3 class="cn tr">${p[1]}<span>${p[2]}</span></h3><div class="cb"><span class="tr">${p[3]}</span><span class="tr">${p[4]}</span></div>`;
-  pl2.appendChild(li);cards.push({li,cat:p[6]});
+  li.innerHTML=`<div class="cpt" data-fc><img src="${IMG(p[5])}" alt="${p[1]}" loading="lazy"><span class="cx">${p[0]}</span><button class="chip" type="button" aria-pressed="false" aria-label="Save ${p[1]}"><i></i></button></div><h3 class="cn tr">${p[1]}<span>${p[2]}</span></h3><div class="cb"><span class="tr">${p[3]}</span><button class="eq tr" type="button">Enquire →</button></div>`;
+  $(".eq",li).addEventListener("click",()=>ask(p[1]));pl2.appendChild(li);cards.push({li,cat:p[6]});
   const pt=$(".cpt",li),o=mk(s=>pt.style.clipPath=`inset(0 0 ${s.c}% 0)`,{c:100});inview(li,()=>go(o,{c:0},W,i*110));
   const chip=$(".chip",li),ic=$("i",chip),rk=mk(s=>ic.style.transform=`rotate(${s.r}deg)`,{r:0}),R={m:1,t:200,f:14};
   hover(li,rk,{r:0},{r:90},R);chip.addEventListener("click",()=>{const v=chip.classList.toggle("sv");chip.setAttribute("aria-pressed",v);go(rk,{r:v?90:0},R)})});
-const FIL=["All","Chairs","Tables","Seating","Storage"],fl=$("#fl");
-FIL.forEach((t,i)=>{const key=t.toLowerCase(),n=key==="all"?PRODS.length:PRODS.filter(p=>p[6].includes(key)).length;
-  const li=document.createElement("li");li.className="pill"+(i?"":" on");li.innerHTML=`<span class="fi"></span>${t} (${n})`;fl.appendChild(li);
-  const f=$(".fi",li),o=mk(s=>f.style.transform=`scaleX(${s.x})`,{x:0});hover(li,o,{x:0},{x:1},{m:1,t:260,f:28});
-  const e=mk(s=>{li.style.opacity=s.o;li.style.transform=`translate3d(0,${s.y}px,0)`},{o:0,y:14});inview(li,()=>go(e,{o:1,y:0},S,260+i*70));
-  li.addEventListener("click",()=>{$$(".pill").forEach(x=>x.classList.toggle("on",x===li));cards.forEach(c=>c.li.style.display=key==="all"||c.cat.includes(key)?"":"none");pl2.scrollTo({left:0,behavior:"smooth"})})});
-/* the card nearest the centre of the swipe row wakes up */
 const cio=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("on",e.isIntersecting)),{root:pl2,threshold:.65});cards.forEach(c=>cio.observe(c.li));
 
 /* room: point at a tag, the room goes dark around the piece */
 const HS=[["Pendant Lamp","Enamel & steel — €410",.255,.32],["Table Lamp","Glossy ceramic — €185",.46,.43],["Ansel Dining Table","Solid ash, 220 cm — €3,120",.26,.62],["Sofa","Upholstered in velvet — €2,950",.74,.66],["Ansel Dining Chair","Solid oak, woven seat — €640",.37,.72]];
-const rp=$("#rp"),ph=$("#ph"),rs=$("#rs"),rt=$("#rt"),rcap=$("#rcap"),CAP=rcap.textContent,tags=[];
+const rask=$("#rask"),rp=$("#rp"),ph=$("#ph"),rs=$("#rs"),rt=$("#rt"),rcap=$("#rcap"),CAP=rcap.textContent,tags=[];
 let cur=null,pin=null,ptype="mouse";
 const spot=h=>{const p=rp.getBoundingClientRect(),nw=ph.naturalWidth||1376,nh=ph.naturalHeight||603,s=Math.max(p.width/nw,p.height/nh),w=nw*s,hh=nh*s;return{x:(p.width-w)/2+h[2]*w,y:(p.height-hh)/2+h[3]*hh}};
 function place(){HS.forEach((h,i)=>{const q=spot(h);tags[i].style.left=q.x+"px";tags[i].style.top=q.y+"px"});if(cur!==null)light(cur)}
 function light(i){const q=spot(HS[i]),m=innerWidth<=548;rs.style.background=`radial-gradient(circle at ${q.x}px ${q.y}px,transparent ${m?"2.5rem":"5.5rem"},color-mix(in srgb,#2a1418 66%,transparent) ${m?"6rem":"14rem"})`}
-function focus(i){cur=i;light(i);rs.style.opacity=1;tags.forEach((t,j)=>{t.classList.toggle("dim",j!==i&&innerWidth>548);t.classList.toggle("sel",j===i)});rcap.textContent=HS[i][0]+" — "+HS[i][1];rcap.classList.add("pk")}
-function release(){cur=null;pin=null;rs.style.opacity=0;tags.forEach(t=>t.classList.remove("dim","sel"));rcap.textContent=CAP;rcap.classList.remove("pk")}
-addEventListener("pointerdown",e=>ptype=e.pointerType);
+function focus(i){cur=i;light(i);rs.style.opacity=1;tags.forEach((t,j)=>{t.classList.toggle("dim",j!==i&&innerWidth>548);t.classList.toggle("sel",j===i)});rcap.textContent=HS[i][0]+" — "+HS[i][1];rcap.classList.add("pk");rask.style.display=(pin!==null||ptype!=="mouse")?"inline":"none"}
+function release(){rask.style.display="none";cur=null;pin=null;rs.style.opacity=0;tags.forEach(t=>t.classList.remove("dim","sel"));rcap.textContent=CAP;rcap.classList.remove("pk")}
+addEventListener("pointerdown",e=>ptype=e.pointerType);rask.addEventListener("click",()=>cur!==null&&ask(HS[cur][0]));
 HS.forEach((h,i)=>{const li=document.createElement("li");li.className="tag";
   li.innerHTML=`<button type="button" aria-label="${h[0]} — ${h[1]}. Add to bag"><span class="mk2"><i></i></span><span class="tx"><b class="tr">${h[0]}</b><em class="tr">${h[1]}</em></span></button>`;rt.appendChild(li);tags.push(li);
   const b=$("button",li),ic=$("i",li),rk=mk(s=>ic.style.transform=`rotate(${s.r}deg)`,{r:0}),R={m:1,t:200,f:14};hover(b,rk,{r:0},{r:90},R);
@@ -487,27 +517,28 @@ HS.forEach((h,i)=>{const li=document.createElement("li");li.className="tag";
 ph.addEventListener("load",place);addEventListener("resize",place);place();
 
 /* footer */
-const nl=$("#nl"),inp=$("#em");
-nl.addEventListener("pointerenter",()=>nl.classList.add("aw"));nl.addEventListener("pointerleave",()=>{if(document.activeElement!==inp)nl.classList.remove("aw")});
-inp.addEventListener("focus",()=>nl.classList.add("aw"));inp.addEventListener("blur",()=>nl.classList.remove("aw"));
-const nbt=$("#nbt"),nba=$("#nba"),nb=mk(s=>{nbt.style.transform=`translate3d(${s.x}px,0,0)`;nba.style.transform=`translate3d(${s.a}px,0,0)`;nba.style.opacity=s.o},{x:0,a:-8,o:0});
-hover($("#nb"),nb,{x:0,a:-8,o:0},{x:-4,a:0,o:1},{m:1,t:280,f:26});
-const FC=[["Shop",["Catalogue","In stock now","Gift cards","Trade & contract"]],["Workshop",["Our story","Materials","Repairs","Journal"]],["Help",["Delivery","Returns","Care guide","Contact"]]];
-FC.forEach((c,ci)=>{const d=document.createElement("div");d.dataset.rv="fade";d.dataset.d=ci*110;d.innerHTML=`<h3 class="tr">${c[0]}</h3><ul></ul>`;$("#fc").appendChild(d);nav($("ul",d),c[1].map(l=>({l})),-1);inview(d,rv(d))});
+const FC=[["Explore",[["Collection","#prod"],["Rooms","#room"],["Process","#how"],["FAQ","#faq"]]],["Studio",[["Our story","#mf"],["Why LUNE","#why"],["Visit us","#contact"],["Catalogue","#contact"]]],["Contact",[["Email","mailto:hello@lunehome.pt"],["Phone","tel:+351215550182"],["Instagram","https://instagram.com/"],["Showroom","#contact"]]]];
+FC.forEach((c,ci)=>{const d=document.createElement("div");d.dataset.rv="fade";d.dataset.d=ci*110;d.innerHTML=`<h3 class="tr">${c[0]}</h3><ul></ul>`;$("#fc").appendChild(d);nav($("ul",d),c[1].map(([l,h])=>({l,h})),-1);inview(d,rv(d))});
 const wm=$("#wm");[..."LUNE"].forEach((c,i)=>{const s=document.createElement("span"),n=document.createElement("i");n.textContent=c;s.appendChild(n);wm.appendChild(s);
   const o=mk(st=>n.style.transform=`translate3d(0,${st.y}%,0)`,{y:110});inview(wm,()=>go(o,{y:0},W,i*90))});
 
-/* search panel */
-const sp=$("#sp"),si=$("#si"),srl=$("#sr"),ss=$("#ss"),sy=mk(s=>sp.style.transform=`translateY(${s.y}%)`,{y:-100}),SC={m:1.2,t:190,f:30};
-let open=false,park;
-function list(){const q=si.value.trim().toLowerCase(),r=PRODS.filter(p=>(p[1]+" "+p[2]).toLowerCase().includes(q));
-  ss.textContent=q?`${r.length} ${r.length===1?"piece":"pieces"}`:"The collection";
-  srl.innerHTML=r.length?r.map(p=>`<li><div class="im" data-fc="light"><img src="${IMG(p[5])}" alt="${p[1]}"></div><b>${p[1]}</b><small>${p[2]}</small><span>${p[4]}</span></li>`).join(""):'<li class="none">Nothing under that name. Try a material — oak, ash, walnut.</li>'}
-function toggle(v){open=v;clearTimeout(park);sp.setAttribute("aria-hidden",!v);document.body.style.overflow=v?"hidden":"";
-  if(v){sp.style.visibility="visible";go(sy,{y:0},SC);requestAnimationFrame(()=>si.focus())}else{go(sy,{y:-100},SC);park=setTimeout(()=>sp.style.visibility="hidden",700);si.value="";list();$("#sb").focus()}}
-list();si.addEventListener("input",list);$("#sx").addEventListener("click",()=>toggle(false));$("#sb").addEventListener("click",()=>toggle(true));
-addEventListener("keydown",e=>{if(e.key==="Escape"&&open)toggle(false)});
 
+/* anchors, enquiries and the contact form */
+document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const h=a.getAttribute("href");e.preventDefault();
+  if(h==="#"){lenis?lenis.scrollTo(0):scrollTo(0,0);return}const t=$(h);if(t)lenis?lenis.scrollTo(t,{offset:-hdr.offsetHeight}):t.scrollIntoView({behavior:"smooth"})});
+const FORM={url:"",key:""}; /* paste a Formspree / Web3Forms endpoint (and access key) here; empty = opens the visitor's email app */
+const fm=$("#fm"),okEl=$("#ok"),pi=$("#pi"),it=$("#it"),er=$("#er");
+function ask(n){pi.value=n;it.value="A specific piece";const t=$("#contact");lenis?lenis.scrollTo(t,{offset:-hdr.offsetHeight}):t.scrollIntoView({behavior:"smooth"});setTimeout(()=>$("#nm").focus({preventScroll:true}),900)}
+fm.addEventListener("submit",e=>{e.preventDefault();if(fm.botcheck.checked)return;
+  const bad=[...fm.querySelectorAll("[required]")].filter(x=>x.type==="checkbox"?!x.checked:x.type==="email"?!/^\S+@\S+\.\S+$/.test(x.value):!x.value.trim());
+  fm.querySelectorAll(".bad").forEach(x=>x.classList.remove("bad"));
+  if(bad.length){bad.forEach(x=>x.classList.add("bad"));er.textContent="Please fill in your name, a valid email and tick the box.";bad[0].focus();return}
+  er.textContent="";const d=Object.fromEntries(new FormData(fm));delete d.botcheck;
+  const done=()=>{fm.style.display="none";okEl.style.display="block"},fail2=()=>{er.textContent="Something went wrong. Please email hello@lunehome.pt"};
+  if(FORM.url){if(FORM.key)d.access_key=FORM.key;fetch(FORM.url,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)}).then(r=>r.ok?done():fail2(),fail2)}
+  else{location.href="mailto:hello@lunehome.pt?subject="+encodeURIComponent("LUNE Home — "+d.interest)+"&body="+encodeURIComponent(`Name: ${d.name}\nEmail: ${d.email}\nPhone: ${d.phone}\nPiece: ${d.piece}\n\n${d.message}`);done()}});
+
+const fab=$("#fab"),ctS=$("#contact");sub(()=>{const r=ctS.getBoundingClientRect();fab.classList.toggle("show",scrollY>innerHeight*.7&&r.top>innerHeight*.9&&r.bottom>0)});
 /* framing cursor: mouse only */
 if(matchMedia("(pointer: fine)").matches){const cu=$("#cur"),mks=$$("i",cu),
   co=mk(s=>{const g=5+s.p*17;mks.forEach((m,i)=>{m.style.left=s.x+"px";m.style.top=s.y+"px";m.style.opacity=s.p;m.style.transform=`translate3d(${i%2?g-11:-g}px,${i<2?-g:g-11}px,0)`})},{x:-50,y:-50,p:0});
